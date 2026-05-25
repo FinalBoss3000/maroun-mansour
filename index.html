@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Maroun Mansour — Attorney at Law. Expert legal counsel in commercial, technology, corporate, real estate, and startup law across Israel.">
+  <title>Maroun Mansour — Attorney at Law</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Frank+Ruhl+Libre:wght@500;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Hebrew:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── DESIGN TOKENS ──────────────────────────────────────────── */
+    :root {
+      --c-primary:       #0B1D51;
+      --c-primary-mid:   #162A6E;
+      --c-primary-deep:  #07133A;
+      --c-accent:        #C9A265;
+      --c-accent-light:  #DDB87A;
+      --c-accent-dim:    #8B6B35;
+      --c-accent-bg:     rgba(201,162,101,0.10);
+      --c-accent-border: rgba(201,162,101,0.22);
+
+      --c-canvas:        #FFFFFF;
+      --c-canvas-warm:   #F8F7F4;
+      --c-canvas-cool:   #F1F4FB;
+      --c-ink:           #0F172A;
+      --c-ink-2:         #1E293B;
+      --c-ink-muted:     #475569;
+      --c-ink-subtle:    #94A3B8;
+      --c-border:        #E2E8F0;
+      --c-border-strong: #CBD5E1;
+
+      --c-on-dark:       #F8F7F4;
+      --c-on-dark-70:    rgba(248,247,244,0.70);
+      --c-on-dark-45:    rgba(248,247,244,0.45);
+      --c-on-dark-20:    rgba(248,247,244,0.20);
+      --c-on-dark-08:    rgba(248,247,244,0.08);
+
+      --f-display: 'EB Garamond', Georgia, serif;
+      --f-body:    'Inter', system-ui, sans-serif;
+
+      --sp-xs:  8px;
+      --sp-sm:  12px;
+      --sp-md:  16px;
+      --sp-lg:  24px;
+      --sp-xl:  32px;
+      --sp-2xl: 48px;
+      --sp-3xl: 64px;
+      --sp-sec: 100px;
+
+      --r-sm:   6px;
+      --r-md:   10px;
+      --r-lg:   16px;
+      --r-xl:   22px;
+      --r-2xl:  32px;
+      --r-pill: 9999px;
+
+      --ease-out: cubic-bezier(0.0, 0, 0.2, 1);
+      --ease-in:  cubic-bezier(0.4, 0, 1, 1);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--f-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--c-ink);
+      background: var(--c-canvas);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button { font-family: inherit; }
+    ul, ol { list-style: none; }
+
+    /* ─── FOCUS ──────────────────────────────────────────────────── */
+    :focus-visible {
+      outline: 2px solid var(--c-accent);
+      outline-offset: 3px;
+      border-radius: var(--r-sm);
+    }
+
+    /* ─── SKIP LINK ──────────────────────────────────────────────── */
+    .skip-link {
+      position: absolute; left: -9999px; top: 16px;
+      z-index: 9999; padding: 8px 20px;
+      background: var(--c-primary); color: white;
+      font-size: 14px; font-weight: 500;
+      text-decoration: none; border-radius: var(--r-pill);
+    }
+    .skip-link:focus { left: 16px; }
+
+    /* ─── LAYOUT ─────────────────────────────────────────────────── */
+    .container {
+      width: 100%; max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 5vw, 56px);
+    }
+    .section { padding: var(--sp-sec) 0; }
+
+    /* ─── SCROLL REVEAL ──────────────────────────────────────────── */
+    .rev {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 650ms var(--ease-out),
+                  transform 650ms var(--ease-out);
+    }
+    .rev.in { opacity: 1; transform: translateY(0); }
+    .rev.d1 { transition-delay: 80ms; }
+    .rev.d2 { transition-delay: 160ms; }
+    .rev.d3 { transition-delay: 240ms; }
+    .rev.d4 { transition-delay: 320ms; }
+    @media (prefers-reduced-motion: reduce) {
+      .rev { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ─── SHARED COMPONENTS ─────────────────────────────────────── */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 14px;
+      background: var(--c-accent-bg);
+      border: 1px solid var(--c-accent-border);
+      border-radius: var(--r-pill);
+      font-family: var(--f-body);
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.11em; text-transform: uppercase;
+      color: var(--c-accent-dim);
+      margin-bottom: 20px;
+    }
+    .eyebrow--dark {
+      background: rgba(201,162,101,0.10);
+      border-color: rgba(201,162,101,0.22);
+      color: var(--c-accent);
+    }
+
+    .sec-heading {
+      font-family: var(--f-display);
+      font-size: clamp(34px, 5vw, 50px);
+      font-weight: 500;
+      line-height: 1.10;
+      letter-spacing: -0.025em;
+      color: var(--c-ink);
+      margin-bottom: 14px;
+    }
+    .sec-heading--light { color: var(--c-on-dark); }
+
+    .sec-sub {
+      font-size: 17px; font-weight: 400;
+      line-height: 1.70; color: var(--c-ink-muted);
+      max-width: 520px;
+    }
+    .sec-sub--light { color: var(--c-on-dark-45); }
+
+    .sec-header { text-align: center; margin-bottom: 64px; }
+    .sec-header .sec-sub { margin: 0 auto; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px;
+      font-family: var(--f-body); font-size: 14px; font-weight: 600;
+      text-decoration: none; border: none;
+      border-radius: var(--r-pill); cursor: pointer;
+      transition: background 150ms, transform 150ms, box-shadow 150ms;
+    }
+    .btn:active { transform: scale(0.97); }
+
+    .btn--gold {
+      background: var(--c-accent);
+      color: #0F172A;
+      box-shadow: 0 4px 18px rgba(201,162,101,0.28);
+    }
+    .btn--gold:hover {
+      background: var(--c-accent-light);
+      box-shadow: 0 6px 28px rgba(201,162,101,0.38);
+      transform: scale(1.02);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--c-on-dark-70);
+      border: 1px solid var(--c-on-dark-20);
+    }
+    .btn--ghost:hover {
+      background: var(--c-on-dark-08);
+      border-color: rgba(248,247,244,0.35);
+      color: var(--c-on-dark);
+    }
+
+    .btn--navy {
+      background: var(--c-primary);
+      color: white;
+      box-shadow: 0 4px 18px rgba(11,29,81,0.18);
+    }
+    .btn--navy:hover {
+      background: var(--c-primary-mid);
+      box-shadow: 0 6px 28px rgba(11,29,81,0.26);
+      transform: scale(1.01);
+    }
+
+    /* ════════════════════════════════════════════════════════════════
+       NAVIGATION
+    ════════════════════════════════════════════════════════════════ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 64px; display: flex; align-items: center;
+      background: rgba(7,19,58,0.80);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: background 250ms;
+    }
+    .nav.solid { background: rgba(7,19,58,0.97); }
+
+    .nav__inner {
+      width: 100%; max-width: 1200px; margin: 0 auto;
+      padding: 0 clamp(20px, 5vw, 56px);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav__logo {
+      display: flex; align-items: center;
+      text-decoration: none; flex-shrink: 0;
+    }
+    .nav__logo-img { height: 36px; width: auto; border-radius: 3px; display: block; }
+
+    .nav__links {
+      display: flex; align-items: center; gap: 2px;
+    }
+    .nav__links a {
+      display: block; padding: 6px 14px;
+      font-size: 13px; font-weight: 400;
+      color: rgba(255,255,255,0.70);
+      text-decoration: none; border-radius: var(--r-sm);
+      transition: color 150ms, background 150ms;
+    }
+    .nav__links a:hover { color: white; background: rgba(255,255,255,0.08); }
+
+    .nav__actions { display: flex; align-items: center; gap: 10px; }
+
+    /* Language toggle */
+    .lang-toggle {
+      display: flex; align-items: center;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: var(--r-pill);
+      padding: 3px;
+      gap: 2px;
+    }
+    .lang-btn {
+      background: none; border: none; cursor: pointer;
+      padding: 4px 10px;
+      font-family: var(--f-body); font-size: 11px; font-weight: 600;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.55);
+      border-radius: var(--r-pill);
+      transition: color 150ms, background 150ms;
+      white-space: nowrap; line-height: 1.4;
+    }
+    .lang-btn.active { background: var(--c-accent); color: #0F172A; }
+    .lang-btn:hover:not(.active) { color: rgba(255,255,255,0.90); }
+
+    .nav__cta {
+      display: inline-flex; align-items: center;
+      padding: 8px 18px;
+      background: var(--c-accent); color: #0F172A;
+      font-size: 13px; font-weight: 600;
+      text-decoration: none; border-radius: var(--r-pill);
+      transition: background 150ms, transform 150ms;
+    }
+    .nav__cta:hover { background: var(--c-accent-light); transform: scale(1.02); }
+    .nav__cta:active { transform: scale(0.97); }
+
+    .nav__hamburger {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      color: white; padding: 8px; border-radius: var(--r-sm);
+    }
+
+    /* Mobile menu */
+    .nav__mobile {
+      display: none; position: fixed;
+      top: 64px; left: 0; right: 0; z-index: 199;
+      background: var(--c-primary-deep);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 12px clamp(20px, 5vw, 56px) 16px;
+      flex-direction: column; gap: 4px;
+    }
+    .nav__mobile.open { display: flex; }
+    .nav__mobile a {
+      display: block; padding: 12px 14px;
+      font-size: 15px; color: rgba(255,255,255,0.75);
+      text-decoration: none; border-radius: var(--r-sm);
+      transition: color 150ms, background 150ms;
+    }
+    .nav__mobile a:hover { color: white; background: rgba(255,255,255,0.06); }
+    .nav__mobile .mobile-cta {
+      margin-top: 8px; padding: 12px 18px;
+      background: var(--c-accent); color: #0F172A;
+      font-weight: 600; text-align: center;
+      border-radius: var(--r-pill);
+    }
+    .nav__mobile .mobile-cta:hover { background: var(--c-accent-light); }
+
+    /* Mobile language row */
+    .mobile-lang {
+      display: flex; gap: 8px;
+      padding: 4px 14px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 4px;
+    }
+    .mobile-lang .lang-btn {
+      flex: 1; text-align: center;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      padding: 7px 14px; font-size: 12px;
+      color: rgba(255,255,255,0.60);
+    }
+    .mobile-lang .lang-btn.active {
+      background: var(--c-accent); color: #0F172A;
+      border-color: var(--c-accent);
+    }
+
+    /* ════════════════════════════════════════════════════════════════
+       HERO
+    ════════════════════════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      min-height: 100dvh;
+      display: flex; align-items: center;
+      padding-top: 64px;
+      background: var(--c-primary);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,162,101,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,162,101,0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 80% 20%, rgba(201,162,101,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 55% 70% at 5% 85%,  rgba(22,42,110,0.50)  0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero__scales {
+      position: absolute;
+      right: clamp(40px, 8vw, 120px);
+      top: 50%; transform: translateY(-50%);
+      width: clamp(220px, 30vw, 460px);
+      opacity: 0.055;
+      pointer-events: none;
+      color: white;
+      transition: left 0ms, right 0ms;
+    }
+
+    .hero__inner {
+      position: relative; z-index: 1;
+      max-width: 720px;
+    }
+
+    .hero__badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px;
+      background: rgba(201,162,101,0.12);
+      border: 1px solid var(--c-accent-border);
+      border-radius: var(--r-pill);
+      margin-bottom: 36px;
+      color: var(--c-accent);
+      font-size: 10px; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase;
+    }
+    .hero__badge-dot {
+      width: 6px; height: 6px;
+      background: var(--c-accent); border-radius: 50%;
+      animation: pulse 2.4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.35; }
+    }
+
+    .hero__h1 {
+      font-family: var(--f-display);
+      font-size: clamp(52px, 9vw, 90px);
+      font-weight: 500;
+      line-height: 1.0;
+      letter-spacing: -0.032em;
+      color: var(--c-on-dark);
+      margin-bottom: 28px;
+    }
+    .hero__h1 em {
+      font-style: italic;
+      color: var(--c-accent);
+    }
+
+    .hero__sub {
+      font-size: clamp(16px, 1.8vw, 18px);
+      font-weight: 400; line-height: 1.75;
+      color: var(--c-on-dark-70);
+      max-width: 500px; margin-bottom: 44px;
+    }
+
+    .hero__ctas {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      margin-bottom: 64px;
+    }
+
+    .hero__stats {
+      display: flex; flex-wrap: wrap; gap: 32px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.09);
+    }
+    .hero__stat-val {
+      font-family: var(--f-display);
+      font-size: 30px; font-weight: 500;
+      letter-spacing: -0.02em; color: white;
+      display: block; line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hero__stat-lbl {
+      font-size: 12px; color: var(--c-on-dark-45);
+      letter-spacing: 0.02em;
+    }
+
+    /* ════════════════════════════════════════════════════════════════
+       TRUST BAR
+    ════════════════════════════════════════════════════════════════ */
+    .trust {
+      background: var(--c-canvas-warm);
+      border-bottom: 1px solid var(--c-border);
+      padding: 20px 0;
+    }
+    .trust__inner {
+      display: flex; align-items: center;
+      justify-content: center; gap: 0;
+      flex-wrap: wrap;
+    }
+    .trust__item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 28px;
+      border-right: 1px solid var(--c-border);
+      color: var(--c-ink-muted);
+      font-size: 13px; font-weight: 400;
+    }
+    .trust__item:last-child { border-right: none; }
+    .trust__item svg { color: var(--c-accent-dim); flex-shrink: 0; }
+
+    /* ════════════════════════════════════════════════════════════════
+       PRACTICE AREAS
+    ════════════════════════════════════════════════════════════════ */
+    .practice {
+      background: var(--c-canvas-warm);
+      padding: var(--sp-sec) 0;
+    }
+
+    .practice__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    /* Individual card */
+    .pcard {
+      background: var(--c-canvas);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-lg);
+      padding: 28px 22px 24px;
+      cursor: pointer;
+      display: flex; flex-direction: column; gap: 14px;
+      transition: box-shadow 250ms var(--ease-out), transform 250ms var(--ease-out), border-color 250ms;
+      outline: none;
+    }
+    .pcard:hover {
+      box-shadow: 0 8px 32px rgba(11,29,81,0.10);
+      transform: translateY(-3px);
+      border-color: var(--c-accent-border);
+    }
+    .pcard:focus-visible {
+      box-shadow: 0 0 0 3px rgba(201,162,101,0.40);
+      border-color: var(--c-accent);
+    }
+
+    .pcard__icon {
+      width: 46px; height: 46px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--c-accent-bg);
+      border: 1px solid var(--c-accent-border);
+      border-radius: var(--r-md);
+      color: var(--c-accent-dim);
+      flex-shrink: 0;
+    }
+    .pcard__icon svg { width: 22px; height: 22px; }
+
+    .pcard__name {
+      font-family: var(--f-display);
+      font-size: clamp(16px, 1.4vw, 18px);
+      font-weight: 500; letter-spacing: -0.01em;
+      color: var(--c-ink); line-height: 1.25;
+    }
+
+    /* ════════════════════════════════════════════════════════════════
+       ABOUT
+    ════════════════════════════════════════════════════════════════ */
+    .about { background: var(--c-canvas); }
+
+    .about__grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 88px; align-items: center;
+    }
+
+    .about__body {
+      font-size: 16px; line-height: 1.80;
+      color: var(--c-ink-muted); margin-bottom: 28px;
+    }
+
+    .about__creds { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+    .about__cred {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 15px; color: var(--c-ink-2);
+    }
+    .about__cred-check {
+      width: 22px; height: 22px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--c-accent-bg);
+      border: 1px solid var(--c-accent-border);
+      border-radius: 50%;
+      color: var(--c-accent-dim);
+    }
+
+    /* Profile card */
+    .profile-card {
+      background: var(--c-primary);
+      border-radius: var(--r-2xl);
+      padding: 44px;
+      position: relative; overflow: hidden;
+    }
+    .profile-card::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(201,162,101,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .profile-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,162,101,0.30), transparent);
+    }
+
+    .profile-card__eyebrow {
+      font-size: 9px; font-weight: 600;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--c-accent); margin-bottom: 22px;
+    }
+    .profile-card__monogram {
+      width: 64px; height: 64px;
+      background: rgba(201,162,101,0.14);
+      border: 1px solid rgba(201,162,101,0.25);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--f-display);
+      font-size: 26px; font-weight: 500; letter-spacing: -0.02em;
+      color: var(--c-accent);
+      margin-bottom: 20px;
+    }
+    .profile-card__name {
+      font-family: var(--f-display);
+      font-size: 30px; font-weight: 500;
+      color: white; letter-spacing: -0.02em;
+      line-height: 1.1; margin-bottom: 6px;
+    }
+    .profile-card__role {
+      font-size: 13px; color: var(--c-on-dark-45);
+      margin-bottom: 36px; letter-spacing: 0.01em;
+    }
+
+    .profile-card__details { display: flex; flex-direction: column; gap: 18px; }
+    .profile-detail { display: flex; align-items: flex-start; gap: 12px; }
+    .profile-detail__icon {
+      width: 34px; height: 34px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.06);
+      border-radius: var(--r-sm);
+      color: rgba(255,255,255,0.45);
+    }
+    .profile-detail__lbl {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--c-on-dark-45);
+      display: block; margin-bottom: 2px;
+    }
+    .profile-detail__val { font-size: 14px; color: rgba(255,255,255,0.80); }
+
+    .profile-card__divider {
+      height: 1px; background: rgba(255,255,255,0.08); margin: 28px 0;
+    }
+    .profile-card__lang-lbl {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--c-on-dark-45); margin-bottom: 12px;
+    }
+    .lang-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .lang-chip {
+      padding: 4px 12px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: var(--r-pill);
+      font-size: 12px; color: rgba(255,255,255,0.70);
+    }
+
+    /* ════════════════════════════════════════════════════════════════
+       PILLARS / APPROACH
+    ════════════════════════════════════════════════════════════════ */
+    .approach {
+      background: var(--c-primary-deep);
+      position: relative; overflow: hidden;
+    }
+    .approach::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,162,101,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,162,101,0.025) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .approach::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 90% 50% at 50% -10%, rgba(201,162,101,0.06) 0%, transparent 60%);
+    }
+    .approach__inner { position: relative; z-index: 1; }
+
+    .pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .pillar {
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.075);
+      border-radius: var(--r-xl);
+      padding: 40px 36px;
+      transition: background 250ms, border-color 250ms;
+    }
+    .pillar:hover {
+      background: rgba(255,255,255,0.055);
+      border-color: rgba(201,162,101,0.20);
+    }
+    .pillar__num {
+      font-family: var(--f-display);
+      font-size: 60px; font-weight: 500;
+      color: rgba(201,162,101,0.18);
+      line-height: 1; letter-spacing: -0.03em;
+      margin-bottom: 22px;
+    }
+    .pillar__title {
+      font-family: var(--f-display);
+      font-size: 24px; font-weight: 500;
+      color: white; letter-spacing: -0.015em;
+      margin-bottom: 14px;
+    }
+    .pillar__body {
+      font-size: 15px; line-height: 1.75;
+      color: var(--c-on-dark-45);
+    }
+
+    /* ════════════════════════════════════════════════════════════════
+       CONTACT
+    ════════════════════════════════════════════════════════════════ */
+    .contact { background: var(--c-canvas-warm); }
+
+    .contact__grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+
+    .contact__h2 {
+      font-family: var(--f-display);
+      font-size: clamp(34px, 4.5vw, 48px);
+      font-weight: 500; line-height: 1.1;
+      letter-spacing: -0.025em; color: var(--c-ink);
+      margin-bottom: 16px;
+    }
+    .contact__sub {
+      font-size: 16px; color: var(--c-ink-muted);
+      line-height: 1.70; margin-bottom: 40px;
+    }
+
+    .contact__details { display: flex; flex-direction: column; gap: 20px; }
+    .cdetail {
+      display: flex; align-items: center; gap: 14px;
+      text-decoration: none;
+    }
+    .cdetail__icon {
+      width: 46px; height: 46px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--c-primary);
+      border-radius: var(--r-md);
+      color: var(--c-accent);
+    }
+    .cdetail__lbl {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.09em;
+      text-transform: uppercase; color: var(--c-ink-subtle);
+      display: block; margin-bottom: 2px;
+    }
+    .cdetail__val { font-size: 15px; color: var(--c-ink-2); }
+    a.cdetail:hover .cdetail__val { color: var(--c-primary); }
+
+    /* Form */
+    .cform {
+      background: var(--c-canvas);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-xl);
+      padding: 40px;
+    }
+    .cform__title {
+      font-family: var(--f-display);
+      font-size: 24px; font-weight: 500;
+      letter-spacing: -0.015em; color: var(--c-ink);
+      margin-bottom: 28px;
+    }
+
+    .fg { margin-bottom: 18px; }
+    .fg label {
+      display: block; font-size: 13px; font-weight: 500;
+      color: var(--c-ink-2); margin-bottom: 6px;
+    }
+    .fg label .req { color: #DC2626; margin-left: 2px; }
+    .fg input, .fg select, .fg textarea {
+      width: 100%; padding: 10px 14px;
+      background: var(--c-canvas-warm);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-md);
+      font-family: var(--f-body); font-size: 15px;
+      color: var(--c-ink); appearance: none;
+      transition: border-color 150ms, box-shadow 150ms;
+    }
+    .fg input:focus, .fg select:focus, .fg textarea:focus {
+      outline: none;
+      border-color: var(--c-primary);
+      box-shadow: 0 0 0 3px rgba(11,29,81,0.08);
+      background: var(--c-canvas);
+    }
+    .fg input::placeholder, .fg textarea::placeholder { color: var(--c-ink-subtle); }
+    .fg textarea { min-height: 96px; resize: vertical; }
+
+    .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .cform__submit {
+      width: 100%; margin-top: 8px; padding: 14px;
+      background: var(--c-primary); color: white;
+      font-family: var(--f-body); font-size: 15px; font-weight: 600;
+      border: none; border-radius: var(--r-pill); cursor: pointer;
+      box-shadow: 0 4px 18px rgba(11,29,81,0.16);
+      transition: background 150ms, transform 150ms, box-shadow 150ms;
+    }
+    .cform__submit:hover {
+      background: var(--c-primary-mid);
+      box-shadow: 0 6px 28px rgba(11,29,81,0.24);
+      transform: scale(1.01);
+    }
+    .cform__submit:active { transform: scale(0.98); }
+
+    .cform__disc {
+      font-size: 12px; color: var(--c-ink-subtle);
+      line-height: 1.6; margin-top: 14px;
+    }
+
+    /* ════════════════════════════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════════════════════════════ */
+    .footer {
+      background: var(--c-primary);
+      padding: 52px 0 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer__grid {
+      display: grid; grid-template-columns: auto 1fr auto;
+      gap: 40px; align-items: start;
+      margin-bottom: 36px;
+    }
+    .footer__brand-name {
+      font-family: var(--f-display);
+      font-size: 20px; font-weight: 500;
+      color: white; letter-spacing: -0.01em;
+      display: block; margin-bottom: 6px;
+    }
+    .footer__brand-tag { font-size: 12px; color: var(--c-on-dark-45); }
+
+    .footer__nav {
+      display: flex; justify-content: center;
+      flex-wrap: wrap; gap: 2px;
+    }
+    .footer__nav a {
+      padding: 6px 14px; font-size: 13px;
+      color: var(--c-on-dark-45); text-decoration: none;
+      border-radius: var(--r-sm); transition: color 150ms;
+    }
+    .footer__nav a:hover { color: rgba(255,255,255,0.85); }
+
+    .footer__quick { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+    .footer__quick a {
+      font-size: 13px; color: var(--c-on-dark-45);
+      text-decoration: none; transition: color 150ms;
+    }
+    .footer__quick a:hover { color: var(--c-accent); }
+
+    .footer__divider { height: 1px; background: rgba(255,255,255,0.06); margin-bottom: 24px; }
+
+    .footer__bottom {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; flex-wrap: wrap; gap: 14px;
+    }
+    .footer__legal {
+      font-size: 12px; color: var(--c-on-dark-20);
+      line-height: 1.65; max-width: 640px;
+    }
+    .footer__copy { font-size: 12px; color: var(--c-on-dark-20); white-space: nowrap; }
+
+    /* ════════════════════════════════════════════════════════════════
+       PRACTICE AREA MODAL
+    ════════════════════════════════════════════════════════════════ */
+    .pmodal {
+      position: fixed; inset: 0; z-index: 500;
+      display: flex; align-items: center; justify-content: center;
+      padding: clamp(16px, 4vw, 40px);
+      opacity: 0; pointer-events: none;
+      transition: opacity 220ms var(--ease-out);
+    }
+    .pmodal.open { opacity: 1; pointer-events: all; }
+
+    .pmodal__backdrop {
+      position: absolute; inset: 0;
+      background: rgba(7,19,58,0.72);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    }
+
+    .pmodal__box {
+      position: relative; z-index: 1;
+      background: var(--c-canvas);
+      border-radius: var(--r-xl);
+      padding: clamp(32px, 5vw, 52px);
+      max-width: 580px; width: 100%;
+      max-height: 88vh; overflow-y: auto;
+      box-shadow: 0 40px 100px rgba(7,19,58,0.32), 0 0 0 1px rgba(255,255,255,0.06);
+      transform: translateY(20px) scale(0.97);
+      transition: transform 280ms var(--ease-out);
+    }
+    .pmodal.open .pmodal__box { transform: translateY(0) scale(1); }
+
+    .pmodal__close {
+      position: absolute; top: 18px; right: 18px;
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--c-canvas-warm);
+      border: 1px solid var(--c-border);
+      border-radius: 50%;
+      cursor: pointer; color: var(--c-ink-muted);
+      font-size: 18px; line-height: 1;
+      transition: background 150ms, color 150ms, border-color 150ms;
+    }
+    .pmodal__close:hover { background: var(--c-border); color: var(--c-ink); }
+
+    .pmodal__icon {
+      width: 56px; height: 56px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--c-accent-bg);
+      border: 1px solid var(--c-accent-border);
+      border-radius: var(--r-lg);
+      margin-bottom: 22px;
+      color: var(--c-accent-dim);
+    }
+    .pmodal__icon svg { width: 26px; height: 26px; }
+
+    .pmodal__eyebrow {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.11em;
+      text-transform: uppercase; color: var(--c-accent-dim);
+      margin-bottom: 8px;
+    }
+    .pmodal__title {
+      font-family: var(--f-display);
+      font-size: clamp(26px, 3.5vw, 34px);
+      font-weight: 500; letter-spacing: -0.02em;
+      color: var(--c-ink); line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .pmodal__divider {
+      height: 1px; background: var(--c-border); margin-bottom: 20px;
+    }
+    .pmodal__body {
+      font-size: 16px; line-height: 1.85;
+      color: var(--c-ink-muted);
+    }
+
+    /* RTL modal adjustments */
+    [dir="rtl"] .pmodal__close { right: auto; left: 18px; }
+    [dir="rtl"] .pmodal__title { font-family: 'Frank Ruhl Libre', Georgia, serif; letter-spacing: 0; }
+    [dir="rtl"] .pmodal__body  { text-align: right; }
+
+    /* ════════════════════════════════════════════════════════════════
+       RTL SUPPORT (Hebrew)
+    ════════════════════════════════════════════════════════════════ */
+    [dir="rtl"] body {
+      font-family: 'Noto Sans Hebrew', 'Inter', system-ui, sans-serif;
+    }
+    [dir="rtl"] .hero__h1,
+    [dir="rtl"] .sec-heading,
+    [dir="rtl"] .contact__h2,
+    [dir="rtl"] .cform__title,
+    [dir="rtl"] .pillar__title,
+    [dir="rtl"] .pcard__name,
+    [dir="rtl"] .profile-card__name,
+    [dir="rtl"] .footer__brand-name {
+      font-family: 'Frank Ruhl Libre', Georgia, serif;
+      letter-spacing: 0;
+    }
+
+    /* Flip decorative scales to left side in RTL */
+    [dir="rtl"] .hero__scales {
+      right: auto;
+      left: clamp(40px, 8vw, 120px);
+      transform: translateY(-50%) scaleX(-1);
+    }
+
+    /* Trust bar border direction */
+    [dir="rtl"] .trust__item {
+      border-right: none;
+      border-left: 1px solid var(--c-border);
+    }
+    [dir="rtl"] .trust__item:last-child { border-left: none; }
+
+    /* Input text direction */
+    [dir="rtl"] .fg input,
+    [dir="rtl"] .fg select,
+    [dir="rtl"] .fg textarea {
+      text-align: right;
+      direction: rtl;
+    }
+    [dir="rtl"] .fg label { text-align: right; }
+    [dir="rtl"] .fg label .req { margin-left: 0; margin-right: 2px; }
+
+    /* Footer right-aligned quick links in RTL */
+    [dir="rtl"] .footer__quick { align-items: flex-start; }
+
+    /* Section headers stay centered */
+    [dir="rtl"] .sec-header { text-align: center; }
+    [dir="rtl"] .sec-header .sec-sub { direction: rtl; }
+
+    /* ════════════════════════════════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .practice__grid  { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .about__grid     { grid-template-columns: 1fr; gap: 52px; }
+      .pillars         { grid-template-columns: 1fr 1fr; }
+      .contact__grid   { grid-template-columns: 1fr; gap: 52px; }
+      .footer__grid    { grid-template-columns: 1fr 1fr; }
+      .footer__quick   { align-items: flex-start; }
+      .footer__nav     { justify-content: flex-start; grid-column: 1 / -1; }
+      .practice__grid  { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 700px) {
+      .nav__links  { display: none; }
+      .nav__cta    { display: none; }
+      .nav__hamburger { display: flex; }
+      .lang-toggle { display: none; }
+      .trust__item { border-right: none; border-bottom: 1px solid var(--c-border); width: 100%; justify-content: center; }
+      .trust__item:last-child { border-bottom: none; }
+      [dir="rtl"] .trust__item { border-left: none; border-bottom: 1px solid var(--c-border); }
+      .practice__grid  { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .pcard           { padding: 22px 16px 18px; }
+      .pillars         { grid-template-columns: 1fr; }
+      .hero__ctas      { flex-direction: column; }
+      .hero__ctas .btn { justify-content: center; }
+      .footer__grid    { grid-template-columns: 1fr; }
+      .footer__quick   { align-items: flex-start; }
+      .footer__bottom  { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .fg-row          { grid-template-columns: 1fr; }
+      .hero__stats     { gap: 20px; }
+      .practice__grid  { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .pcard           { padding: 18px 14px 16px; gap: 10px; }
+      .pcard__icon     { width: 40px; height: 40px; }
+      .pcard__icon svg { width: 18px; height: 18px; }
+      .pcard__name     { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ── NAV ───────────────────────────────────────────────────────── -->
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo" aria-label="Maroun Mansour Law — Home">
+        <picture>
+          <source srcset="logo.avif" type="image/avif">
+          <img src="logo.svg" alt="Maroun Mansour Law" height="36" class="nav__logo-img">
+        </picture>
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="#practice" data-i18n="nav-practice">Practice Areas</a></li>
+        <li><a href="#about" data-i18n="nav-about">About</a></li>
+        <li><a href="#approach" data-i18n="nav-approach">Our Approach</a></li>
+        <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
+      </ul>
+
+      <div class="nav__actions">
+        <div class="lang-toggle" role="group" aria-label="Language / שפה">
+          <button class="lang-btn active" data-lang="en" aria-pressed="true" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" data-lang="he" aria-pressed="false" onclick="setLang('he')">עב</button>
+        </div>
+        <a href="#contact" class="nav__cta" data-i18n="nav-cta">Schedule a Consultation</a>
+        <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+            <line x1="3" y1="6.5"  x2="19" y2="6.5"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="3" y1="11"   x2="19" y2="11"   stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="3" y1="15.5" x2="19" y2="15.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="nav__mobile" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <div class="mobile-lang" role="group" aria-label="Language / שפה">
+      <button class="lang-btn" data-lang="en" aria-pressed="true" onclick="setLang('en');closeMenu()">EN — English</button>
+      <button class="lang-btn" data-lang="he" aria-pressed="false" onclick="setLang('he');closeMenu()">עב — עברית</button>
+    </div>
+    <a href="#practice" onclick="closeMenu()" data-i18n="nav-practice">Practice Areas</a>
+    <a href="#about"    onclick="closeMenu()" data-i18n="nav-about">About</a>
+    <a href="#approach" onclick="closeMenu()" data-i18n="nav-approach">Our Approach</a>
+    <a href="#contact"  onclick="closeMenu()" data-i18n="nav-contact">Contact</a>
+    <a href="#contact"  onclick="closeMenu()" class="mobile-cta" data-i18n="nav-cta">Schedule a Consultation</a>
+  </div>
+
+  <main id="main">
+
+    <!-- ── HERO ──────────────────────────────────────────────────────── -->
+    <section class="hero" aria-labelledby="hero-h1">
+
+      <svg class="hero__scales" viewBox="0 0 320 400" fill="none" aria-hidden="true">
+        <line x1="160" y1="20" x2="160" y2="340" stroke="currentColor" stroke-width="3"/>
+        <line x1="60" y1="60" x2="260" y2="60" stroke="currentColor" stroke-width="3"/>
+        <circle cx="160" cy="50" r="12" stroke="currentColor" stroke-width="3"/>
+        <path d="M60 60 L30 140 Q40 155 80 155 Q120 155 130 140 Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+        <line x1="60" y1="60" x2="30" y2="140" stroke="currentColor" stroke-width="2"/>
+        <line x1="60" y1="60" x2="130" y2="140" stroke="currentColor" stroke-width="2"/>
+        <path d="M260 60 L230 140 Q240 155 280 155 Q320 155 330 140 Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+        <line x1="260" y1="60" x2="230" y2="140" stroke="currentColor" stroke-width="2"/>
+        <line x1="260" y1="60" x2="330" y2="140" stroke="currentColor" stroke-width="2"/>
+        <rect x="130" y="340" width="60" height="10" rx="3" stroke="currentColor" stroke-width="2.5"/>
+        <rect x="145" y="310" width="30" height="32" rx="2" stroke="currentColor" stroke-width="2.5"/>
+      </svg>
+
+      <div class="container">
+        <div class="hero__inner">
+          <div class="hero__badge rev">
+            <span class="hero__badge-dot" aria-hidden="true"></span>
+            <span data-i18n="hero-badge">Law Office — Nof Hagalil, Israel</span>
+          </div>
+
+          <h1 class="hero__h1 rev d1" id="hero-h1" data-i18n="hero-h1">
+            Legal Excellence.<br><em>Modern Practice.</em>
+          </h1>
+
+          <p class="hero__sub rev d2" data-i18n="hero-sub">
+            Expert legal counsel in commercial, technology, corporate, and real estate law — tailored solutions for businesses and individuals across Israel.
+          </p>
+
+          <div class="hero__ctas rev d3">
+            <a href="#contact" class="btn btn--gold">
+              <span data-i18n="nav-cta">Schedule a Consultation</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#practice" class="btn btn--ghost" data-i18n="hero-btn-explore">
+              Explore Services
+            </a>
+          </div>
+
+          <div class="hero__stats rev d4">
+            <div class="hero__stat">
+              <span class="hero__stat-val">8</span>
+              <span class="hero__stat-lbl" data-i18n="stat-areas-lbl">Practice Areas</span>
+            </div>
+            <div class="hero__stat">
+              <span class="hero__stat-val">IL &amp; Intl</span>
+              <span class="hero__stat-lbl" data-i18n="stat-juris-lbl">Legal Jurisdiction</span>
+            </div>
+            <div class="hero__stat">
+              <span class="hero__stat-val">100%</span>
+              <span class="hero__stat-lbl" data-i18n="stat-focus-lbl">Client-Focused</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TRUST BAR ──────────────────────────────────────────────────── -->
+    <div class="trust" role="complementary" aria-label="Key credentials">
+      <div class="container">
+        <div class="trust__inner">
+          <div class="trust__item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M8 1L3 3.5v4C3 10.8 5.2 13.5 8 14.5c2.8-1 5-3.7 5-7v-4L8 1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M5.5 8l2 2 3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span data-i18n="trust-1">Licensed Israeli Attorney</span>
+          </div>
+          <div class="trust__item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M5 8h6M8 5v6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            <span data-i18n="trust-2">Commercial &amp; Technology Law</span>
+          </div>
+          <div class="trust__item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <rect x="1.5" y="4" width="13" height="9" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M5 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1" stroke="currentColor" stroke-width="1.4"/>
+              <line x1="5" y1="8.5" x2="11" y2="8.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            <span data-i18n="trust-3">Startup &amp; Investment Advisor</span>
+          </div>
+          <div class="trust__item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M8 1.5C5.515 1.5 3.5 3.515 3.5 6c0 4.5 4.5 9.5 4.5 9.5S12.5 10.5 12.5 6c0-2.485-2.015-4.5-4.5-4.5z" stroke="currentColor" stroke-width="1.4"/>
+              <circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.4"/>
+            </svg>
+            <span data-i18n="trust-4">Nof Hagalil, Northern Israel</span>
+          </div>
+          <div class="trust__item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M8 2C9.8 4 11 5.9 11 8s-1.2 4-3 6M8 2C6.2 4 5 5.9 5 8s1.2 4 3 6" stroke="currentColor" stroke-width="1.4"/>
+              <line x1="1.5" y1="8" x2="14.5" y2="8" stroke="currentColor" stroke-width="1.4"/>
+            </svg>
+            <span data-i18n="trust-5">Hebrew · English · Arabic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PRACTICE AREAS ─────────────────────────────────────────────── -->
+    <!-- ── PRACTICE AREAS ───────────────────────────────────────────── -->
+    <section class="practice section" id="practice" aria-labelledby="practice-h2">
+      <div class="container">
+        <header class="sec-header rev">
+          <div class="eyebrow" data-i18n="practice-eyebrow">Fields of Practice</div>
+          <h2 class="sec-heading" id="practice-h2" data-i18n="practice-h2">Comprehensive Legal Services</h2>
+          <p class="sec-sub" data-i18n="practice-sub">Specialized expertise across the full spectrum of commercial, corporate, technology, and real estate law.</p>
+        </header>
+
+        <div class="practice__grid">
+
+          <article class="pcard rev" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="pcard__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path d="M11 2L4 5.5v5.5c0 4 2.8 7.5 7 8.5 4.2-1 7-4.5 7-8.5V5.5L11 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M8 11l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="pcard__name" data-i18n="pa-privacy">Privacy &amp; Data Protection</h3>
+          </article>
+
+          <article class="pcard rev d1" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="pcard__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8 8.5c.5-1.5 2-2.5 3.5-2s2.5 2 1.5 3.5L11 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="11" cy="15" r="0.8" fill="currentColor"/>
+              </svg>
+            </div>
+            <h3 class="pcard__name" data-i18n="pa-ip">Intellectual Property</h3>
+          </article>
+
+          <article class="pcard rev d2" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="pcard__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path d="M11 2.5C11 2.5 6.5 7.5 6.5 11a4.5 4.5 0 0 0 9 0C15.5 7.5 11 2.5 11 2.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M8 17.5c0 1.9 1.3 3 3 3s3-1.1 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="pcard__name" data-i18n="pa-startup">Startup &amp; Investments</h3>
+          </article>
+
+          <article class="pcard rev d3" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="pcard__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <circle cx="8" cy="11" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="14" cy="11" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3 class="pcard__name" data-i18n="pa-ma">Mergers &amp; Acquisitions</h3>
+          </article>
+
+          <article class="pcard rev d4" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="pcard__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <rect x="2" y="12" width="4.5" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="8.75" y="8" width="4.5" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="15.5" y="2" width="4.5" height="18" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3 class="pcard__name" data-i18n="pa-corporate">Corporate Law</h3>
+          </article>
+
+          <article class="pcard rev" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="pcard__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path d="M3 19.5V9L11 3l8 6v10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="8" y="12" width="6" height="7.5" rx="0.5" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="11" y1="12" x2="11" y2="19.5" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3 class="pcard__name" data-i18n="pa-realestate">Real Estate Law</h3>
+          </article>
+
+          <article class="pcard rev d1" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="pcard__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M11 7v1.5M11 13.5v1.5M8.5 10a2.5 2.5 0 0 1 2.5-2.5h1.5a1.5 1.5 0 0 1 0 3h-1.5a1.5 1.5 0 0 0 0 3H13a2.5 2.5 0 0 0 2.5-2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="pcard__name" data-i18n="pa-insolvency">Insolvency &amp; Bankruptcy</h3>
+          </article>
+
+          <article class="pcard rev d2" role="button" tabindex="0" aria-haspopup="dialog">
+            <div class="pcard__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <circle cx="11" cy="7.5" r="4" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M4 20c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="pcard__name" data-i18n="pa-labour">Labour Law</h3>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ABOUT ──────────────────────────────────────────────────────── -->
+    <section class="about section" id="about" aria-labelledby="about-h2">
+      <div class="container">
+        <div class="about__grid">
+
+          <div class="rev">
+            <div class="eyebrow" data-i18n="about-eyebrow">About the Firm</div>
+            <h2 class="sec-heading" id="about-h2" data-i18n="about-h2">Dedicated to Your Legal Success</h2>
+            <p class="sec-sub" style="max-width:none;margin-bottom:28px;" data-i18n="about-sub">
+              Providing personalized, results-driven legal services to businesses and individuals across Northern Israel and beyond.
+            </p>
+
+            <p class="about__body" data-i18n="about-body1">
+              The Law Office of Maroun Mansour delivers expert legal counsel with an unwavering commitment to excellence and client satisfaction. With deep expertise spanning commercial transactions, technology regulations, real estate, and corporate matters, the firm provides comprehensive legal solutions tailored to each client's unique circumstances.
+            </p>
+            <p class="about__body" data-i18n="about-body2">
+              Staying current with the latest legal and regulatory developments in Israel and internationally, the firm ensures clients receive informed, forward-thinking advice that protects their interests and enables their business goals — delivered with clarity, speed, and cost-effectiveness.
+            </p>
+
+            <div class="about__creds">
+              <div class="about__cred">
+                <span class="about__cred-check" aria-hidden="true">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span data-i18n="cred-1">Licensed Attorney at Law — Israel Bar Association</span>
+              </div>
+              <div class="about__cred">
+                <span class="about__cred-check" aria-hidden="true">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span data-i18n="cred-2">Israeli and International Law Expertise</span>
+              </div>
+              <div class="about__cred">
+                <span class="about__cred-check" aria-hidden="true">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span data-i18n="cred-3">Technology Law &amp; Privacy Specialist</span>
+              </div>
+              <div class="about__cred">
+                <span class="about__cred-check" aria-hidden="true">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span data-i18n="cred-4">Startup Ecosystem &amp; Venture Investment Advisor</span>
+              </div>
+            </div>
+
+            <a href="#contact" class="btn btn--navy" style="display:inline-flex;">
+              <span data-i18n="about-cta">Get in Touch</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Profile card -->
+          <div class="rev d2">
+            <div class="profile-card" role="complementary" aria-label="Attorney profile card">
+              <div class="profile-card__eyebrow" data-i18n="profile-eyebrow">Attorney at Law</div>
+              <div class="profile-card__monogram" aria-hidden="true">MM</div>
+              <div class="profile-card__name">Maroun Mansour</div>
+              <div class="profile-card__role" data-i18n="profile-role">עורך דין — Licensed Israeli Attorney</div>
+
+              <div class="profile-card__details">
+                <div class="profile-detail">
+                  <div class="profile-detail__icon" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                      <path d="M7.5 1.5C5.29 1.5 3.5 3.29 3.5 5.5c0 3.75 4 9 4 9s4-5.25 4-9c0-2.21-1.79-4-4-4z" stroke="currentColor" stroke-width="1.3"/>
+                      <circle cx="7.5" cy="5.5" r="1.5" stroke="currentColor" stroke-width="1.3"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="profile-detail__lbl" data-i18n="pd-loc-lbl">Location</span>
+                    <span class="profile-detail__val" data-i18n="pd-loc-val">Golan 2, Nof Hagalil, Israel</span>
+                  </div>
+                </div>
+                <div class="profile-detail">
+                  <div class="profile-detail__icon" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                      <rect x="1.5" y="3.5" width="12" height="8" rx="1.2" stroke="currentColor" stroke-width="1.3"/>
+                      <path d="M1.5 4.5l6 4.5 6-4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="profile-detail__lbl" data-i18n="pd-email-lbl">Email</span>
+                    <span class="profile-detail__val">Office@MMans-Law.com</span>
+                  </div>
+                </div>
+                <div class="profile-detail">
+                  <div class="profile-detail__icon" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                      <path d="M5.5 3L4.5 2H2.5C2.2 2 2 2.2 2 2.5 2 9 6 13 13.5 13c.3 0 .5-.2.5-.5V10.5l-1-1-2 .7L7.5 6 8.2 4 5.5 3z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="profile-detail__lbl" data-i18n="pd-phone-lbl">Phone</span>
+                    <span class="profile-detail__val">(+972) 052-6603781</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="profile-card__divider" aria-hidden="true"></div>
+
+              <div class="profile-card__lang-lbl" data-i18n="pd-lang-lbl">Languages</div>
+              <div class="lang-chips" role="list" aria-label="Languages">
+                <span class="lang-chip" role="listitem" data-i18n="lang-en">English</span>
+                <span class="lang-chip" role="listitem" data-i18n="lang-he">Hebrew</span>
+                <span class="lang-chip" role="listitem" data-i18n="lang-ar">Arabic</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── APPROACH ───────────────────────────────────────────────────── -->
+    <section class="approach section" id="approach" aria-labelledby="approach-h2">
+      <div class="container approach__inner">
+        <header class="sec-header rev">
+          <div class="eyebrow eyebrow--dark" data-i18n="approach-eyebrow">Our Approach</div>
+          <h2 class="sec-heading sec-heading--light" id="approach-h2" data-i18n="approach-h2">Why Clients Choose Us</h2>
+          <p class="sec-sub sec-sub--light" data-i18n="approach-sub">Three core principles guiding every case and client relationship.</p>
+        </header>
+
+        <div class="pillars">
+          <div class="pillar rev">
+            <div class="pillar__num" aria-hidden="true">01</div>
+            <h3 class="pillar__title" data-i18n="pillar1-title">Professionalism</h3>
+            <p class="pillar__body" data-i18n="pillar1-body">
+              Every client receives meticulous attention to detail and legal services tailored to their specific needs. We approach each matter with the highest ethical standards and an unwavering commitment to quality outcomes.
+            </p>
+          </div>
+          <div class="pillar rev d1">
+            <div class="pillar__num" aria-hidden="true">02</div>
+            <h3 class="pillar__title" data-i18n="pillar2-title">Deep Expertise</h3>
+            <p class="pillar__body" data-i18n="pillar2-body">
+              Continuously updated knowledge of the latest legal and regulatory developments in Israel and internationally — across commercial, technology, corporate, real estate, and startup law.
+            </p>
+          </div>
+          <div class="pillar rev d2">
+            <div class="pillar__num" aria-hidden="true">03</div>
+            <h3 class="pillar__title" data-i18n="pillar3-title">Client Satisfaction</h3>
+            <p class="pillar__body" data-i18n="pillar3-body">
+              Your success is our success. We deliver personalized legal services that meet your specific goals — on time, within scope, and with transparent communication at every stage of the process.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ────────────────────────────────────────────────────── -->
+    <section class="contact section" id="contact" aria-labelledby="contact-h2">
+      <div class="container">
+        <div class="contact__grid">
+
+          <div class="rev">
+            <div class="eyebrow" data-i18n="contact-eyebrow">Get in Touch</div>
+            <h2 class="contact__h2" id="contact-h2" data-i18n="contact-h2">
+              Start Your Legal<br>Journey Today
+            </h2>
+            <p class="contact__sub" data-i18n="contact-sub">
+              Whether you're a startup, established business, or individual — we're here to provide expert legal guidance tailored to your situation. Reach out for a consultation.
+            </p>
+
+            <div class="contact__details">
+              <a href="tel:+972526603781" class="cdetail">
+                <div class="cdetail__icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M6.5 3.5L5 2H3C2.7 2 2.5 2.2 2.5 2.5 2.5 9.956 8.044 15.5 15.5 15.5c.3 0 .5-.2.5-.5V13l-1.5-1.5-2.5 1L8 8.5 9 6 6.5 3.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <span class="cdetail__lbl" data-i18n="cd-phone-lbl">Phone</span>
+                  <span class="cdetail__val">(+972) 052-6603781</span>
+                </div>
+              </a>
+              <a href="mailto:Office@MMans-Law.com" class="cdetail">
+                <div class="cdetail__icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <rect x="2" y="4.5" width="14" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+                    <path d="M2 5.5l7 5 7-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <span class="cdetail__lbl" data-i18n="cd-email-lbl">Email</span>
+                  <span class="cdetail__val">Office@MMans-Law.com</span>
+                </div>
+              </a>
+              <div class="cdetail">
+                <div class="cdetail__icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M9 1.5C6.515 1.5 4.5 3.515 4.5 6c0 4.5 4.5 10.5 4.5 10.5S13.5 10.5 13.5 6c0-2.485-2.015-4.5-4.5-4.5z" stroke="currentColor" stroke-width="1.3"/>
+                    <circle cx="9" cy="6" r="1.75" stroke="currentColor" stroke-width="1.3"/>
+                  </svg>
+                </div>
+                <div>
+                  <span class="cdetail__lbl" data-i18n="cd-office-lbl">Office</span>
+                  <span class="cdetail__val" data-i18n="cd-office-val">Golan 2, Nof Hagalil, Israel</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="cform rev d2" role="region" aria-labelledby="form-h3">
+            <h3 class="cform__title" id="form-h3" data-i18n="form-title">Send a Message</h3>
+
+            <form id="contact-form" novalidate>
+              <div class="fg-row">
+                <div class="fg">
+                  <label for="fn"><span data-i18n="label-fn">First Name</span> <span class="req" aria-label="required">*</span></label>
+                  <input type="text" id="fn" name="first_name" placeholder="First name" data-i18n-placeholder="ph-fn" required autocomplete="given-name">
+                </div>
+                <div class="fg">
+                  <label for="ln"><span data-i18n="label-ln">Last Name</span> <span class="req" aria-label="required">*</span></label>
+                  <input type="text" id="ln" name="last_name" placeholder="Last name" data-i18n-placeholder="ph-ln" required autocomplete="family-name">
+                </div>
+              </div>
+              <div class="fg-row">
+                <div class="fg">
+                  <label for="em"><span data-i18n="label-email">Email</span> <span class="req" aria-label="required">*</span></label>
+                  <input type="email" id="em" name="email" placeholder="you@example.com" required autocomplete="email">
+                </div>
+                <div class="fg">
+                  <label for="ph" data-i18n="label-phone">Phone</label>
+                  <input type="tel" id="ph" name="phone" placeholder="+972 …" autocomplete="tel">
+                </div>
+              </div>
+              <div class="fg">
+                <label for="area" data-i18n="label-area">Area of Legal Interest</label>
+                <select id="area" name="practice_area">
+                  <option value="" data-i18n="opt-default">Select a practice area…</option>
+                  <option value="commercial" data-i18n="opt-commercial">Commercial Law</option>
+                  <option value="technology" data-i18n="opt-tech">Technology Law</option>
+                  <option value="privacy" data-i18n="opt-privacy">Privacy &amp; Data Protection</option>
+                  <option value="real-estate" data-i18n="opt-realestate">Real Estate Law</option>
+                  <option value="ip" data-i18n="opt-ip">Intellectual Property</option>
+                  <option value="startup" data-i18n="opt-startup">Startup &amp; Investments</option>
+                  <option value="ma" data-i18n="opt-ma">Mergers &amp; Acquisitions</option>
+                  <option value="corporate" data-i18n="opt-corporate">Corporate Law</option>
+                  <option value="insolvency" data-i18n="opt-insolvency">Insolvency &amp; Bankruptcy</option>
+                  <option value="labour" data-i18n="opt-labour">Labour Law</option>
+                  <option value="other" data-i18n="opt-other">Other / General Inquiry</option>
+                </select>
+              </div>
+              <div class="fg">
+                <label for="msg"><span data-i18n="label-msg">Message</span> <span class="req" aria-label="required">*</span></label>
+                <textarea id="msg" name="message" placeholder="Briefly describe your legal matter…" data-i18n-placeholder="ph-msg" required></textarea>
+              </div>
+              <button type="submit" class="cform__submit" data-i18n="form-submit">Send Message</button>
+              <p class="cform__disc" data-i18n="form-disc">
+                This form is for general inquiries only. No attorney-client relationship is formed until a formal engagement agreement is executed. Content on this site does not constitute legal advice.
+              </p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ────────────────────────────────────────────────────── -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <span class="footer__brand-name">Maroun Mansour</span>
+          <span class="footer__brand-tag" data-i18n="footer-tag">Attorney at Law — עורך דין</span>
+        </div>
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <a href="#practice" data-i18n="nav-practice">Practice Areas</a>
+          <a href="#about" data-i18n="nav-about">About</a>
+          <a href="#approach" data-i18n="footer-approach">Approach</a>
+          <a href="#contact" data-i18n="nav-contact">Contact</a>
+        </nav>
+        <div class="footer__quick">
+          <a href="tel:+972526603781">(+972) 052-6603781</a>
+          <a href="mailto:Office@MMans-Law.com">Office@MMans-Law.com</a>
+        </div>
+      </div>
+
+      <div class="footer__divider" aria-hidden="true"></div>
+
+      <div class="footer__bottom">
+        <p class="footer__legal" data-i18n="footer-legal">
+          The content on this website is provided for general information purposes only and does not constitute legal advice. No attorney-client relationship is formed by accessing or using this website. For specific legal advice, please contact the office directly to schedule a consultation.
+        </p>
+        <span class="footer__copy" data-i18n="footer-copy">© 2025 Maroun Mansour Law Office</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── PRACTICE AREA MODAL ─────────────────────────────────────── -->
+  <div class="pmodal" id="pmodal" role="dialog" aria-modal="true" aria-labelledby="pmodal-title">
+    <div class="pmodal__backdrop" id="pmodal-backdrop"></div>
+    <div class="pmodal__box">
+      <button class="pmodal__close" id="pmodal-close" aria-label="Close">&#x2715;</button>
+      <div class="pmodal__icon" id="pmodal-icon" aria-hidden="true"></div>
+      <div class="pmodal__eyebrow" data-i18n="practice-eyebrow">Fields of Practice</div>
+      <h3 class="pmodal__title" id="pmodal-title"></h3>
+      <div class="pmodal__divider" aria-hidden="true"></div>
+      <p class="pmodal__body" id="pmodal-body"></p>
+    </div>
+  </div>
+
+  <script>
+    /* ── Translations ──────────────────────────────────────────────── */
+    const T = {
+      en: {
+        'nav-practice':   'Practice Areas',
+        'nav-about':      'About',
+        'nav-approach':   'Our Approach',
+        'nav-contact':    'Contact',
+        'nav-cta':        'Schedule a Consultation',
+
+        'hero-badge':       'Law Office — Nof Hagalil, Israel',
+        'hero-h1':          'Legal Excellence.<br><em>Modern Practice.</em>',
+        'hero-sub':         'Expert legal counsel in commercial, technology, corporate, and real estate law — tailored solutions for businesses and individuals across Israel.',
+        'hero-btn-explore': 'Explore Services',
+        'stat-areas-lbl':   'Practice Areas',
+        'stat-juris-lbl':   'Legal Jurisdiction',
+        'stat-focus-lbl':   'Client-Focused',
+
+        'trust-1': 'Licensed Israeli Attorney',
+        'trust-2': 'Commercial &amp; Technology Law',
+        'trust-3': 'Startup &amp; Investment Advisor',
+        'trust-4': 'Nof Hagalil, Northern Israel',
+        'trust-5': 'Hebrew · English · Arabic',
+
+        'practice-eyebrow': 'Fields of Practice',
+        'practice-h2':      'Comprehensive Legal Services',
+        'practice-sub':     'Specialized expertise across the full spectrum of commercial, corporate, technology, and real estate law.',
+        'pa-commercial':  'Commercial Law',
+        'pa-tech':        'Technology Law',
+        'pa-privacy':     'Privacy &amp; Data Protection',
+        'pa-realestate':  'Real Estate Law',
+        'pa-ip':          'Intellectual Property',
+        'pa-startup':     'Startup &amp; Investments',
+        'pa-ma':          'Mergers &amp; Acquisitions',
+        'pa-corporate':   'Corporate Law',
+        'pa-insolvency':  'Insolvency &amp; Bankruptcy',
+        'pa-labour':      'Labour Law',
+
+        'about-eyebrow': 'About the Firm',
+        'about-h2':      'Dedicated to Your Legal Success',
+        'about-sub':     'Providing personalized, results-driven legal services to businesses and individuals across Northern Israel and beyond.',
+        'about-body1':   'The Law Office of Maroun Mansour delivers expert legal counsel with an unwavering commitment to excellence and client satisfaction. With deep expertise spanning commercial transactions, technology regulations, real estate, and corporate matters, the firm provides comprehensive legal solutions tailored to each client\'s unique circumstances.',
+        'about-body2':   'Staying current with the latest legal and regulatory developments in Israel and internationally, the firm ensures clients receive informed, forward-thinking advice that protects their interests and enables their business goals — delivered with clarity, speed, and cost-effectiveness.',
+        'cred-1': 'Licensed Attorney at Law — Israel Bar Association',
+        'cred-2': 'Israeli and International Law Expertise',
+        'cred-3': 'Technology Law &amp; Privacy Specialist',
+        'cred-4': 'Startup Ecosystem &amp; Venture Investment Advisor',
+        'about-cta': 'Get in Touch',
+
+        'profile-eyebrow': 'Attorney at Law',
+        'profile-role':    'עורך דין — Licensed Israeli Attorney',
+        'pd-loc-lbl':   'Location',
+        'pd-loc-val':   'Golan 2, Nof Hagalil, Israel',
+        'pd-email-lbl': 'Email',
+        'pd-phone-lbl': 'Phone',
+        'pd-lang-lbl':  'Languages',
+        'lang-en': 'English',
+        'lang-he': 'Hebrew',
+        'lang-ar': 'Arabic',
+
+        'approach-eyebrow': 'Our Approach',
+        'approach-h2':      'Why Clients Choose Us',
+        'approach-sub':     'Three core principles guiding every case and client relationship.',
+        'pillar1-title': 'Professionalism',
+        'pillar1-body':  'Every client receives meticulous attention to detail and legal services tailored to their specific needs. We approach each matter with the highest ethical standards and an unwavering commitment to quality outcomes.',
+        'pillar2-title': 'Deep Expertise',
+        'pillar2-body':  'Continuously updated knowledge of the latest legal and regulatory developments in Israel and internationally — across commercial, technology, corporate, real estate, and startup law.',
+        'pillar3-title': 'Client Satisfaction',
+        'pillar3-body':  'Your success is our success. We deliver personalized legal services that meet your specific goals — on time, within scope, and with transparent communication at every stage of the process.',
+
+        'contact-eyebrow': 'Get in Touch',
+        'contact-h2':      'Start Your Legal<br>Journey Today',
+        'contact-sub':     'Whether you\'re a startup, established business, or individual — we\'re here to provide expert legal guidance tailored to your situation. Reach out for a consultation.',
+        'cd-phone-lbl':  'Phone',
+        'cd-email-lbl':  'Email',
+        'cd-office-lbl': 'Office',
+        'cd-office-val': 'Golan 2, Nof Hagalil, Israel',
+
+        'form-title':    'Send a Message',
+        'label-fn':      'First Name',
+        'label-ln':      'Last Name',
+        'label-email':   'Email',
+        'label-phone':   'Phone',
+        'label-area':    'Area of Legal Interest',
+        'label-msg':     'Message',
+        'ph-fn':         'First name',
+        'ph-ln':         'Last name',
+        'ph-msg':        'Briefly describe your legal matter…',
+        'ptile-cue':     'Learn More',
+        'opt-default':   'Select a practice area…',
+        'opt-commercial':'Commercial Law',
+        'opt-tech':      'Technology Law',
+        'opt-privacy':   'Privacy & Data Protection',
+        'opt-realestate':'Real Estate Law',
+        'opt-ip':        'Intellectual Property',
+        'opt-startup':   'Startup & Investments',
+        'opt-ma':        'Mergers & Acquisitions',
+        'opt-corporate': 'Corporate Law',
+        'opt-insolvency':'Insolvency & Bankruptcy',
+        'opt-labour':    'Labour Law',
+        'opt-other':     'Other / General Inquiry',
+        'form-submit':   'Send Message',
+        'form-disc':     'This form is for general inquiries only. No attorney-client relationship is formed until a formal engagement agreement is executed. Content on this site does not constitute legal advice.',
+
+        'footer-tag':     'Attorney at Law — עורך דין',
+        'footer-approach':'Approach',
+        'footer-legal':   'The content on this website is provided for general information purposes only and does not constitute legal advice. No attorney-client relationship is formed by accessing or using this website. For specific legal advice, please contact the office directly to schedule a consultation.',
+        'footer-copy':    '© 2025 Maroun Mansour Law Office',
+
+        'err-required': 'Please fill in all required fields (first name, last name, email, message).',
+        'err-email':    'Please enter a valid email address.',
+
+        /* ── Practice area descriptions ── */
+        'desc-commercial':  'We provide comprehensive commercial legal services covering contracts, trade agreements, distribution, agency relationships, and commercial disputes. Our experience spans a wide range of commercial transactions — ensuring clients receive informed, practical advice that protects their business interests and facilitates smooth operations.',
+        'desc-tech':        'Our technology law practice addresses the unique legal challenges of the digital economy. From software licensing and SaaS agreements to tech regulatory compliance and data governance frameworks, we help technology companies and their clients navigate the evolving legal landscape of the tech sector with clarity and confidence.',
+        'desc-privacy':     'Our Privacy Law practice has successfully managed sophisticated projects dealing with data governance within individual corporations and across multi-entity organizations. We advise on GDPR compliance, the Israeli Privacy Protection Law, data processing agreements, and privacy policies — helping businesses meet regulatory obligations while building user trust.',
+        'desc-realestate':  'We excel in handling a wide range of real estate projects. From serving as general counsel to navigating complex purchase contracts and land registration, we have the expertise to support your real estate endeavors. Whether you are navigating a commercial or residential transaction, we provide professional and reliable guidance every step of the way.',
+        'desc-ip':          'Our IP department offers a comprehensive intellectual property legal service designed to help businesses protect their valuable creations, inventions, and brand identity. We provide sound legal counsel and strategic enforcement of intellectual property rights — from trademark registration and copyright protection to patent prosecution and IP licensing agreements.',
+        'desc-startup':     'Our startup and investment practice focuses on the various stages of business development — from initial founder financing to securing venture capital or crowdfunding. Whether you are a founder seeking to structure your startup or an investor requiring sound legal protection for your investment, we provide the support and guidance you need.',
+        'desc-ma':          'Our M&A practice covers the full spectrum of mergers and acquisitions. We advise on transactions involving the transfer or consolidation of ownership of companies, business organizations, or their operating units — through direct absorption, mergers, tender offers, or restructuring. We guide clients through every stage of the transaction with precision and strategic clarity.',
+        'desc-corporate':   'Our Corporate Law team is dedicated to providing a wide range of services related to corporate governance with the utmost professionalism. From drafting Articles of Association and bylaws to creating shareholders agreements and board resolutions, we deliver comprehensive and effective legal solutions for businesses of all sizes.',
+        'desc-insolvency':  'We have successfully managed complex matters in insolvency and bankruptcy across both private sector and corporate industries. We work diligently to navigate the intricate landscapes of financial distress, corporate restructuring, and insolvency proceedings — delivering successful outcomes for clients facing difficult financial circumstances.',
+        'desc-labour':      'We serve as General Counsel for large multinational corporations in the realm of labour law. We specialize in providing expert counsel and litigation services with the utmost professionalism — covering employment agreements, workplace disputes, termination proceedings, collective bargaining, non-compete arrangements, and full regulatory compliance.',
+      },
+
+      he: {
+        'nav-practice':   'תחומי עיסוק',
+        'nav-about':      'אודות',
+        'nav-approach':   'הגישה שלנו',
+        'nav-contact':    'צור קשר',
+        'nav-cta':        'קבע ייעוץ',
+
+        'hero-badge':       'משרד עו"ד — נוף הגליל, ישראל',
+        'hero-h1':          'מצוינות משפטית.<br><em>פרקטיקה מודרנית.</em>',
+        'hero-sub':         'ייעוץ משפטי מקצועי בדיני מסחר, טכנולוגיה, חברות ונדל"ן — פתרונות מותאמים לעסקים ופרטיים ברחבי ישראל.',
+        'hero-btn-explore': 'גלה שירותים',
+        'stat-areas-lbl':   'תחומי עיסוק',
+        'stat-juris-lbl':   'סמכות שיפוטית',
+        'stat-focus-lbl':   'ממוקד לקוח',
+
+        'trust-1': 'עורך דין ישראלי מורשה',
+        'trust-2': 'דיני מסחר וטכנולוגיה',
+        'trust-3': 'יועץ סטארטאפ והשקעות',
+        'trust-4': 'נוף הגליל, צפון ישראל',
+        'trust-5': 'עברית · אנגלית · ערבית',
+
+        'practice-eyebrow': 'תחומי עיסוק',
+        'practice-h2':      'שירותים משפטיים מקיפים',
+        'practice-sub':     'מומחיות מתמחה בכל מגוון דיני המסחר, חברות, טכנולוגיה ומקרקעין.',
+        'pa-commercial':  'דיני מסחר',
+        'pa-tech':        'דיני טכנולוגיה',
+        'pa-privacy':     'פרטיות והגנת מידע',
+        'pa-realestate':  'דיני מקרקעין',
+        'pa-ip':          'קניין רוחני',
+        'pa-startup':     'סטארטאפ והשקעות',
+        'pa-ma':          'מיזוגים ורכישות',
+        'pa-corporate':   'דיני תאגידים',
+        'pa-insolvency':  'חדלות פירעון ופשיטת רגל',
+        'pa-labour':      'דיני עבודה',
+
+        'about-eyebrow': 'אודות המשרד',
+        'about-h2':      'מחויבים להצלחתכם המשפטית',
+        'about-sub':     'מספק שירותים משפטיים אישיים ומוכווני תוצאות לעסקים ופרטיים ברחבי צפון ישראל ומעבר לה.',
+        'about-body1':   'משרד עו"ד מרון מנסור מספק ייעוץ משפטי מקצועי עם מחויבות בלתי מתפשרת למצוינות ולשביעות רצון הלקוח. עם מומחיות עמוקה בתחומי עסקאות מסחריות, רגולציית טכנולוגיה, מקרקעין וענייני תאגידים, המשרד מספק פתרונות משפטיים מקיפים המותאמים לנסיבות הייחודיות של כל לקוח.',
+        'about-body2':   'שמירה על עדכניות עם ההתפתחויות המשפטיות והרגולטוריות האחרונות בישראל ובינלאומית, המשרד מבטיח שהלקוחות יקבלו ייעוץ מושכל וצופה פני עתיד שמגן על האינטרסים שלהם ומאפשר את יעדי העסק שלהם — עם בהירות, מהירות ויעילות.',
+        'cred-1': 'עורך דין מורשה — לשכת עורכי הדין בישראל',
+        'cred-2': 'מומחיות בדין ישראלי ובינלאומי',
+        'cred-3': 'מומחה בדיני טכנולוגיה ופרטיות',
+        'cred-4': 'יועץ מערכת סטארטאפ והשקעות הון סיכון',
+        'about-cta': 'צור קשר',
+
+        'profile-eyebrow': 'עורך דין',
+        'profile-role':    'עורך דין — מורשה בישראל',
+        'pd-loc-lbl':   'מיקום',
+        'pd-loc-val':   'גולן 2, נוף הגליל, ישראל',
+        'pd-email-lbl': 'דוא"ל',
+        'pd-phone-lbl': 'טלפון',
+        'pd-lang-lbl':  'שפות',
+        'lang-en': 'אנגלית',
+        'lang-he': 'עברית',
+        'lang-ar': 'ערבית',
+
+        'approach-eyebrow': 'הגישה שלנו',
+        'approach-h2':      'למה לקוחות בוחרים בנו',
+        'approach-sub':     'שלושה עקרונות מרכזיים המנחים כל תיק וכל מערכת יחסים עם לקוח.',
+        'pillar1-title': 'מקצועיות',
+        'pillar1-body':  'כל לקוח מקבל תשומת לב מדוקדקת ושירותים משפטיים המותאמים לצרכיו הספציפיים. אנו ניגשים לכל עניין עם הסטנדרטים האתיים הגבוהים ביותר ומחויבות בלתי מתפשרת לתוצאות איכותיות.',
+        'pillar2-title': 'מומחיות עמוקה',
+        'pillar2-body':  'ידע מעודכן באופן רציף על ההתפתחויות המשפטיות והרגולטוריות האחרונות בישראל ובינלאומית — בדיני מסחר, טכנולוגיה, חברות, מקרקעין וסטארטאפ.',
+        'pillar3-title': 'שביעות רצון לקוחות',
+        'pillar3-body':  'הצלחתכם היא הצלחתנו. אנו מספקים שירותים משפטיים אישיים שעומדים ביעדים הספציפיים שלכם — בזמן, בהיקף, עם תקשורת שקופה בכל שלב של התהליך.',
+
+        'contact-eyebrow': 'צרו קשר',
+        'contact-h2':      'התחילו את המסע<br>המשפטי שלכם היום',
+        'contact-sub':     'בין אם אתם סטארטאפ, עסק מבוסס או פרט — אנחנו כאן לספק הדרכה משפטית מקצועית המותאמת למצבכם. פנו לייעוץ.',
+        'cd-phone-lbl':  'טלפון',
+        'cd-email-lbl':  'דוא"ל',
+        'cd-office-lbl': 'משרד',
+        'cd-office-val': 'גולן 2, נוף הגליל, ישראל',
+
+        'form-title':    'שלח הודעה',
+        'label-fn':      'שם פרטי',
+        'label-ln':      'שם משפחה',
+        'label-email':   'דוא"ל',
+        'label-phone':   'טלפון',
+        'label-area':    'תחום עניין משפטי',
+        'label-msg':     'הודעה',
+        'ph-fn':         'שם פרטי',
+        'ph-ln':         'שם משפחה',
+        'ph-msg':        'תארו בקצרה את הנושא המשפטי שלכם…',
+        'ptile-cue':     'קרא עוד',
+        'opt-default':   'בחר תחום עיסוק…',
+        'opt-commercial':'דיני מסחר',
+        'opt-tech':      'דיני טכנולוגיה',
+        'opt-privacy':   'פרטיות והגנת מידע',
+        'opt-realestate':'דיני מקרקעין',
+        'opt-ip':        'קניין רוחני',
+        'opt-startup':   'סטארטאפ והשקעות',
+        'opt-ma':        'מיזוגים ורכישות',
+        'opt-corporate': 'דיני תאגידים',
+        'opt-insolvency':'חדלות פירעון ופשיטת רגל',
+        'opt-labour':    'דיני עבודה',
+        'opt-other':     'אחר / פנייה כללית',
+        'form-submit':   'שלח הודעה',
+        'form-disc':     'טופס זה מיועד לפניות כלליות בלבד. לא נוצרים יחסי עו"ד-לקוח עד לחתימת הסכם עיסוק פורמלי. תוכן אתר זה אינו מהווה ייעוץ משפטי.',
+
+        'footer-tag':     'עורך דין — Attorney at Law',
+        'footer-approach':'גישה',
+        'footer-legal':   'תוכן אתר זה מסופק למטרות מידע כללי בלבד ואינו מהווה ייעוץ משפטי. לא נוצרים יחסי עו"ד-לקוח על ידי גישה או שימוש באתר זה. לייעוץ משפטי ספציפי, אנא פנו למשרד ישירות לתיאום ייעוץ.',
+        'footer-copy':    '© 2025 משרד עו"ד מרון מנסור',
+
+        'err-required': 'אנא מלאו את כל השדות הנדרשים (שם פרטי, שם משפחה, דוא"ל, הודעה).',
+        'err-email':    'אנא הזינו כתובת דוא"ל תקינה.',
+
+        /* ── Practice area descriptions ── */
+        'desc-commercial':  'אנו מספקים שירותים משפטיים מסחריים מקיפים הכוללים חוזים, הסכמי סחר, הפצה, יחסי סוכנות ומחלוקות מסחריות. ניסיוננו משתרע על מגוון רחב של עסקאות מסחריות — ומבטיח ללקוחות ייעוץ מושכל ומעשי המגן על האינטרסים העסקיים שלהם ומאפשר פעילות תקינה.',
+        'desc-tech':        'תחום דיני הטכנולוגיה שלנו מתמודד עם האתגרים המשפטיים הייחודיים של הכלכלה הדיגיטלית. מהסכמי רישוי תוכנה וחוזי SaaS ועד ציות רגולטורי וממשל נתונים, אנו מסייעים לחברות טכנולוגיה לנווט בנוף המשפטי המתפתח של מגזר ההייטק בבהירות ובביטחון.',
+        'desc-privacy':     'תחום דיני הפרטיות שלנו ניהל בהצלחה פרויקטים מורכבים בתחום ממשל מידע בתוך תאגיד בודד ובין גופים מרובים. אנו מייעצים בנושאי ציות ל-GDPR, חוק הגנת הפרטיות הישראלי, הסכמי עיבוד נתונים ומדיניות פרטיות — מסייעים לעסקים לעמוד בדרישות הרגולטוריות תוך בניית אמון עם המשתמשים.',
+        'desc-realestate':  'אנו מתמחים בטיפול במגוון רחב של עסקאות ופרויקטי נדל"ן. מייעוץ משפטי כללי ועד ניהול חוזי רכישה מורכבים ורישום מקרקעין, יש לנו את המומחיות לתמוך בעסקאות הנדל"ן שלכם. בין אם מסחרי ובין אם למגורים — אנו מספקים הכוונה מקצועית ואמינה בכל שלב של הדרך.',
+        'desc-ip':          'מחלקת הקניין הרוחני שלנו מציעה שירות משפטי מקיף לקניין רוחני. אנו מסייעים לעסקים להגן על יצירותיהם, המצאותיהם וזהות המותג שלהם באמצעות ייעוץ משפטי נכון ואכיפה אסטרטגית של זכויות קניין רוחני — מרישום סימני מסחר והגנת זכויות יוצרים ועד רישיונות קניין רוחני.',
+        'desc-startup':     'תחום הסטארטאפ וההשקעות שלנו מתמקד בשלבים השונים של פיתוח עסקי — ממימון ראשוני על ידי מייסדים ועד השגת השקעות מהון סיכון או גיוס המונים. בין אם אתם מייסדים המחפשים מבנה משפטי לסטארטאפ שלכם ובין אם משקיעים המחפשים הגנה משפטית נאותה להשקעתכם — אנחנו כאן לסייע.',
+        'desc-ma':          'תחום ה-M&A שלנו מכסה את כל היבטי המיזוגים והרכישות בעולם העסקים. אנו מייעצים בעסקאות הכוללות העברה או איחוד בעלות על חברות, ארגונים עסקיים או יחידות התפעוליות שלהם — ספיגה ישירה, מיזוג, הצעת רכש או שינוי מבנה. אנו מלווים לקוחות בכל שלב של העסקה בדיוק ובחדות אסטרטגית.',
+        'desc-corporate':   'צוות דיני התאגידים שלנו מוקדש למתן מגוון רחב של שירותים הקשורים לממשל תאגידי במקצועיות מרבית. מניסוח תקנונים ותקנות פנימיות ועד יצירת הסכמי בעלי מניות והחלטות דירקטוריון — אנו מספקים פתרונות משפטיים מקיפים ואפקטיביים לעסקים בכל הגדלים.',
+        'desc-insolvency':  'ניהלנו בהצלחה עניינים מורכבים בתחום חדלות הפירעון ופשיטת הרגל, הן במגזר הפרטי והן בתאגידים. אנו עובדים בנחישות לנווט בנוף המורכב של מצוקה פיננסית, הבראה תאגידית ופשיטת רגל — ומספקים תוצאות מוצלחות ללקוחות המתמודדים עם נסיבות פיננסיות מאתגרות.',
+        'desc-labour':      'אנו משמשים כיועץ כללי לתאגידים בינלאומיים גדולים בתחום דיני העבודה. אנו מתמחים במתן ייעוץ מקצועי ושירותי ליטיגציה במקצועיות מרבית — הכוללים הסכמי העסקה, מחלוקות בסביבת העבודה, הליכי פיטורין, משא ומתן קיבוצי, הסכמי אי-תחרות וציות מלא לרגולציית עבודה.',
+      }
+    };
+
+    /* ── Language switcher ─────────────────────────────────────────── */
+    function setLang(lang) {
+      const html = document.documentElement;
+      html.lang = lang;
+      html.dir  = lang === 'he' ? 'rtl' : 'ltr';
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        const active = btn.dataset.lang === lang;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', active);
+      });
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const val = T[lang]?.[el.dataset.i18n];
+        if (val !== undefined) el.innerHTML = val;
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const val = T[lang]?.[el.dataset.i18nPlaceholder];
+        if (val !== undefined) el.placeholder = val;
+      });
+
+      const isHe = lang === 'he';
+      document.title = isHe
+        ? 'מרון מנסור — עורך דין'
+        : 'Maroun Mansour — Attorney at Law';
+      const meta = document.querySelector('meta[name="description"]');
+      if (meta) meta.content = isHe
+        ? 'מרון מנסור — עורך דין. ייעוץ משפטי מקצועי בדיני מסחר, טכנולוגיה, חברות ומקרקעין בישראל.'
+        : 'Maroun Mansour — Attorney at Law. Expert legal counsel in commercial, technology, corporate, real estate, and startup law across Israel.';
+
+      try { localStorage.setItem('lang', lang); } catch(e) {}
+    }
+
+    /* Init language from localStorage */
+    (function() {
+      let saved = 'en';
+      try { saved = localStorage.getItem('lang') || 'en'; } catch(e) {}
+      setLang(saved);
+    })();
+
+    /* ── Scroll reveal ─────────────────────────────────────────── */
+    const prefersMotion = window.matchMedia('(prefers-reduced-motion: no-preference)');
+    const allRevs = document.querySelectorAll('.rev');
+
+    if (prefersMotion.matches) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
+      allRevs.forEach(el => io.observe(el));
+    } else {
+      allRevs.forEach(el => el.classList.add('in'));
+    }
+
+    /* Hero reveals immediately */
+    document.querySelectorAll('.hero .rev').forEach(el => el.classList.add('in'));
+
+    /* ── Nav solid on scroll ────────────────────────────────────── */
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('solid', window.scrollY > 12);
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    /* ── Mobile menu ────────────────────────────────────────────── */
+    const btn  = document.getElementById('hamburger');
+    const menu = document.getElementById('mobile-menu');
+    let open   = false;
+
+    btn.addEventListener('click', () => {
+      open = !open;
+      menu.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open);
+    });
+
+    function closeMenu() {
+      open = false;
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', false);
+    }
+
+    document.addEventListener('click', e => {
+      if (open && !nav.contains(e.target) && !menu.contains(e.target)) closeMenu();
+    });
+
+    /* ── Contact form ────────────────────────────────────────────── */
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const lang = document.documentElement.lang || 'en';
+      const fn   = document.getElementById('fn').value.trim();
+      const ln   = document.getElementById('ln').value.trim();
+      const em   = document.getElementById('em').value.trim();
+      const area = document.getElementById('area').value;
+      const msg  = document.getElementById('msg').value.trim();
+
+      if (!fn || !ln || !em || !msg) {
+        alert(T[lang]?.['err-required'] || T.en['err-required']);
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) {
+        alert(T[lang]?.['err-email'] || T.en['err-email']);
+        return;
+      }
+
+      const subject = area
+        ? `Legal Inquiry — ${area.charAt(0).toUpperCase() + area.slice(1).replace(/-/g,' ')}`
+        : 'Legal Inquiry';
+      const body = `Name: ${fn} ${ln}\nEmail: ${em}\nArea: ${area || 'General'}\n\n${msg}`;
+      window.location.href = `mailto:Office@MMans-Law.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+    /* ── Practice area modal ────────────────────────────────────────── */
+    (function() {
+      const pmodal       = document.getElementById('pmodal');
+      const pmodalTitle  = document.getElementById('pmodal-title');
+      const pmodalBody   = document.getElementById('pmodal-body');
+      const pmodalIcon   = document.getElementById('pmodal-icon');
+      const pmodalClose  = document.getElementById('pmodal-close');
+      const pmodalBd     = document.getElementById('pmodal-backdrop');
+
+      /* Update the modal eyebrow when language changes (setLang already
+         handles [data-i18n] so this is automatic — no extra work needed) */
+
+      function openModal(card) {
+        const lang    = document.documentElement.lang || 'en';
+        const h3      = card.querySelector('h3[data-i18n]');
+        const titleKey = h3 ? h3.dataset.i18n : '';           // e.g. "pa-privacy"
+        const descKey  = titleKey.replace('pa-', 'desc-');    // e.g. "desc-privacy"
+
+        /* Clone the card icon SVG into the modal */
+        const cardIconSvg = card.querySelector('.pcard__icon svg');
+        pmodalIcon.innerHTML = '';
+        if (cardIconSvg) pmodalIcon.appendChild(cardIconSvg.cloneNode(true));
+
+        pmodalTitle.innerHTML = T[lang]?.[titleKey] || T.en[titleKey] || '';
+        pmodalBody.textContent = T[lang]?.[descKey]  || T.en[descKey]  || '';
+
+        pmodal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        pmodalClose.focus();
+      }
+
+      function closeModal() {
+        pmodal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      /* Wire up every practice card */
+      document.querySelectorAll('.pcard').forEach(card => {
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.addEventListener('click', () => openModal(card));
+        card.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(card); }
+        });
+      });
+
+      pmodalClose.addEventListener('click', closeModal);
+      pmodalBd.addEventListener('click', closeModal);
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+      /* Re-translate modal when language switches */
+      const _origSetLang = setLang;
+      window.setLang = function(lang) {
+        _origSetLang(lang);
+        /* If modal is open, refresh its text */
+        if (pmodal.classList.contains('open')) {
+          const titleKey = pmodalTitle.dataset.currentKey;
+          if (titleKey) {
+            const descKey = titleKey.replace('pa-', 'desc-');
+            pmodalTitle.innerHTML  = T[lang]?.[titleKey] || T.en[titleKey] || '';
+            pmodalBody.textContent = T[lang]?.[descKey]  || T.en[descKey]  || '';
+          }
+        }
+      };
+
+      /* Track which key is open */
+      const _open = openModal;
+      openModal = function(card) {
+        const h3 = card.querySelector('h3[data-i18n]');
+        if (h3) pmodalTitle.dataset.currentKey = h3.dataset.i18n;
+        _open(card);
+      };
+    })();
+  </script>
+</body>
+</html>
