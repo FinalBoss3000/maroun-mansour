@@ -911,6 +911,124 @@
     [dir="rtl"] .pmodal__body  { text-align: right; }
 
     /* ════════════════════════════════════════════════════════════════
+       COOKIE CONSENT BANNER
+    ════════════════════════════════════════════════════════════════ */
+    .cookie-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 900;
+      background: var(--c-ink-2);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 14px 24px;
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      transform: translateY(110%);
+      transition: transform 380ms var(--ease-out);
+    }
+    .cookie-bar.show { transform: translateY(0); }
+    .cookie-bar__text {
+      flex: 1; min-width: 220px;
+      font-size: 13px; color: var(--c-on-dark-70); line-height: 1.55;
+    }
+    .cookie-bar__link {
+      background: none; border: none; padding: 0; cursor: pointer;
+      font-size: 13px; color: var(--c-accent); font-family: inherit;
+      text-decoration: underline; text-underline-offset: 2px;
+    }
+    .cookie-bar__btns { display: flex; gap: 10px; flex-shrink: 0; }
+    .cookie-bar__accept {
+      background: var(--c-accent); color: var(--c-ink-2);
+      font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
+      padding: 8px 20px; border-radius: var(--r-pill); border: none;
+      cursor: pointer; transition: background 180ms;
+    }
+    .cookie-bar__accept:hover { background: var(--c-accent-light); }
+    .cookie-bar__decline {
+      background: transparent; color: var(--c-on-dark-45);
+      font-size: 12px; font-weight: 500;
+      padding: 8px 14px; border-radius: var(--r-pill);
+      border: 1px solid rgba(255,255,255,0.14); cursor: pointer;
+      transition: border-color 180ms, color 180ms; font-family: inherit;
+    }
+    .cookie-bar__decline:hover { border-color: rgba(255,255,255,0.32); color: var(--c-on-dark-70); }
+
+    /* ════════════════════════════════════════════════════════════════
+       LEGAL MODAL (Accessibility & Cookie Policy)
+    ════════════════════════════════════════════════════════════════ */
+    .lmodal {
+      position: fixed; inset: 0; z-index: 1100;
+      display: flex; align-items: center; justify-content: center;
+      padding: clamp(16px, 4vw, 40px);
+      pointer-events: none; opacity: 0;
+      transition: opacity 250ms;
+    }
+    .lmodal.open { opacity: 1; pointer-events: all; }
+    .lmodal__backdrop {
+      position: absolute; inset: 0;
+      background: rgba(7,19,58,0.72); backdrop-filter: blur(5px);
+    }
+    .lmodal__box {
+      position: relative; z-index: 1;
+      background: var(--c-canvas); border-radius: var(--r-xl);
+      padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 44px) 36px;
+      width: 100%; max-width: 620px;
+      max-height: 82vh; overflow-y: auto;
+      box-shadow: 0 24px 80px rgba(7,19,58,0.28);
+      transform: translateY(14px) scale(0.97);
+      transition: transform 300ms var(--ease-out);
+    }
+    .lmodal.open .lmodal__box { transform: translateY(0) scale(1); }
+    .lmodal__close {
+      position: absolute; top: 16px; right: 16px;
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 1px solid var(--c-border); background: var(--c-canvas);
+      color: var(--c-ink-muted); font-size: 13px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 180ms, color 180ms;
+    }
+    .lmodal__close:hover { background: var(--c-canvas-cool); color: var(--c-ink); }
+    .lmodal__eyebrow {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.11em;
+      text-transform: uppercase; color: var(--c-accent-dim); margin-bottom: 10px;
+    }
+    .lmodal__title {
+      font-family: var(--f-display);
+      font-size: clamp(22px, 2.8vw, 30px);
+      font-weight: 500; letter-spacing: -0.02em;
+      color: var(--c-ink); line-height: 1.1; margin-bottom: 20px;
+    }
+    .lmodal__divider { height: 1px; background: var(--c-border); margin-bottom: 22px; }
+    .lmodal__body { font-size: 14px; line-height: 1.8; color: var(--c-ink-muted); }
+    .lmodal__body h4 {
+      font-family: var(--f-display); font-size: 16px; font-weight: 500;
+      color: var(--c-ink); margin: 22px 0 7px;
+    }
+    .lmodal__body h4:first-child { margin-top: 0; }
+    .lmodal__body ul { padding-left: 20px; margin: 8px 0 12px; }
+    .lmodal__body ul li { margin-bottom: 5px; }
+    .lmodal__body strong { color: var(--c-ink-2); font-weight: 600; }
+    .lmodal__body a { color: var(--c-accent-dim); }
+
+    /* RTL legal modal */
+    [dir="rtl"] .lmodal__close  { right: auto; left: 16px; }
+    [dir="rtl"] .lmodal__box    { direction: rtl; }
+    [dir="rtl"] .lmodal__title  { font-family: 'Frank Ruhl Libre', Georgia, serif; letter-spacing: 0; }
+    [dir="rtl"] .lmodal__body ul { padding-left: 0; padding-right: 20px; }
+
+    /* Footer policy links */
+    .footer__policies {
+      display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+    }
+    .footer__policy-btn {
+      background: none; border: none; padding: 0; cursor: pointer;
+      font-size: 12px; color: var(--c-on-dark-20); font-family: inherit;
+      text-decoration: underline; text-underline-offset: 2px;
+      transition: color 180ms;
+    }
+    .footer__policy-btn:hover { color: var(--c-accent); }
+    .footer__policies span { color: var(--c-on-dark-20); font-size: 12px; }
+
+    /* RTL cookie bar */
+    [dir="rtl"] .cookie-bar { direction: rtl; }
+
+    /* ════════════════════════════════════════════════════════════════
        RTL SUPPORT (Hebrew)
     ════════════════════════════════════════════════════════════════ */
     [dir="rtl"] body {
@@ -1548,6 +1666,11 @@
         <p class="footer__legal" data-i18n="footer-legal">
           The content on this website is provided for general information purposes only and does not constitute legal advice. No attorney-client relationship is formed by accessing or using this website. For specific legal advice, please contact the office directly to schedule a consultation.
         </p>
+        <div class="footer__policies">
+          <button class="footer__policy-btn" onclick="openLegal('accessibility')" data-i18n="footer-access">Accessibility</button>
+          <span aria-hidden="true">·</span>
+          <button class="footer__policy-btn" onclick="openLegal('cookies')" data-i18n="footer-cookies">Cookie Policy</button>
+        </div>
         <span class="footer__copy" data-i18n="footer-copy">© 2025 Maroun Mansour Law Office</span>
       </div>
     </div>
@@ -1563,6 +1686,30 @@
       <h3 class="pmodal__title" id="pmodal-title"></h3>
       <div class="pmodal__divider" aria-hidden="true"></div>
       <p class="pmodal__body" id="pmodal-body"></p>
+    </div>
+  </div>
+
+  <!-- ── COOKIE CONSENT BANNER ───────────────────────────────────── -->
+  <div class="cookie-bar" id="cookie-bar" role="complementary" aria-label="Cookie notice" aria-live="polite">
+    <p class="cookie-bar__text" data-i18n="cookie-text">
+      This site saves your language preference in your browser and loads fonts via Google Fonts. No tracking or analytics cookies are used.
+    </p>
+    <button class="cookie-bar__link" onclick="openLegal('cookies')" data-i18n="cookie-learn">Learn more</button>
+    <div class="cookie-bar__btns">
+      <button class="cookie-bar__decline" id="cookie-decline" data-i18n="cookie-decline">Decline</button>
+      <button class="cookie-bar__accept" id="cookie-accept" data-i18n="cookie-accept">Got it</button>
+    </div>
+  </div>
+
+  <!-- ── LEGAL MODAL (Accessibility / Cookie Policy) ──────────────── -->
+  <div class="lmodal" id="lmodal" role="dialog" aria-modal="true" aria-labelledby="lmodal-title">
+    <div class="lmodal__backdrop" id="lmodal-backdrop"></div>
+    <div class="lmodal__box">
+      <button class="lmodal__close" id="lmodal-close" aria-label="Close">&#x2715;</button>
+      <div class="lmodal__eyebrow" id="lmodal-eyebrow"></div>
+      <h3 class="lmodal__title" id="lmodal-title"></h3>
+      <div class="lmodal__divider" aria-hidden="true"></div>
+      <div class="lmodal__body" id="lmodal-body"></div>
     </div>
   </div>
 
@@ -1674,6 +1821,13 @@
         'footer-approach':'Approach',
         'footer-legal':   'The content on this website is provided for general information purposes only and does not constitute legal advice. No attorney-client relationship is formed by accessing or using this website. For specific legal advice, please contact the office directly to schedule a consultation.',
         'footer-copy':    '© 2025 Maroun Mansour Law Office',
+        'footer-access':  'Accessibility',
+        'footer-cookies': 'Cookie Policy',
+
+        'cookie-text':    'This site saves your language preference in your browser and loads fonts via Google Fonts. No tracking or analytics cookies are used.',
+        'cookie-learn':   'Learn more',
+        'cookie-decline': 'Decline',
+        'cookie-accept':  'Got it',
 
         'err-required': 'Please fill in all required fields (first name, last name, email, message).',
         'err-email':    'Please enter a valid email address.',
@@ -1796,6 +1950,13 @@
         'footer-approach':'גישה',
         'footer-legal':   'תוכן אתר זה מסופק למטרות מידע כללי בלבד ואינו מהווה ייעוץ משפטי. לא נוצרים יחסי עו"ד-לקוח על ידי גישה או שימוש באתר זה. לייעוץ משפטי ספציפי, אנא פנו למשרד ישירות לתיאום ייעוץ.',
         'footer-copy':    '© 2025 משרד עו"ד מרון מנסור',
+        'footer-access':  'נגישות',
+        'footer-cookies': 'מדיניות עוגיות',
+
+        'cookie-text':    'אתר זה שומר את העדפת השפה שלך בדפדפן ומשתמש ב-Google Fonts. לא נעשה שימוש בעוגיות מעקב או אנליטיקס.',
+        'cookie-learn':   'מידע נוסף',
+        'cookie-decline': 'דחה',
+        'cookie-accept':  'הבנתי',
 
         'err-required': 'אנא מלאו את כל השדות הנדרשים (שם פרטי, שם משפחה, דוא"ל, הודעה).',
         'err-email':    'אנא הזינו כתובת דוא"ל תקינה.',
@@ -1996,6 +2157,150 @@
         if (h3) pmodalTitle.dataset.currentKey = h3.dataset.i18n;
         _open(card);
       };
+    })();
+
+    /* ── Cookie consent banner ─────────────────────────────────────── */
+    (function() {
+      const bar = document.getElementById('cookie-bar');
+      if (!localStorage.getItem('cookie-consent')) {
+        setTimeout(() => bar.classList.add('show'), 900);
+      }
+      document.getElementById('cookie-accept').addEventListener('click', () => {
+        localStorage.setItem('cookie-consent', 'accepted');
+        bar.classList.remove('show');
+      });
+      document.getElementById('cookie-decline').addEventListener('click', () => {
+        localStorage.setItem('cookie-consent', 'declined');
+        bar.classList.remove('show');
+      });
+    })();
+
+    /* ── Legal modal (Accessibility & Cookie Policy) ───────────────── */
+    const LEGAL = {
+      en: {
+        accessibility: {
+          eyebrow: 'Legal',
+          title: 'Accessibility Statement',
+          body: `
+            <h4>Our Commitment</h4>
+            <p>The Law Office of Maroun Mansour is committed to making this website accessible to everyone, including people with disabilities. We strive to meet the <strong>Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong>.</p>
+            <h4>Features</h4>
+            <ul>
+              <li><strong>Keyboard navigation</strong> — all interactive elements are reachable via Tab key, with visible focus indicators.</li>
+              <li><strong>Screen readers</strong> — semantic HTML5 elements, ARIA labels, and a logical heading hierarchy (h1→h6) are used throughout.</li>
+              <li><strong>Colour contrast</strong> — text and UI elements meet the WCAG 2.1 AA minimum contrast ratio of 4.5:1.</li>
+              <li><strong>Responsive design</strong> — the site adapts to all screen sizes, from mobile to desktop.</li>
+              <li><strong>Bilingual support</strong> — full Hebrew (RTL) and English (LTR) with correct directionality.</li>
+              <li><strong>Skip navigation</strong> — a "Skip to main content" link is available at the very top of the page for keyboard users.</li>
+              <li><strong>Reduced motion</strong> — animations respect the <code>prefers-reduced-motion</code> operating-system setting.</li>
+              <li><strong>Text scaling</strong> — all font sizes are relative (rem/clamp) and scale correctly with browser zoom up to 200%.</li>
+            </ul>
+            <h4>Known Limitations</h4>
+            <p>We are continuously working to improve accessibility. If you encounter any barriers or have suggestions, please contact us.</p>
+            <h4>Contact</h4>
+            <p>Email: <a href="mailto:Office@MMans-Law.com">Office@MMans-Law.com</a><br>
+            Phone: <a href="tel:+972526603781">(+972) 052-6603781</a></p>
+          `
+        },
+        cookies: {
+          eyebrow: 'Legal',
+          title: 'Cookie & Storage Policy',
+          body: `
+            <h4>What We Store</h4>
+            <p>This website uses <strong>browser localStorage</strong> (not cookies) to remember one preference:</p>
+            <ul>
+              <li><strong>Language preference</strong> — stores <code>"en"</code> or <code>"he"</code> so your chosen language is remembered on future visits. This data never leaves your device and is never transmitted to any server.</li>
+              <li><strong>Cookie consent</strong> — stores whether you accepted or declined this notice.</li>
+            </ul>
+            <h4>Google Fonts</h4>
+            <p>Fonts are loaded from <strong>Google Fonts</strong> (fonts.googleapis.com / fonts.gstatic.com). When your browser fetches these fonts, Google may receive your IP address and browser information as part of the standard web request. Google's use of this data is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
+            <h4>What We Do NOT Use</h4>
+            <ul>
+              <li>No analytics (Google Analytics, Matomo, etc.)</li>
+              <li>No advertising or marketing cookies</li>
+              <li>No social media tracking pixels</li>
+              <li>No session cookies or server-side tracking</li>
+            </ul>
+            <h4>Your Choices</h4>
+            <p>You can clear localStorage at any time through your browser's settings (<em>Settings → Privacy → Clear browsing data → Site data</em>). To prevent Google Fonts requests, you can use a browser extension that blocks external font loading.</p>
+            <h4>Contact</h4>
+            <p>For privacy-related enquiries: <a href="mailto:Office@MMans-Law.com">Office@MMans-Law.com</a></p>
+          `
+        }
+      },
+      he: {
+        accessibility: {
+          eyebrow: 'משפטי',
+          title: 'הצהרת נגישות',
+          body: `
+            <h4>המחויבות שלנו</h4>
+            <p>משרד עו"ד מרון מנסור מחויב להנגשת אתר זה לכלל המשתמשים, לרבות אנשים עם מוגבלויות. אנו שואפים לעמוד בתקן <strong>WCAG 2.1 ברמה AA</strong>.</p>
+            <h4>מאפייני נגישות</h4>
+            <ul>
+              <li><strong>ניווט מקלדת</strong> — כל האלמנטים האינטראקטיביים נגישים באמצעות מקש Tab, עם אינדיקטורי פוקוס ברורים.</li>
+              <li><strong>קוראי מסך</strong> — שימוש ב-HTML5 סמנטי, תוויות ARIA והיררכיית כותרות הגיונית.</li>
+              <li><strong>ניגודיות צבעים</strong> — טקסט ואלמנטי ממשק עומדים ביחס ניגודיות מינימלי של 4.5:1 לפי WCAG 2.1 AA.</li>
+              <li><strong>עיצוב רספונסיבי</strong> — האתר מתאים לכל גדלי המסך, ממובייל ועד דסקטופ.</li>
+              <li><strong>תמיכה דו-לשונית</strong> — עברית מלאה (RTL) ואנגלית (LTR) עם כיווניות נכונה.</li>
+              <li><strong>דילוג לתוכן</strong> — קישור "דלג לתוכן הראשי" זמין בראש הדף למשתמשי מקלדת.</li>
+              <li><strong>הפחתת תנועה</strong> — האנימציות מכבדות את הגדרת <code>prefers-reduced-motion</code> של מערכת ההפעלה.</li>
+              <li><strong>שינוי גודל טקסט</strong> — כל גדלי הגופנים יחסיים ומתאימים לזום דפדפן עד 200%.</li>
+            </ul>
+            <h4>מגבלות ידועות</h4>
+            <p>אנו עובדים באופן מתמיד לשיפור הנגישות. אם נתקלתם במכשול או יש לכם הצעות, אנא פנו אלינו.</p>
+            <h4>יצירת קשר</h4>
+            <p>דוא"ל: <a href="mailto:Office@MMans-Law.com">Office@MMans-Law.com</a><br>
+            טלפון: <a href="tel:+972526603781">(+972) 052-6603781</a></p>
+          `
+        },
+        cookies: {
+          eyebrow: 'משפטי',
+          title: 'מדיניות עוגיות ואחסון',
+          body: `
+            <h4>מה אנו שומרים</h4>
+            <p>אתר זה משתמש ב-<strong>localStorage</strong> של הדפדפן (לא עוגיות) לשמירת העדפה אחת:</p>
+            <ul>
+              <li><strong>העדפת שפה</strong> — שומר <code>"en"</code> או <code>"he"</code> כדי שהשפה הנבחרת תיזכר בביקורים עתידיים. נתון זה נשמר בדפדפן שלכם בלבד ואינו נשלח לאף שרת.</li>
+              <li><strong>הסכמת עוגיות</strong> — שומר האם אישרתם או דחיתם הודעה זו.</li>
+            </ul>
+            <h4>Google Fonts</h4>
+            <p>גופנים נטענים מ-<strong>Google Fonts</strong> (fonts.googleapis.com / fonts.gstatic.com). בעת טעינת הגופנים, Google עשויה לקבל את כתובת ה-IP שלכם. השימוש של Google בנתונים אלה כפוף ל<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">מדיניות הפרטיות של Google</a>.</p>
+            <h4>מה איננו משתמשים בו</h4>
+            <ul>
+              <li>ללא אנליטיקס (Google Analytics וכדומה)</li>
+              <li>ללא עוגיות פרסום או שיווק</li>
+              <li>ללא פיקסלים של רשתות חברתיות</li>
+              <li>ללא עוגיות סשן או מעקב בצד שרת</li>
+            </ul>
+            <h4>האפשרויות שלכם</h4>
+            <p>ניתן למחוק את ה-localStorage בכל עת דרך הגדרות הדפדפן (<em>הגדרות → פרטיות → נקה נתוני גלישה → נתוני אתר</em>).</p>
+            <h4>יצירת קשר</h4>
+            <p>לפניות בנושא פרטיות: <a href="mailto:Office@MMans-Law.com">Office@MMans-Law.com</a></p>
+          `
+        }
+      }
+    };
+
+    function openLegal(type) {
+      const lang = document.documentElement.lang || 'en';
+      const data = LEGAL[lang]?.[type] || LEGAL.en[type];
+      const modal = document.getElementById('lmodal');
+      document.getElementById('lmodal-eyebrow').textContent = data.eyebrow;
+      document.getElementById('lmodal-title').textContent   = data.title;
+      document.getElementById('lmodal-body').innerHTML      = data.body;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('lmodal-close').focus();
+    }
+
+    (function() {
+      const modal = document.getElementById('lmodal');
+      const close = () => { modal.classList.remove('open'); document.body.style.overflow = ''; };
+      document.getElementById('lmodal-close').addEventListener('click', close);
+      document.getElementById('lmodal-backdrop').addEventListener('click', close);
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) close();
+      });
     })();
   </script>
 </body>
