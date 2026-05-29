@@ -1123,14 +1123,16 @@
        ACCESSIBILITY WIDGET
     ════════════════════════════════════════════════════════════════ */
     .a11y-toggle {
-      position: fixed; bottom: 24px; left: 24px; z-index: 800;
+      position: fixed; bottom: 24px; left: 24px; z-index: 1000;
       width: 54px; height: 54px; border-radius: 50%;
       background: #3A8F4F;
       border: 3px solid rgba(255,255,255,0.95);
       box-shadow: 0 4px 18px rgba(0,0,0,0.28);
       cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: background 200ms, transform 200ms, box-shadow 200ms;
+      transition: background 200ms, transform 200ms, box-shadow 200ms, bottom 300ms;
     }
+    /* Lift button above cookie bar when it's visible */
+    body:has(#cookie-bar.show) .a11y-toggle { bottom: 82px; }
     .a11y-toggle:hover { background: #2D7340; transform: scale(1.06); box-shadow: 0 6px 24px rgba(0,0,0,0.32); }
     .a11y-toggle:focus-visible { outline: 3px solid #3A8F4F; outline-offset: 4px; }
     .a11y-toggle svg { width: 28px; height: 28px; }
@@ -1276,6 +1278,7 @@
     html.a11y-reading-mask .a11y-mask-bot { display: block; }
 
     [dir="rtl"] .a11y-toggle { left: auto; right: 24px; }
+    [dir="rtl"] body:has(#cookie-bar.show) .a11y-toggle { left: auto; right: 24px; }
     [dir="rtl"] .a11y-panel  { left: auto; right: 0; transform: translateX(108%); box-shadow: -6px 0 40px rgba(0,0,0,0.20); }
     [dir="rtl"] .a11y-panel.open { transform: translateX(0); }
     [dir="rtl"] .a11y-foot-links { flex-direction: row-reverse; }
