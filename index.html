@@ -1118,6 +1118,167 @@
       .pcard__icon svg { width: 18px; height: 18px; }
       .pcard__name     { font-size: 15px; }
     }
+
+    /* ════════════════════════════════════════════════════════════════
+       ACCESSIBILITY WIDGET
+    ════════════════════════════════════════════════════════════════ */
+    .a11y-toggle {
+      position: fixed; bottom: 24px; left: 24px; z-index: 800;
+      width: 54px; height: 54px; border-radius: 50%;
+      background: #3A8F4F;
+      border: 3px solid rgba(255,255,255,0.95);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.28);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background 200ms, transform 200ms, box-shadow 200ms;
+    }
+    .a11y-toggle:hover { background: #2D7340; transform: scale(1.06); box-shadow: 0 6px 24px rgba(0,0,0,0.32); }
+    .a11y-toggle:focus-visible { outline: 3px solid #3A8F4F; outline-offset: 4px; }
+    .a11y-toggle svg { width: 28px; height: 28px; }
+
+    .a11y-overlay {
+      position: fixed; inset: 0; z-index: 1999;
+      background: rgba(7,19,58,0.45);
+      opacity: 0; pointer-events: none; transition: opacity 300ms;
+    }
+    .a11y-overlay.show { opacity: 1; pointer-events: all; }
+
+    .a11y-panel {
+      position: fixed; top: 0; left: 0; bottom: 0; z-index: 2000;
+      width: min(380px, 96vw);
+      background: #fff;
+      box-shadow: 6px 0 40px rgba(0,0,0,0.20);
+      display: flex; flex-direction: column;
+      transform: translateX(-108%);
+      transition: transform 330ms cubic-bezier(0.4,0,0.2,1);
+    }
+    .a11y-panel.open { transform: translateX(0); }
+
+    .a11y-panel__head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 18px 16px;
+      border-bottom: 1px solid #E8ECF0; flex-shrink: 0;
+    }
+    .a11y-panel__title {
+      font-size: 16px; font-weight: 600; color: #0F172A; margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      letter-spacing: -0.01em;
+    }
+    .a11y-panel__close {
+      width: 30px; height: 30px; border-radius: 50%;
+      border: 1px solid #D1D9E0; background: #F8FAFC;
+      color: #64748B; font-size: 13px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 150ms, color 150ms; flex-shrink: 0;
+    }
+    .a11y-panel__close:hover { background: #EEF2F7; color: #0F172A; }
+
+    .a11y-panel__body {
+      flex: 1; overflow-y: auto; padding: 12px 12px 0;
+      scrollbar-width: thin; scrollbar-color: #CBD5E1 transparent;
+    }
+    .a11y-sec-label {
+      font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #94A3B8;
+      margin: 16px 0 8px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    .a11y-sec-label:first-child { margin-top: 4px; }
+
+    .a11y-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; }
+
+    .a11y-feat {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 7px; padding: 13px 6px 12px;
+      border: 1.5px solid #E2E8F0; border-radius: 10px;
+      background: #FAFBFC; cursor: pointer; min-height: 84px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      transition: border-color 150ms, background 150ms;
+    }
+    .a11y-feat:hover:not(.active) { border-color: #3A8F4F; background: #F0FDF4; }
+    .a11y-feat.active { background: #0B1D51; border-color: #0B1D51; }
+    .a11y-feat__icon {
+      width: 28px; height: 28px; color: #475569;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .a11y-feat.active .a11y-feat__icon { color: #fff; }
+    .a11y-feat__label {
+      font-size: 11px; font-weight: 500; color: #374151;
+      text-align: center; line-height: 1.25;
+    }
+    .a11y-feat.active .a11y-feat__label { color: #fff; }
+
+    .a11y-panel__foot {
+      padding: 12px 12px 14px;
+      border-top: 1px solid #E8ECF0; flex-shrink: 0;
+    }
+    .a11y-reset-btn {
+      width: 100%; padding: 11px;
+      background: #0F172A; color: #fff;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.01em;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      border: none; border-radius: 8px; cursor: pointer;
+      margin-bottom: 10px; transition: background 150ms;
+    }
+    .a11y-reset-btn:hover { background: #1E293B; }
+    .a11y-foot-links { display: flex; justify-content: space-between; }
+    .a11y-foot-link {
+      font-size: 11.5px; color: #64748B; background: none; border: none;
+      cursor: pointer; text-decoration: underline; text-underline-offset: 2px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      padding: 0; transition: color 150ms; text-decoration-color: currentColor;
+    }
+    .a11y-foot-link:hover { color: #0F172A; }
+
+    /* ── Applied accessibility overrides ── */
+    html.a11y-big-cursor, html.a11y-big-cursor * {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='42' viewBox='0 0 42 42'%3E%3Cpath fill='%23000000' stroke='%23ffffff' stroke-width='2.5' stroke-linejoin='round' d='M7 3 L7 33 L14 25 L20 39 L25 37 L19 23 L30 23 Z'/%3E%3C/svg%3E") 7 3, auto !important;
+    }
+    html.a11y-text-zoom  { zoom: 1.25; }
+    html.a11y-large-text { zoom: 1.2; }
+    html.a11y-focus-hi *:focus, html.a11y-focus-hi *:focus-visible {
+      outline: 3px solid #3A8F4F !important; outline-offset: 3px !important;
+      box-shadow: 0 0 0 6px rgba(58,143,79,0.22) !important;
+    }
+    html.a11y-links a:not([class*="a11y"]) {
+      text-decoration: underline !important; text-decoration-color: #F59E0B !important;
+      outline: 1.5px solid rgba(245,158,11,0.55) !important; outline-offset: 1px !important; border-radius: 2px;
+    }
+    html.a11y-high-contrast { filter: contrast(160%) brightness(1.05); }
+    html.a11y-greyscale     { filter: grayscale(100%); }
+    html.a11y-invert        { filter: invert(88%) hue-rotate(180deg); }
+    html.a11y-hide-img img  { visibility: hidden !important; }
+    html.a11y-dyslexic, html.a11y-dyslexic *:not([class*="a11y"]) {
+      font-family: Arial, Verdana, sans-serif !important;
+      letter-spacing: 0.1em !important; word-spacing: 0.2em !important; line-height: 1.85 !important;
+    }
+    html.a11y-stop-anim *, html.a11y-stop-anim *::before, html.a11y-stop-anim *::after {
+      animation-duration: 0.001ms !important; animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+    html.a11y-letter-space * { letter-spacing: 0.14em !important; word-spacing: 0.15em !important; }
+
+    .a11y-guide-line {
+      position: fixed; left: 0; right: 0; height: 30px; top: 0;
+      background: rgba(255,255,100,0.22);
+      border-top: 2px solid rgba(220,200,0,0.55);
+      border-bottom: 2px solid rgba(220,200,0,0.55);
+      pointer-events: none; z-index: 9997; display: none;
+    }
+    html.a11y-reading-guide .a11y-guide-line { display: block; }
+
+    .a11y-mask-top, .a11y-mask-bot {
+      position: fixed; left: 0; right: 0;
+      background: rgba(0,0,0,0.74); pointer-events: none; z-index: 9996; display: none;
+    }
+    .a11y-mask-top { top: 0; }
+    .a11y-mask-bot { bottom: 0; }
+    html.a11y-reading-mask .a11y-mask-top,
+    html.a11y-reading-mask .a11y-mask-bot { display: block; }
+
+    [dir="rtl"] .a11y-toggle { left: auto; right: 24px; }
+    [dir="rtl"] .a11y-panel  { left: auto; right: 0; transform: translateX(108%); box-shadow: -6px 0 40px rgba(0,0,0,0.20); }
+    [dir="rtl"] .a11y-panel.open { transform: translateX(0); }
+    [dir="rtl"] .a11y-foot-links { flex-direction: row-reverse; }
   </style>
 </head>
 <body>
@@ -1689,6 +1850,146 @@
     </div>
   </div>
 
+  <!-- ── ACCESSIBILITY WIDGET ─────────────────────────────────────── -->
+  <div class="a11y-guide-line" id="a11y-guide-line" aria-hidden="true"></div>
+  <div class="a11y-mask-top"   id="a11y-mask-top"   aria-hidden="true"></div>
+  <div class="a11y-mask-bot"   id="a11y-mask-bot"   aria-hidden="true"></div>
+
+  <button class="a11y-toggle" id="a11y-toggle"
+      aria-label="Open Accessibility Options" aria-haspopup="dialog" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="4.5" r="2.2" fill="white"/>
+      <line x1="5" y1="9.5" x2="19" y2="9.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      <path d="M12 9.5v6.5M9 22l3-6 3 6" stroke="white" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <div class="a11y-overlay" id="a11y-overlay"></div>
+
+  <div class="a11y-panel" id="a11y-panel" role="dialog" aria-modal="false"
+       aria-labelledby="a11y-panel-title">
+    <div class="a11y-panel__head">
+      <h2 class="a11y-panel__title" id="a11y-panel-title">Accessibility Options</h2>
+      <button class="a11y-panel__close" id="a11y-close" aria-label="Close">&#x2715;</button>
+    </div>
+
+    <div class="a11y-panel__body">
+
+      <p class="a11y-sec-label">Navigation &amp; Focus</p>
+      <div class="a11y-grid">
+
+        <button class="a11y-feat" data-feat="big-cursor" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M6 2L6 20.5L10.5 15.5L13.5 23.5L16.5 22.5L13.5 14.5L20 14.5Z" fill="currentColor"/></svg></span>
+          <span class="a11y-feat__label">Big Cursor</span>
+        </button>
+
+        <button class="a11y-feat" data-feat="text-zoom" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16L22.5 22.5"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></span>
+          <span class="a11y-feat__label">Text Magnifier</span>
+        </button>
+
+        <button class="a11y-feat" data-feat="focus-hi" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="3.5" width="19" height="19" rx="3" stroke-dasharray="3.5 2.5"/><circle cx="13" cy="13" r="3" fill="currentColor" opacity="0.25"/></svg></span>
+          <span class="a11y-feat__label">Focus Highlight</span>
+        </button>
+
+        <button class="a11y-feat" data-feat="links" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 14a4.5 4.5 0 0 0 6.8.5l2.7-2.7a4.5 4.5 0 0 0-6.37-6.37l-1.53 1.52"/><path d="M14.5 12a4.5 4.5 0 0 0-6.8-.5l-2.7 2.7a4.5 4.5 0 0 0 6.37 6.37l1.52-1.52"/></svg></span>
+          <span class="a11y-feat__label">Highlight Links</span>
+        </button>
+
+        <button class="a11y-feat" data-feat="keyboard" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="22" height="13" rx="2.5"/><line x1="6.5" y1="12" x2="6.5" y2="12" stroke-width="2.5"/><line x1="10.5" y1="12" x2="10.5" y2="12" stroke-width="2.5"/><line x1="14.5" y1="12" x2="14.5" y2="12" stroke-width="2.5"/><line x1="18.5" y1="12" x2="18.5" y2="12" stroke-width="2.5"/><line x1="8" y1="17" x2="18" y2="17" stroke-width="2"/></svg></span>
+          <span class="a11y-feat__label">Keyboard Mode</span>
+        </button>
+
+        <button class="a11y-feat" data-feat="skip" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 16 13 9 20"/><line x1="18" y1="6" x2="18" y2="20"/></svg></span>
+          <span class="a11y-feat__label">Skip to Content</span>
+        </button>
+
+      </div>
+
+      <p class="a11y-sec-label">Visual Adjustments</p>
+      <div class="a11y-grid">
+
+        <button class="a11y-feat" data-feat="contrast" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="9.5" stroke="currentColor" stroke-width="1.8"/><path d="M13 3.5A9.5 9.5 0 0 1 13 22.5Z" fill="currentColor"/></svg></span>
+          <span class="a11y-feat__label">High Contrast</span>
+        </button>
+
+        <button class="a11y-feat" data-feat="greyscale" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="9.5" stroke="currentColor" stroke-width="1.8"/><path d="M13 3.5a9.5 9.5 0 0 1 0 19V3.5Z" fill="currentColor" opacity="0.35"/></svg></span>
+          <span class="a11y-feat__label">Greyscale</span>
+        </button>
+
+        <button class="a11y-feat" data-feat="invert" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="13" cy="13" r="9.5"/><path d="M13 3.5V22.5"/><path d="M7 7.5L19 18.5" opacity="0.4"/><path d="M7 18.5L19 7.5" opacity="0.4"/></svg></span>
+          <span class="a11y-feat__label">Invert Colors</span>
+        </button>
+
+        <button class="a11y-feat" data-feat="hide-img" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="21" height="15" rx="2"/><circle cx="9" cy="11.5" r="2.5"/><polyline points="2.5 21 9.5 14 13.5 18 17 15 23.5 21"/><line x1="3" y1="6" x2="23" y2="21"/></svg></span>
+          <span class="a11y-feat__label">Hide Images</span>
+        </button>
+
+        <button class="a11y-feat" data-feat="reading-guide" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-linecap="round"><line x1="3" y1="9" x2="23" y2="9" stroke-width="2"/><line x1="3" y1="13" x2="23" y2="13" stroke-width="1.4" opacity="0.4"/><line x1="3" y1="17" x2="23" y2="17" stroke-width="1" opacity="0.2"/></svg></span>
+          <span class="a11y-feat__label">Reading Guide</span>
+        </button>
+
+        <button class="a11y-feat" data-feat="reading-mask" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 13s4.5-7 11.5-7 11.5 7 11.5 7-4.5 7-11.5 7S1.5 13 1.5 13z"/><circle cx="13" cy="13" r="3"/></svg></span>
+          <span class="a11y-feat__label">Reading Mask</span>
+        </button>
+
+      </div>
+
+      <p class="a11y-sec-label">Text &amp; Motion</p>
+      <div class="a11y-grid" style="margin-bottom:14px">
+
+        <button class="a11y-feat" data-feat="large-text" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><text x="2" y="20" font-size="17" font-weight="700" fill="currentColor" font-family="Georgia,serif">A</text><line x1="20" y1="11" x2="25" y2="11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="22.5" y1="8.5" x2="22.5" y2="13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="a11y-feat__label">Larger Text</span>
+        </button>
+
+        <button class="a11y-feat" data-feat="dyslexic" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><text x="2" y="19" font-size="15" font-weight="700" fill="currentColor" font-family="Arial,sans-serif">Aa</text></svg></span>
+          <span class="a11y-feat__label">Dyslexic Font</span>
+        </button>
+
+        <button class="a11y-feat" data-feat="letter-space" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="13" x2="23" y2="13"/><line x1="3" y1="9" x2="3" y2="17"/><line x1="23" y1="9" x2="23" y2="17"/></svg></span>
+          <span class="a11y-feat__label">Letter Spacing</span>
+        </button>
+
+        <button class="a11y-feat" data-feat="stop-anim" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="7" y="6" width="4.5" height="14" rx="1.5" fill="currentColor"/><rect x="14.5" y="6" width="4.5" height="14" rx="1.5" fill="currentColor"/></svg></span>
+          <span class="a11y-feat__label">Stop Animations</span>
+        </button>
+
+        <button class="a11y-feat" data-feat="mute" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 10 3 16 7 16 13 21 13 5 7 10"/><line x1="17" y1="9" x2="23" y2="17"/><line x1="23" y1="9" x2="17" y2="17"/></svg></span>
+          <span class="a11y-feat__label">Mute Sound</span>
+        </button>
+
+        <button class="a11y-feat" data-feat="hide-video" aria-pressed="false">
+          <span class="a11y-feat__icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="16" height="12" rx="2"/><path d="M18 10.5l6-3v11l-6-3"/><line x1="3" y1="7" x2="22" y2="19"/></svg></span>
+          <span class="a11y-feat__label">Hide Video</span>
+        </button>
+
+      </div>
+    </div>
+
+    <div class="a11y-panel__foot">
+      <button class="a11y-reset-btn" id="a11y-reset">Reset Settings</button>
+      <div class="a11y-foot-links">
+        <button class="a11y-foot-link" onclick="openLegal('accessibility')">Accessibility Statement</button>
+        <a href="mailto:Office@MMans-Law.com" class="a11y-foot-link">Report a Problem</a>
+      </div>
+    </div>
+  </div>
+
   <!-- ── COOKIE CONSENT BANNER ───────────────────────────────────── -->
   <div class="cookie-bar" id="cookie-bar" role="complementary" aria-label="Cookie notice" aria-live="polite">
     <p class="cookie-bar__text" data-i18n="cookie-text">
@@ -2182,21 +2483,38 @@
           eyebrow: 'Legal',
           title: 'Accessibility Statement',
           body: `
-            <h4>Our Commitment</h4>
-            <p>The Law Office of Maroun Mansour is committed to making this website accessible to everyone, including people with disabilities. We strive to meet the <strong>Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong>.</p>
-            <h4>Features</h4>
+            <h4>WCAG 2.2 Commitment</h4>
+            <p>The Law Office of Maroun Mansour strictly adheres to <strong>WCAG 2.2 AA guidelines</strong>. Users with disabilities can personalise the interface using the accessibility panel. We use ARIA attributes and semantic HTML to maintain accessibility across all updates.</p>
+            <h4>Screen Reader &amp; Keyboard Optimisation</h4>
             <ul>
-              <li><strong>Keyboard navigation</strong> — all interactive elements are reachable via Tab key, with visible focus indicators.</li>
-              <li><strong>Screen readers</strong> — semantic HTML5 elements, ARIA labels, and a logical heading hierarchy (h1→h6) are used throughout.</li>
-              <li><strong>Colour contrast</strong> — text and UI elements meet the WCAG 2.1 AA minimum contrast ratio of 4.5:1.</li>
-              <li><strong>Responsive design</strong> — the site adapts to all screen sizes, from mobile to desktop.</li>
-              <li><strong>Bilingual support</strong> — full Hebrew (RTL) and English (LTR) with correct directionality.</li>
-              <li><strong>Skip navigation</strong> — a "Skip to main content" link is available at the very top of the page for keyboard users.</li>
-              <li><strong>Reduced motion</strong> — animations respect the <code>prefers-reduced-motion</code> operating-system setting.</li>
-              <li><strong>Text scaling</strong> — all font sizes are relative (rem/clamp) and scale correctly with browser zoom up to 200%.</li>
+              <li>ARIA attributes providing meaningful data for screen readers</li>
+              <li>Logical heading hierarchy (h1→h6) throughout the page</li>
+              <li>Full keyboard operability — all elements reachable via Tab</li>
+              <li>Content-skip menu ("Skip to main content") at page top</li>
+              <li>Visible focus indicators on all interactive elements</li>
+              <li>Colour contrast ratio of 4.5:1 minimum (WCAG AA)</li>
             </ul>
-            <h4>Known Limitations</h4>
-            <p>We are continuously working to improve accessibility. If you encounter any barriers or have suggestions, please contact us.</p>
+            <h4>Accessibility Profiles</h4>
+            <ul>
+              <li><strong>Vision Impaired</strong> — text magnifier, high contrast, greyscale, invert</li>
+              <li><strong>Cognitive &amp; ADHD</strong> — reading guide, reading mask, stop animations</li>
+              <li><strong>Dyslexia</strong> — dyslexia-friendly font, letter spacing, larger text</li>
+              <li><strong>Keyboard Navigation</strong> — enhanced focus mode, skip to content</li>
+              <li><strong>Sensory</strong> — mute sound, hide images, hide video</li>
+            </ul>
+            <h4>UI Customisation Options</h4>
+            <ul>
+              <li>Font size and dyslexia-friendly typography</li>
+              <li>High contrast, greyscale, and invert colour schemes</li>
+              <li>Animation and motion control</li>
+              <li>Reading guide and reading mask overlays</li>
+              <li>Link highlighting and enhanced focus indicators</li>
+            </ul>
+            <h4>Supported Browsers &amp; Screen Readers</h4>
+            <p>Browsers: Chrome, Firefox, Safari, Edge, Opera.<br>
+            Screen Readers: JAWS (Windows/Mac), NVDA (Windows/Mac).</p>
+            <h4>Continual Improvement</h4>
+            <p>We continuously enhance accessibility as technology evolves. If you encounter any barriers or have suggestions, please contact us directly.</p>
             <h4>Contact</h4>
             <p>Email: <a href="mailto:Office@MMans-Law.com">Office@MMans-Law.com</a><br>
             Phone: <a href="tel:+972526603781">(+972) 052-6603781</a></p>
@@ -2301,6 +2619,135 @@
       document.addEventListener('keydown', e => {
         if (e.key === 'Escape' && modal.classList.contains('open')) close();
       });
+    })();
+
+    /* ── Accessibility widget ──────────────────────────────────────── */
+    (function() {
+      const html    = document.documentElement;
+      const toggle  = document.getElementById('a11y-toggle');
+      const panel   = document.getElementById('a11y-panel');
+      const overlay = document.getElementById('a11y-overlay');
+      const closeBtn= document.getElementById('a11y-close');
+      const resetBtn= document.getElementById('a11y-reset');
+      const guide   = document.getElementById('a11y-guide-line');
+      const maskT   = document.getElementById('a11y-mask-top');
+      const maskB   = document.getElementById('a11y-mask-bot');
+
+      /* Feature key → CSS class on <html> */
+      const FEATS = {
+        'big-cursor':    'a11y-big-cursor',
+        'text-zoom':     'a11y-text-zoom',
+        'focus-hi':      'a11y-focus-hi',
+        'links':         'a11y-links',
+        'keyboard':      'a11y-focus-hi',   /* enhanced focus */
+        'contrast':      'a11y-high-contrast',
+        'greyscale':     'a11y-greyscale',
+        'invert':        'a11y-invert',
+        'hide-img':      'a11y-hide-img',
+        'reading-guide': 'a11y-reading-guide',
+        'reading-mask':  'a11y-reading-mask',
+        'large-text':    'a11y-large-text',
+        'dyslexic':      'a11y-dyslexic',
+        'letter-space':  'a11y-letter-space',
+        'stop-anim':     'a11y-stop-anim',
+        'mute':          'a11y-mute',
+        'hide-video':    'a11y-hide-video',
+      };
+      /* Mutually exclusive visual filter features */
+      const EXCL = ['contrast','greyscale','invert'];
+
+      let active = {};
+
+      function applyMedia(feat, on) {
+        if (feat === 'mute')       document.querySelectorAll('audio,video').forEach(e => e.muted = on);
+        if (feat === 'hide-video') document.querySelectorAll('video').forEach(e => e.style.visibility = on ? 'hidden' : '');
+      }
+
+      function setBtn(feat, on) {
+        const btn = document.querySelector(`[data-feat="${feat}"]`);
+        if (!btn) return;
+        btn.classList.toggle('active', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      }
+
+      function toggle_feat(feat) {
+        /* Skip (one-time action) */
+        if (feat === 'skip') {
+          const main = document.getElementById('main') || document.querySelector('main');
+          if (main) { main.setAttribute('tabindex','-1'); main.focus(); main.removeAttribute('tabindex'); }
+          closePanel(); return;
+        }
+        const cls = FEATS[feat]; if (!cls) return;
+        const on  = !active[feat];
+        /* Deactivate mutually-exclusive peers */
+        if (on && EXCL.includes(feat)) {
+          EXCL.forEach(f => {
+            if (f !== feat && active[f]) {
+              active[f] = false; html.classList.remove(FEATS[f]); setBtn(f, false);
+            }
+          });
+        }
+        active[feat] = on;
+        html.classList.toggle(cls, on);
+        setBtn(feat, on);
+        applyMedia(feat, on);
+        saveState();
+      }
+
+      function saveState() {
+        try { localStorage.setItem('a11y-prefs', JSON.stringify(active)); } catch(e) {}
+      }
+
+      function loadState() {
+        try {
+          const saved = JSON.parse(localStorage.getItem('a11y-prefs') || '{}');
+          Object.entries(saved).forEach(([feat, on]) => {
+            if (!on) return;
+            active[feat] = true;
+            const cls = FEATS[feat]; if (cls) html.classList.add(cls);
+            setBtn(feat, true);
+            applyMedia(feat, true);
+          });
+        } catch(e) {}
+      }
+
+      function openPanel()  {
+        panel.classList.add('open'); overlay.classList.add('show');
+        toggle.setAttribute('aria-expanded','true'); closeBtn.focus();
+      }
+      function closePanel() {
+        panel.classList.remove('open'); overlay.classList.remove('show');
+        toggle.setAttribute('aria-expanded','false'); toggle.focus();
+      }
+      function resetAll() {
+        Object.keys(active).forEach(feat => {
+          active[feat] = false;
+          const cls = FEATS[feat]; if (cls) html.classList.remove(cls);
+          setBtn(feat, false);
+          applyMedia(feat, false);
+        });
+        active = {}; saveState();
+      }
+
+      /* Events */
+      toggle.addEventListener('click',  () => panel.classList.contains('open') ? closePanel() : openPanel());
+      closeBtn.addEventListener('click', closePanel);
+      overlay.addEventListener('click',  closePanel);
+      resetBtn.addEventListener('click', resetAll);
+      document.addEventListener('keydown', e => { if (e.key==='Escape' && panel.classList.contains('open')) closePanel(); });
+      document.querySelectorAll('[data-feat]').forEach(btn => btn.addEventListener('click', () => toggle_feat(btn.dataset.feat)));
+
+      /* Mouse-follow for reading guide & mask */
+      document.addEventListener('mousemove', e => {
+        if (active['reading-guide'] && guide)  guide.style.top  = (e.clientY - 15) + 'px';
+        if (active['reading-mask']  && maskT) {
+          const gap = 50;
+          maskT.style.height = Math.max(0, e.clientY - gap) + 'px';
+          maskB.style.top    = (e.clientY + gap) + 'px';
+        }
+      });
+
+      loadState();
     })();
   </script>
 </body>
