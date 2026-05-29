@@ -12,7 +12,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Frank+Ruhl+Libre:wght@500;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Hebrew:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Frank+Ruhl+Libre:wght@500;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Hebrew:wght@300;400;500;600&family=Noto+Sans+Arabic:wght@300;400;500;600&family=Noto+Naskh+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     /* ─── DESIGN TOKENS ──────────────────────────────────────────── */
@@ -1031,19 +1031,24 @@
     /* ════════════════════════════════════════════════════════════════
        RTL SUPPORT (Hebrew)
     ════════════════════════════════════════════════════════════════ */
-    [dir="rtl"] body {
-      font-family: 'Noto Sans Hebrew', 'Inter', system-ui, sans-serif;
+    :lang(he) body { font-family: 'Noto Sans Hebrew', 'Inter', system-ui, sans-serif; }
+    :lang(ar) body { font-family: 'Noto Sans Arabic', 'Inter', system-ui, sans-serif; }
+    [dir="rtl"] body { font-family: 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Inter', system-ui, sans-serif; }
+    :lang(he) .hero__h1, :lang(he) .sec-heading, :lang(he) .contact__h2,
+    :lang(he) .cform__title, :lang(he) .pillar__title, :lang(he) .pcard__name,
+    :lang(he) .profile-card__name, :lang(he) .footer__brand-name {
+      font-family: 'Frank Ruhl Libre', Georgia, serif; letter-spacing: 0;
     }
-    [dir="rtl"] .hero__h1,
-    [dir="rtl"] .sec-heading,
-    [dir="rtl"] .contact__h2,
-    [dir="rtl"] .cform__title,
-    [dir="rtl"] .pillar__title,
-    [dir="rtl"] .pcard__name,
-    [dir="rtl"] .profile-card__name,
-    [dir="rtl"] .footer__brand-name {
+    :lang(ar) .hero__h1, :lang(ar) .sec-heading, :lang(ar) .contact__h2,
+    :lang(ar) .cform__title, :lang(ar) .pillar__title, :lang(ar) .pcard__name,
+    :lang(ar) .profile-card__name, :lang(ar) .footer__brand-name {
+      font-family: 'Noto Naskh Arabic', Georgia, serif; letter-spacing: 0;
+    }
+    [dir="rtl"] .pmodal__title, [dir="rtl"] .lmodal__title {
+      font-family: 'Noto Naskh Arabic', 'Frank Ruhl Libre', Georgia, serif; letter-spacing: 0;
+    }
+    :lang(he) .pmodal__title, :lang(he) .lmodal__title {
       font-family: 'Frank Ruhl Libre', Georgia, serif;
-      letter-spacing: 0;
     }
 
     /* Flip decorative scales to left side in RTL */
@@ -1325,6 +1330,7 @@
         <div class="lang-toggle" role="group" aria-label="Language / שפה">
           <button class="lang-btn active" data-lang="en" aria-pressed="true" onclick="setLang('en')">EN</button>
           <button class="lang-btn" data-lang="he" aria-pressed="false" onclick="setLang('he')">עב</button>
+          <button class="lang-btn" data-lang="ar" aria-pressed="false" onclick="setLang('ar')">عر</button>
         </div>
         <a href="#contact" class="nav__cta" data-i18n="nav-cta">Schedule a Consultation</a>
         <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -1343,6 +1349,7 @@
     <div class="mobile-lang" role="group" aria-label="Language / שפה">
       <button class="lang-btn" data-lang="en" aria-pressed="true" onclick="setLang('en');closeMenu()">EN — English</button>
       <button class="lang-btn" data-lang="he" aria-pressed="false" onclick="setLang('he');closeMenu()">עב — עברית</button>
+      <button class="lang-btn" data-lang="ar" aria-pressed="false" onclick="setLang('ar');closeMenu()">عر — العربية</button>
     </div>
     <a href="#practice" onclick="closeMenu()" data-i18n="nav-practice">Practice Areas</a>
     <a href="#about"    onclick="closeMenu()" data-i18n="nav-about">About</a>
@@ -2297,6 +2304,142 @@
         'desc-corporate':   'צוות דיני התאגידים שלנו מוקדש למתן מגוון רחב של שירותים הקשורים לממשל תאגידי במקצועיות מרבית. מניסוח תקנונים ותקנות פנימיות ועד יצירת הסכמי בעלי מניות והחלטות דירקטוריון — אנו מספקים פתרונות משפטיים מקיפים ואפקטיביים לעסקים בכל הגדלים.',
         'desc-insolvency':  'ניהלנו בהצלחה עניינים מורכבים בתחום חדלות הפירעון ופשיטת הרגל, הן במגזר הפרטי והן בתאגידים. אנו עובדים בנחישות לנווט בנוף המורכב של מצוקה פיננסית, הבראה תאגידית ופשיטת רגל — ומספקים תוצאות מוצלחות ללקוחות המתמודדים עם נסיבות פיננסיות מאתגרות.',
         'desc-labour':      'אנו משמשים כיועץ כללי לתאגידים בינלאומיים גדולים בתחום דיני העבודה. אנו מתמחים במתן ייעוץ מקצועי ושירותי ליטיגציה במקצועיות מרבית — הכוללים הסכמי העסקה, מחלוקות בסביבת העבודה, הליכי פיטורין, משא ומתן קיבוצי, הסכמי אי-תחרות וציות מלא לרגולציית עבודה.',
+      },
+
+      /* ─────────────── ARABIC ─────────────── */
+      ar: {
+        'nav-practice':   'مجالات الممارسة',
+        'nav-about':      'عن المكتب',
+        'nav-approach':   'منهجيتنا',
+        'nav-contact':    'تواصل معنا',
+        'nav-cta':        'احجز استشارة',
+
+        'hero-badge':     'مكتب محاماة — نوف هجليل، إسرائيل',
+        'hero-h1':        'التميز القانوني.<br><em>الممارسة الحديثة.</em>',
+        'hero-sub':       'استشارات قانونية متخصصة في القانون التجاري والتكنولوجيا والشركات والعقارات — حلول مخصصة للأعمال والأفراد في إسرائيل.',
+        'hero-btn-consult':'احجز استشارة',
+        'hero-btn-explore':'استكشف خدماتنا',
+
+        'stat-areas-lbl': 'مجالات الممارسة',
+        'stat-juris-lbl': 'الاختصاص القانوني',
+        'stat-focus-lbl': 'تركيز على العميل',
+
+        'trust-1': 'محامٍ إسرائيلي مرخص',
+        'trust-2': 'القانون التجاري والتكنولوجيا',
+        'trust-3': 'مستشار الشركات الناشئة والاستثمار',
+        'trust-4': 'نوف هجليل، شمال إسرائيل',
+        'trust-5': 'عربي · عبري · إنجليزي',
+
+        'practice-eyebrow': 'مجالات الممارسة',
+        'practice-h2':    'خدمات قانونية شاملة',
+        'practice-sub':   'خبرة متخصصة في القانون التجاري والشركات والتكنولوجيا والعقارات.',
+
+        'pa-commercial':  'القانون التجاري',
+        'pa-tech':        'قانون التكنولوجيا',
+        'pa-privacy':     'الخصوصية وحماية البيانات',
+        'pa-realestate':  'قانون العقارات',
+        'pa-ip':          'الملكية الفكرية',
+        'pa-startup':     'الشركات الناشئة والاستثمار',
+        'pa-ma':          'الاندماج والاستحواذ',
+        'pa-corporate':   'قانون الشركات',
+        'pa-insolvency':  'الإعسار والإفلاس',
+        'pa-labour':      'قانون العمل',
+        'ptile-cue':      'اقرأ المزيد',
+
+        'about-eyebrow':  'عن المكتب',
+        'about-h2':       'مكرسون لنجاحكم القانوني',
+        'about-sub':      'يقدم مكتب المحامي مرون منصور خدمات قانونية متميزة بالتزام راسخ بالتميز ورضا العميل. بخبرة عميقة في القانون التجاري والتكنولوجيا والعقارات وشؤون الشركات، يضمن المكتب حصول كل موكل على مشورة مدروسة تحمي مصالحه وتحقق أهدافه التجارية.',
+        'about-body1':    'يقدم مكتب المحامي مرون منصور خدمات قانونية متميزة بالتزام راسخ بالتميز ورضا العميل. بخبرة عميقة تمتد عبر مجالات القانون التجاري والتكنولوجيا والعقارات وشؤون الشركات، يضمن المكتب حصول كل موكل على مشورة مدروسة ومستقبلية تحمي مصالحه وتحقق أهدافه التجارية.',
+        'about-body2':    'يواكب المكتب باستمرار آخر المستجدات القانونية والتنظيمية في إسرائيل وعلى الصعيد الدولي، مما يضمن تلقي الموكلين مشورة مستنيرة وفعّالة توصَّل بوضوح وسرعة وبتكلفة معقولة.',
+        'about-cta':      'تعرف أكثر',
+        'about-li1':      'محامٍ مرخص — نقابة المحامين الإسرائيلية',
+        'about-li2':      'خبرة في القانون الإسرائيلي والدولي',
+        'about-li3':      'متخصص في قانون التكنولوجيا والخصوصية',
+        'about-li4':      'مستشار النظام البيئي للشركات الناشئة',
+        'cred-1':         'نقابة المحامين الإسرائيلية',
+        'cred-2':         'خبرة قانونية دولية',
+        'cred-3':         'محاماة تجارية وتقنية',
+        'cred-4':         'نوف هجليل، إسرائيل',
+
+        'approach-eyebrow':'منهجيتنا',
+        'approach-h2':    'القانون بوضوح وشفافية',
+        'approach-sub':   'نعتقد أن الخدمات القانونية الجيدة تعني تحقيق النتائج الصحيحة بكفاءة وشفافية وتواصل واضح.',
+        'pillar1-title':  'التميز أولاً',
+        'pillar1-body':   'نلتزم بأعلى معايير الجودة في كل ما نقدمه. كل مشورة قانونية مدروسة بعناية لتحقيق أفضل النتائج.',
+        'pillar2-title':  'فهم أعمق',
+        'pillar2-body':   'نستثمر الوقت لفهم وضعكم بشكل كامل — أهدافكم ومخاوفكم والسياق الأشمل لقضيتكم.',
+        'pillar3-title':  'حلول واضحة',
+        'pillar3-body':   'نترجم التعقيدات القانونية إلى مشورة واضحة وقابلة للتنفيذ، بعيداً عن الغموض والتحوط المفرط.',
+        'pillar4-title':  'الكفاءة والسرعة',
+        'pillar4-body':   'نحترم وقتكم وميزانيتكم. نحرص على التسليم بكفاءة، مع التركيز على ما يُحدث فعلاً فرقًا في مسيرتكم.',
+
+        'profile-eyebrow':'المحامي',
+        'profile-role':   'محامٍ ومستشار قانوني',
+        'pd-loc-lbl':     'الموقع',
+        'pd-loc-val':     'نوف هجليل، شمال إسرائيل',
+        'pd-phone-lbl':   'الهاتف',
+        'pd-email-lbl':   'البريد الإلكتروني',
+        'pd-lang-lbl':    'اللغات',
+
+        'contact-eyebrow':'تواصل معنا',
+        'contact-h2':     'تحدث مع محامٍ',
+        'contact-sub':    'هل لديكم استفسار قانوني؟ نحن هنا للمساعدة.',
+        'cd-office-lbl':  'المكتب',
+        'cd-office-val':  'نوف هجليل، شمال إسرائيل',
+        'cd-phone-lbl':   'الهاتف',
+        'cd-email-lbl':   'البريد الإلكتروني',
+
+        'form-title':     'أرسل رسالة',
+        'cform-title':    'أرسل لنا رسالة',
+        'label-fn':       'الاسم الأول',
+        'label-ln':       'اسم العائلة',
+        'label-email':    'البريد الإلكتروني',
+        'label-phone':    'الهاتف (اختياري)',
+        'label-area':     'مجال الاستفسار',
+        'label-msg':      'رسالتك',
+        'ph-fn':          'الاسم الأول',
+        'ph-ln':          'اسم العائلة',
+        'ph-msg':         'اشرح لنا باختصار موضوع استفساركم القانوني…',
+        'opt-default':    'اختر مجال الممارسة…',
+        'opt-commercial': 'القانون التجاري',
+        'opt-tech':       'قانون التكنولوجيا',
+        'opt-privacy':    'الخصوصية وحماية البيانات',
+        'opt-realestate': 'قانون العقارات',
+        'opt-ip':         'الملكية الفكرية',
+        'opt-startup':    'الشركات الناشئة والاستثمار',
+        'opt-ma':         'الاندماج والاستحواذ',
+        'opt-corporate':  'قانون الشركات',
+        'opt-insolvency': 'الإعسار والإفلاس',
+        'opt-labour':     'قانون العمل',
+        'opt-other':      'أخرى / استفسار عام',
+        'form-submit':    'إرسال الرسالة',
+        'form-disc':      'هذا النموذج مخصص للاستفسارات العامة فقط. لا تنشأ علاقة موكل-محامٍ إلا بعد توقيع اتفاقية تكليف رسمية. محتوى هذا الموقع لا يشكّل استشارة قانونية.',
+
+        'footer-tag':     'محامٍ ومستشار قانوني',
+        'footer-approach':'المنهجية',
+        'footer-legal':   'المحتوى الوارد في هذا الموقع مقدَّم لأغراض المعلومات العامة فقط، ولا يشكّل استشارة قانونية. لا تنشأ علاقة محامٍ-موكل من خلال الوصول إلى هذا الموقع أو استخدامه. للحصول على مشورة قانونية متخصصة، يُرجى التواصل مع المكتب مباشرةً لترتيب موعد استشارة.',
+        'footer-copy':    '© 2025 مكتب المحامي مرون منصور',
+        'footer-access':  'إمكانية الوصول',
+        'footer-cookies': 'سياسة ملفات تعريف الارتباط',
+
+        'cookie-text':    'يحفظ هذا الموقع تفضيلات لغتك في متصفحك ويستخدم خطوط Google Fonts. لا تُستخدم ملفات تعريف ارتباط للتتبع أو التحليل.',
+        'cookie-learn':   'مزيد من المعلومات',
+        'cookie-decline': 'رفض',
+        'cookie-accept':  'موافق',
+
+        'err-required': 'يُرجى ملء جميع الحقول المطلوبة (الاسم الأول، اسم العائلة، البريد الإلكتروني، الرسالة).',
+        'err-email':    'يُرجى إدخال عنوان بريد إلكتروني صحيح.',
+
+        'desc-commercial':  'نقدم خدمات قانونية تجارية شاملة تغطي العقود وعلاقات التجارة والتوزيع والوكالة والنزاعات التجارية. تمتد خبرتنا عبر مجموعة واسعة من المعاملات التجارية — لضمان حصول موكلينا على مشورة مستنيرة وعملية تحمي مصالحهم التجارية.',
+        'desc-tech':        'تتعامل ممارستنا في مجال قانون التكنولوجيا مع التحديات القانونية الفريدة للاقتصاد الرقمي. من اتفاقيات ترخيص البرمجيات وعقود SaaS إلى الامتثال التنظيمي وحوكمة البيانات، نساعد شركات التكنولوجيا على التنقل في المشهد القانوني المتطور لقطاع التقنية.',
+        'desc-privacy':     'تولت ممارستنا في مجال قانون الخصوصية إدارة مشاريع متطورة تتعلق بحوكمة البيانات داخل الشركات الفردية والمنظمات المتعددة الكيانات. نقدم المشورة بشأن الامتثال للائحة GDPR وقانون حماية الخصوصية الإسرائيلي، واتفاقيات معالجة البيانات وسياسات الخصوصية.',
+        'desc-realestate':  'تغطي ممارستنا العقارية مجموعة واسعة من معاملات العقارات والمشاريع. من الاستشارات القانونية العامة إلى إدارة عقود الشراء المعقدة وتسجيل العقارات، لدينا الخبرة اللازمة لدعم صفقاتكم العقارية. سواء التجارية أو السكنية، نقدم توجيهاً مهنياً موثوقاً في كل مرحلة.',
+        'desc-ip':          'تتولى ممارستنا في مجال الملكية الفكرية تقديم خدمة قانونية شاملة. نساعد الشركات في حماية إبداعاتها واختراعاتها وهوية علامتها التجارية من خلال المشورة القانونية الصحيحة والإنفاذ الاستراتيجي لحقوق الملكية الفكرية — من تسجيل العلامات التجارية وحماية حقوق النشر إلى تراخيص الملكية الفكرية.',
+        'desc-startup':     'تركز ممارستنا في مجال الشركات الناشئة والاستثمار على المراحل المختلفة من تطوير الأعمال — من تمويل المؤسسين الأوليين إلى تأمين رأس المال الاستثماري أو التمويل الجماعي. سواء كنت مؤسساً يسعى إلى هيكلة شركتك الناشئة أو مستثمراً يحتاج إلى حماية قانونية سليمة، نحن هنا لدعمك.',
+        'desc-ma':          'تغطي ممارستنا في مجال الاندماج والاستحواذ الطيف الكامل لعمليات الدمج والاستحواذ. نقدم المشورة في المعاملات المتعلقة بنقل أو توحيد ملكية الشركات والتنظيمات التجارية، من خلال الاستيعاب المباشر والاندماجات وعروض الاستحواذ وإعادة الهيكلة.',
+        'desc-corporate':   'يكرس فريق قانون الشركات لدينا جهوده لتقديم مجموعة واسعة من الخدمات المتعلقة بحوكمة الشركات بأعلى درجات الاحترافية. من صياغة عقود التأسيس والنظام الأساسي إلى إنشاء اتفاقيات المساهمين وقرارات مجلس الإدارة، نقدم حلولاً قانونية شاملة وفعّالة.',
+        'desc-insolvency':  'تقدم ممارستنا في مجال الإعسار وإعادة الهيكلة إرشادات استراتيجية للشركات والأفراد الذين يواجهون ضائقة مالية. نساعد موكلينا في استكشاف خيارات إعادة الهيكلة والتفاوض مع الدائنين والتنقل في إجراءات الإفلاس بهدف تحقيق أفضل النتائج الممكنة.',
+        'desc-labour':      'نتولى تقديم المشورة القانونية لكبار الشركات متعددة الجنسيات في مجال قانون العمل. نتخصص في تقديم خدمات الاستشارة والتقاضي بأعلى مستوى من الاحترافية — تشمل عقود التوظيف ونزاعات بيئة العمل وإجراءات الإنهاء والمفاوضات الجماعية واتفاقيات عدم المنافسة والامتثال الكامل للوائح العمل.',
       }
     };
 
@@ -2304,7 +2447,7 @@
     function setLang(lang) {
       const html = document.documentElement;
       html.lang = lang;
-      html.dir  = lang === 'he' ? 'rtl' : 'ltr';
+      html.dir  = (lang === 'he' || lang === 'ar') ? 'rtl' : 'ltr';
 
       document.querySelectorAll('.lang-btn').forEach(btn => {
         const active = btn.dataset.lang === lang;
@@ -2322,14 +2465,19 @@
         if (val !== undefined) el.placeholder = val;
       });
 
-      const isHe = lang === 'he';
-      document.title = isHe
-        ? 'מרון מנסור — עורך דין'
-        : 'Maroun Mansour — Attorney at Law';
+      const titles = {
+        en: 'Maroun Mansour — Attorney at Law',
+        he: 'מרון מנסור — עורך דין',
+        ar: 'مرون منصور — محامٍ'
+      };
+      const descs = {
+        en: 'Maroun Mansour — Attorney at Law. Expert legal counsel in commercial, technology, corporate, real estate, and startup law across Israel.',
+        he: 'מרון מנסור — עורך דין. ייעוץ משפטי מקצועי בדיני מסחר, טכנולוגיה, חברות ומקרקעין בישראל.',
+        ar: 'مرون منصور — محامٍ. استشارات قانونية متخصصة في القانون التجاري والشركات والخصوصية والعقارات والشركات الناشئة في إسرائيل.'
+      };
+      document.title = titles[lang] || titles.en;
       const meta = document.querySelector('meta[name="description"]');
-      if (meta) meta.content = isHe
-        ? 'מרון מנסור — עורך דין. ייעוץ משפטי מקצועי בדיני מסחר, טכנולוגיה, חברות ומקרקעין בישראל.'
-        : 'Maroun Mansour — Attorney at Law. Expert legal counsel in commercial, technology, corporate, real estate, and startup law across Israel.';
+      if (meta) meta.content = descs[lang] || descs.en;
 
       try { localStorage.setItem('lang', lang); } catch(e) {}
     }
@@ -2618,6 +2766,65 @@
             <p>ניתן למחוק את ה-localStorage בכל עת דרך הגדרות הדפדפן (<em>הגדרות → פרטיות → נקה נתוני גלישה → נתוני אתר</em>).</p>
             <h4>יצירת קשר</h4>
             <p>לפניות בנושא פרטיות: <a href="mailto:Office@MMans-Law.com">Office@MMans-Law.com</a></p>
+          `
+        }
+      }
+    };
+
+      ar: {
+        accessibility: {
+          eyebrow: 'قانوني',
+          title: 'بيان إمكانية الوصول',
+          body: `
+            <h4>التزامنا بمعيار WCAG 2.2</h4>
+            <p>يلتزم مكتب المحامي مرون منصور التزاماً صارماً بـ<strong>إرشادات إمكانية الوصول لمحتوى الويب WCAG 2.2 المستوى AA</strong>. يمكن للمستخدمين ذوي الإعاقات تخصيص الواجهة من خلال لوحة إمكانية الوصول.</p>
+            <h4>تحسينات قارئ الشاشة ولوحة المفاتيح</h4>
+            <ul>
+              <li>سمات ARIA لتوفير بيانات ذات معنى لقارئات الشاشة</li>
+              <li>تسلسل هرمي منطقي للعناوين (h1→h6) في جميع أنحاء الصفحة</li>
+              <li>تشغيل كامل بلوحة المفاتيح — جميع العناصر قابلة للوصول عبر مفتاح Tab</li>
+              <li>قائمة "تخطي المحتوى" في أعلى الصفحة لمستخدمي لوحة المفاتيح</li>
+              <li>مؤشرات تركيز واضحة على جميع العناصر التفاعلية</li>
+              <li>نسبة تباين ألوان لا تقل عن 4.5:1 وفق معيار WCAG AA</li>
+            </ul>
+            <h4>الميزات المتاحة</h4>
+            <ul>
+              <li><strong>ضعف البصر</strong> — مكبّر النصوص، التباين العالي، التدرج الرمادي، عكس الألوان</li>
+              <li><strong>الإدراك والتركيز</strong> — دليل القراءة، قناع القراءة، إيقاف الرسوم المتحركة</li>
+              <li><strong>عسر القراءة</strong> — خط مناسب لعسر القراءة، تباعد الحروف، نص أكبر</li>
+              <li><strong>التنقل بلوحة المفاتيح</strong> — وضع التركيز المحسّن، التخطي إلى المحتوى</li>
+            </ul>
+            <h4>المتصفحات وقارئات الشاشة المدعومة</h4>
+            <p>المتصفحات: Chrome، Firefox، Safari، Edge، Opera.<br>
+            قارئات الشاشة: JAWS (Windows/Mac)، NVDA (Windows/Mac).</p>
+            <h4>التواصل</h4>
+            <p>البريد الإلكتروني: <a href="mailto:Office@MMans-Law.com">Office@MMans-Law.com</a><br>
+            الهاتف: <a href="tel:+972526603781">(+972) 052-6603781</a></p>
+          `
+        },
+        cookies: {
+          eyebrow: 'قانوني',
+          title: 'سياسة ملفات تعريف الارتباط والتخزين',
+          body: `
+            <h4>ما الذي نخزّنه</h4>
+            <p>يستخدم هذا الموقع <strong>التخزين المحلي للمتصفح (localStorage)</strong> — وليس ملفات تعريف الارتباط — لتذكّر تفضيل واحد:</p>
+            <ul>
+              <li><strong>تفضيل اللغة</strong> — يخزّن <code>"en"</code> أو <code>"he"</code> أو <code>"ar"</code> حتى تُتذكر لغتك المختارة في الزيارات المستقبلية. تبقى هذه البيانات في متصفحك ولا تُرسل إلى أي خادم.</li>
+              <li><strong>موافقة ملفات تعريف الارتباط</strong> — يخزّن ما إذا كنت قد قبلت أو رفضت هذا الإشعار.</li>
+            </ul>
+            <h4>خطوط Google Fonts</h4>
+            <p>يتم تحميل الخطوط من <strong>Google Fonts</strong> (fonts.googleapis.com / fonts.gstatic.com). عند تحميل الخطوط، قد تتلقى Google عنوان IP الخاص بك. يخضع استخدام Google لهذه البيانات لـ<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">سياسة خصوصية Google</a>.</p>
+            <h4>ما لا نستخدمه</h4>
+            <ul>
+              <li>لا أدوات تحليل (Google Analytics وما شابه)</li>
+              <li>لا ملفات تعريف ارتباط للإعلانات أو التسويق</li>
+              <li>لا بكسلات تتبع لوسائل التواصل الاجتماعي</li>
+              <li>لا ملفات تعريف جلسات أو تتبع من جانب الخادم</li>
+            </ul>
+            <h4>خياراتكم</h4>
+            <p>يمكنكم مسح localStorage في أي وقت من إعدادات المتصفح (<em>الإعدادات ← الخصوصية ← مسح بيانات التصفح ← بيانات الموقع</em>).</p>
+            <h4>التواصل</h4>
+            <p>للاستفسارات المتعلقة بالخصوصية: <a href="mailto:Office@MMans-Law.com">Office@MMans-Law.com</a></p>
           `
         }
       }
