@@ -1774,6 +1774,12 @@
             <h3 class="cform__title" id="form-h3" data-i18n="form-title">Send a Message</h3>
 
             <form id="contact-form" novalidate>
+              <!-- Web3Forms -->
+              <input type="hidden" name="access_key" value="2d8b45aa-068e-457e-92de-8c8b1716a6bc">
+              <input type="hidden" name="subject" id="form-subject" value="Legal Inquiry — Maroun Mansour Law">
+              <input type="hidden" name="from_name" value="Maroun Mansour Law Website">
+              <input type="checkbox" name="botcheck" style="display:none">
+              <!-- /Web3Forms -->
               <div class="fg-row">
                 <div class="fg">
                   <label for="fn"><span data-i18n="label-fn">First Name</span> <span class="req" aria-label="required">*</span></label>
@@ -1815,7 +1821,8 @@
                 <label for="msg"><span data-i18n="label-msg">Message</span> <span class="req" aria-label="required">*</span></label>
                 <textarea id="msg" name="message" placeholder="Briefly describe your legal matter…" data-i18n-placeholder="ph-msg" required></textarea>
               </div>
-              <button type="submit" class="cform__submit" data-i18n="form-submit">Send Message</button>
+              <button type="submit" class="cform__submit" id="form-submit-btn" data-i18n="form-submit">Send Message</button>
+              <div id="form-feedback" style="display:none;margin-top:14px;padding:14px 18px;border-radius:10px;font-size:14px;font-weight:500;"></div>
               <p class="cform__disc" data-i18n="form-disc">
                 This form is for general inquiries only. No attorney-client relationship is formed until a formal engagement agreement is executed. Content on this site does not constitute legal advice.
               </p>
@@ -2534,29 +2541,81 @@
     });
 
     /* ── Contact form ────────────────────────────────────────────── */
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
       e.preventDefault();
-      const lang = document.documentElement.lang || 'en';
-      const fn   = document.getElementById('fn').value.trim();
-      const ln   = document.getElementById('ln').value.trim();
-      const em   = document.getElementById('em').value.trim();
-      const area = document.getElementById('area').value;
-      const msg  = document.getElementById('msg').value.trim();
+      const lang     = document.documentElement.lang || 'en';
+      const fn       = document.getElementById('fn').value.trim();
+      const ln       = document.getElementById('ln').value.trim();
+      const em       = document.getElementById('em').value.trim();
+      const area     = document.getElementById('area').value;
+      const msg      = document.getElementById('msg').value.trim();
+      const feedback = document.getElementById('form-feedback');
+      const btn      = document.getElementById('form-submit-btn');
 
+      /* Validation */
       if (!fn || !ln || !em || !msg) {
-        alert(T[lang]?.['err-required'] || T.en['err-required']);
+        showFeedback(T[lang]?.['err-required'] || T.en['err-required'], 'error');
         return;
       }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) {
-        alert(T[lang]?.['err-email'] || T.en['err-email']);
+        showFeedback(T[lang]?.['err-email'] || T.en['err-email'], 'error');
         return;
       }
 
-      const subject = area
-        ? `Legal Inquiry — ${area.charAt(0).toUpperCase() + area.slice(1).replace(/-/g,' ')}`
-        : 'Legal Inquiry';
-      const body = `Name: ${fn} ${ln}\nEmail: ${em}\nArea: ${area || 'General'}\n\n${msg}`;
-      window.location.href = `mailto:Office@MMans-Law.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      /* Set dynamic subject */
+      const areaLabel = area
+        ? area.charAt(0).toUpperCase() + area.slice(1).replace(/-/g,' ')
+        : 'General';
+      document.getElementById('form-subject').value =
+        `Legal Inquiry — ${areaLabel} | ${fn} ${ln}`;
+
+      /* Submit to Web3Forms */
+      btn.disabled = true;
+      btn.textContent = '⏳';
+
+      try {
+        const formData = new FormData(this);
+        const res  = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST', body: formData
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          showFeedback(
+            lang === 'he' ? '✓ הודעתכם נשלחה! נחזור אליכם בהקדם.' :
+            lang === 'ar' ? '✓ تم إرسال رسالتك! سنتواصل معك قريباً.' :
+                            '✓ Message sent! We\'ll be in touch shortly.',
+            'success'
+          );
+          this.reset();
+        } else {
+          throw new Error(data.message);
+        }
+      } catch(err) {
+        showFeedback(
+          lang === 'he' ? '✗ שגיאה בשליחה. אנא נסו שנית או צרו קשר ישירות.' :
+          lang === 'ar' ? '✗ حدث خطأ. يُرجى المحاولة مرة أخرى أو التواصل مباشرة.' :
+                          '✗ Something went wrong. Please try again or contact us directly.',
+          'error'
+        );
+      } finally {
+        btn.disabled = false;
+        const t = T[lang]?.['form-submit'] || T.en['form-submit'];
+        btn.textContent = t;
+      }
+
+      function showFeedback(message, type) {
+        feedback.style.display = 'block';
+        feedback.textContent = message;
+        feedback.style.background = type === 'success'
+          ? 'rgba(58,143,79,0.12)' : 'rgba(220,38,38,0.10)';
+        feedback.style.color  = type === 'success' ? '#1a5e28' : '#991b1b';
+        feedback.style.border = type === 'success'
+          ? '1px solid rgba(58,143,79,0.30)' : '1px solid rgba(220,38,38,0.25)';
+        if (type === 'success') {
+          setTimeout(() => { feedback.style.display = 'none'; }, 6000);
+        }
+      }
     });
     /* ── Practice area modal ────────────────────────────────────────── */
     (function() {
