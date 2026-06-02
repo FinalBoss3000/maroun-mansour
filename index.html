@@ -1314,7 +1314,11 @@
 
     [dir="rtl"] .a11y-toggle { left: auto; right: 24px; }
     [dir="rtl"] body:has(#cookie-bar.show) .a11y-toggle { left: auto; right: 24px; }
-    [dir="rtl"] .a11y-panel  { left: auto; right: 0; transform: translateX(110%); box-shadow: -6px 0 40px rgba(0,0,0,0.20); }
+    /* RTL panel: slide LEFT when closed so it never overflows the RIGHT edge.
+       Overflowing to the right in RTL causes iOS Safari to scroll the page to
+       the rightmost position by default, producing the blank white gap on the
+       left side.  By going left (-110%) we stay safely inside the viewport. */
+    [dir="rtl"] .a11y-panel  { left: auto; right: 0; transform: translateX(-110%); box-shadow: -6px 0 40px rgba(0,0,0,0.20); }
     [dir="rtl"] .a11y-panel.open { transform: translateX(0); }
     [dir="rtl"] .a11y-foot-links { flex-direction: row-reverse; }
   </style>
