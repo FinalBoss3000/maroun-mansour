@@ -68,6 +68,7 @@
     /* ─── RESET ──────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html { overflow-x: hidden; }
     body {
       font-family: var(--f-body);
       font-size: 16px;
@@ -76,6 +77,7 @@
       background: var(--c-canvas);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      max-width: 100vw;
     }
     img, svg { display: block; max-width: 100%; }
     a { color: inherit; }
@@ -1162,20 +1164,31 @@
     .a11y-overlay {
       position: fixed; inset: 0; z-index: 1999;
       background: rgba(7,19,58,0.45);
-      opacity: 0; pointer-events: none; transition: opacity 300ms;
+      opacity: 0; pointer-events: none;
+      transition: opacity 380ms cubic-bezier(0.32,0.72,0,1);
     }
     .a11y-overlay.show { opacity: 1; pointer-events: all; }
 
     .a11y-panel {
       position: fixed; top: 0; left: 0; bottom: 0; z-index: 2000;
-      width: min(380px, 96vw);
+      width: min(380px, 92vw);
       background: #fff;
       box-shadow: 6px 0 40px rgba(0,0,0,0.20);
       display: flex; flex-direction: column;
-      transform: translateX(-108%);
-      transition: transform 330ms cubic-bezier(0.4,0,0.2,1);
+      transform: translateX(-110%);
+      visibility: hidden;
+      will-change: transform;
+      /* slide + visibility: hidden delays until slide is done (380ms) */
+      transition: transform 380ms cubic-bezier(0.32,0.72,0,1),
+                  visibility 0s linear 380ms;
     }
-    .a11y-panel.open { transform: translateX(0); }
+    .a11y-panel.open {
+      transform: translateX(0);
+      visibility: visible;
+      /* visibility becomes visible immediately on open */
+      transition: transform 380ms cubic-bezier(0.32,0.72,0,1),
+                  visibility 0s linear 0s;
+    }
 
     .a11y-panel__head {
       display: flex; align-items: center; justify-content: space-between;
@@ -1301,7 +1314,7 @@
 
     [dir="rtl"] .a11y-toggle { left: auto; right: 24px; }
     [dir="rtl"] body:has(#cookie-bar.show) .a11y-toggle { left: auto; right: 24px; }
-    [dir="rtl"] .a11y-panel  { left: auto; right: 0; transform: translateX(108%); box-shadow: -6px 0 40px rgba(0,0,0,0.20); }
+    [dir="rtl"] .a11y-panel  { left: auto; right: 0; transform: translateX(110%); box-shadow: -6px 0 40px rgba(0,0,0,0.20); }
     [dir="rtl"] .a11y-panel.open { transform: translateX(0); }
     [dir="rtl"] .a11y-foot-links { flex-direction: row-reverse; }
   </style>
