@@ -1797,12 +1797,8 @@
             <h3 class="cform__title" id="form-h3" data-i18n="form-title">Send a Message</h3>
 
             <form id="contact-form" novalidate>
-              <!-- Web3Forms -->
-              <input type="hidden" name="access_key" value="2d8b45aa-068e-457e-92de-8c8b1716a6bc">
-              <input type="hidden" name="subject" id="form-subject" value="Legal Inquiry — Maroun Mansour Law">
-              <input type="hidden" name="from_name" value="Maroun Mansour Law Website">
-              <input type="checkbox" name="botcheck" style="display:none">
-              <!-- /Web3Forms -->
+              <!-- Honeypot anti-spam: bots fill this, humans leave it empty -->
+              <input type="text" name="honeypot" style="display:none;position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
               <div class="fg-row">
                 <div class="fg">
                   <label for="fn"><span data-i18n="label-fn">First Name</span> <span class="req" aria-label="required">*</span></label>
@@ -2585,21 +2581,39 @@
         return;
       }
 
-      /* Set dynamic subject */
+      /* Honeypot check — if filled, silently ignore (bot) */
+      const honeypot = this.querySelector('[name="honeypot"]').value;
+      if (honeypot) return;
+
+      /* Build subject */
       const areaLabel = area
         ? area.charAt(0).toUpperCase() + area.slice(1).replace(/-/g,' ')
         : 'General';
-      document.getElementById('form-subject').value =
-        `Legal Inquiry — ${areaLabel} | ${fn} ${ln}`;
+      const subject = `Legal Inquiry — ${areaLabel} | ${fn} ${ln}`;
 
-      /* Submit to Web3Forms */
+      /* ── Google Apps Script endpoint ──────────────────────────────
+         Replace the URL below with your own deployed Apps Script URL.
+         See: https://script.google.com → New project → paste code → Deploy
+      ─────────────────────────────────────────────────────────────── */
+      const APPS_SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
+
       btn.disabled = true;
       btn.textContent = '⏳';
 
       try {
-        const formData = new FormData(this);
-        const res  = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST', body: formData
+        const payload = new URLSearchParams({
+          first_name:    fn,
+          last_name:     ln,
+          email:         em,
+          phone:         document.getElementById('ph').value.trim(),
+          practice_area: area,
+          message:       msg,
+          subject:       subject
+        });
+
+        const res  = await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          body:   payload
         });
         const data = await res.json();
 
@@ -2612,7 +2626,7 @@
           );
           this.reset();
         } else {
-          throw new Error(data.message);
+          throw new Error(data.error || 'Script error');
         }
       } catch(err) {
         showFeedback(
