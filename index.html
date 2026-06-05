@@ -2611,23 +2611,23 @@
           subject:       subject
         });
 
-        const res  = await fetch(APPS_SCRIPT_URL, {
+        /* Google Apps Script redirects the POST to a different domain,
+           which blocks reading the response (CORS).  mode:'no-cors' lets
+           the request through — the script still runs and sends the email,
+           we just can't read the reply, so we assume success on no-throw. */
+        await fetch(APPS_SCRIPT_URL, {
           method: 'POST',
+          mode:   'no-cors',
           body:   payload
         });
-        const data = await res.json();
 
-        if (data.success) {
-          showFeedback(
-            lang === 'he' ? '✓ הודעתכם נשלחה! נחזור אליכם בהקדם.' :
-            lang === 'ar' ? '✓ تم إرسال رسالتك! سنتواصل معك قريباً.' :
-                            '✓ Message sent! We\'ll be in touch shortly.',
-            'success'
-          );
-          this.reset();
-        } else {
-          throw new Error(data.error || 'Script error');
-        }
+        showFeedback(
+          lang === 'he' ? '✓ הודעתכם נשלחה! נחזור אליכם בהקדם.' :
+          lang === 'ar' ? '✓ تم إرسال رسالتك! سنتواصل معك قريباً.' :
+                          '✓ Message sent! We\'ll be in touch shortly.',
+          'success'
+        );
+        this.reset();
       } catch(err) {
         showFeedback(
           lang === 'he' ? '✗ שגיאה בשליחה. אנא נסו שנית או צרו קשר ישירות.' :
