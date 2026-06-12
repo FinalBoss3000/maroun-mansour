@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <meta name="description" content="Maroun Mansour — Attorney at Law. Expert legal counsel in commercial, technology, corporate, real estate, and startup law across Israel.">
-  <title>Maroun Mansour — Attorney at Law</title>
+  <meta name="description" content="Maroun Mansour - Attorney at Law. Expert legal counsel in commercial, technology, corporate, real estate, and startup law across Israel.">
+  <title>Maroun Mansour - Attorney at Law</title>
 
   <link rel="icon" type="image/svg+xml" href="logo.svg">
   <link rel="icon" type="image/avif" href="logo.avif">
@@ -238,7 +238,7 @@
       display: flex; align-items: center;
       text-decoration: none; flex-shrink: 0;
     }
-    .nav__logo-img { height: 36px; width: auto; border-radius: 3px; display: block; }
+    .nav__logo-img { height: 52px; width: auto; display: block; }
 
     .nav__links {
       display: flex; align-items: center; gap: 2px;
@@ -447,6 +447,9 @@
       font-size: 12px; color: var(--c-on-dark-45);
       letter-spacing: 0.02em;
     }
+    .hero__stat { display: flex; flex-direction: column; }
+    .hero__stat--inline { flex-direction: row; align-items: center; gap: 8px; }
+    .hero__stat--inline .hero__stat-val { margin-bottom: 0; font-size: 22px; }
 
     /* ════════════════════════════════════════════════════════════════
        TRUST BAR
@@ -1335,11 +1338,8 @@
   <!-- ── NAV ───────────────────────────────────────────────────────── -->
   <nav class="nav" id="nav" aria-label="Main navigation">
     <div class="nav__inner">
-      <a href="#" class="nav__logo" aria-label="Maroun Mansour Law — Home">
-        <picture>
-          <source srcset="logo.avif" type="image/avif">
-          <img src="logo.svg" alt="Maroun Mansour Law" height="36" class="nav__logo-img">
-        </picture>
+      <a href="#" class="nav__logo" aria-label="Maroun Mansour Law - Home">
+        <img src="logo.svg" alt="Maroun Mansour Law" height="52" class="nav__logo-img">
       </a>
 
       <ul class="nav__links" role="list">
@@ -1370,9 +1370,9 @@
   <!-- Mobile menu -->
   <div class="nav__mobile" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
     <div class="mobile-lang" role="group" aria-label="Language / שפה">
-      <button class="lang-btn" data-lang="en" aria-pressed="true" onclick="setLang('en');closeMenu()">EN — English</button>
-      <button class="lang-btn" data-lang="he" aria-pressed="false" onclick="setLang('he');closeMenu()">עב — עברית</button>
-      <button class="lang-btn" data-lang="ar" aria-pressed="false" onclick="setLang('ar');closeMenu()">عر — العربية</button>
+      <button class="lang-btn" data-lang="en" aria-pressed="true" onclick="setLang('en');closeMenu()">EN - English</button>
+      <button class="lang-btn" data-lang="he" aria-pressed="false" onclick="setLang('he');closeMenu()">עב - עברית</button>
+      <button class="lang-btn" data-lang="ar" aria-pressed="false" onclick="setLang('ar');closeMenu()">عر - العربية</button>
     </div>
     <a href="#practice" onclick="closeMenu()" data-i18n="nav-practice">Practice Areas</a>
     <a href="#about"    onclick="closeMenu()" data-i18n="nav-about">About</a>
@@ -1404,7 +1404,7 @@
         <div class="hero__inner">
           <div class="hero__badge rev">
             <span class="hero__badge-dot" aria-hidden="true"></span>
-            <span data-i18n="hero-badge">Law Office — Nof Hagalil, Israel</span>
+            <span data-i18n="hero-badge">Law Office - Nof Hagalil, Israel</span>
           </div>
 
           <h1 class="hero__h1 rev d1" id="hero-h1" data-i18n="hero-h1">
@@ -1412,7 +1412,7 @@
           </h1>
 
           <p class="hero__sub rev d2" data-i18n="hero-sub">
-            Expert legal counsel in commercial, technology, corporate, and real estate law — tailored solutions for businesses and individuals across Israel.
+            Expert legal counsel in commercial, technology, corporate, and real estate law - tailored solutions for businesses and individuals across Israel.
           </p>
 
           <div class="hero__ctas rev d3">
@@ -1429,16 +1429,20 @@
 
           <div class="hero__stats rev d4">
             <div class="hero__stat">
-              <span class="hero__stat-val">8</span>
-              <span class="hero__stat-lbl" data-i18n="stat-areas-lbl">Practice Areas</span>
+              <span class="hero__stat-val">10+</span>
+              <span class="hero__stat-lbl" data-i18n="stat-years-lbl">Years Experience</span>
             </div>
-            <div class="hero__stat">
-              <span class="hero__stat-val">IL &amp; Intl</span>
-              <span class="hero__stat-lbl" data-i18n="stat-juris-lbl">Legal Jurisdiction</span>
+            <div class="hero__stat hero__stat--inline">
+              <span class="hero__stat-val">✓</span>
+              <span class="hero__stat-lbl" data-i18n="stat-intl-lbl">Int'l Cases</span>
             </div>
             <div class="hero__stat">
               <span class="hero__stat-val">100%</span>
-              <span class="hero__stat-lbl" data-i18n="stat-focus-lbl">Client-Focused</span>
+              <span class="hero__stat-lbl" data-i18n="stat-focus-lbl">Client Satisfaction</span>
+            </div>
+            <div class="hero__stat">
+              <span class="hero__stat-val">24h</span>
+              <span class="hero__stat-lbl" data-i18n="stat-response-lbl">Response Time</span>
             </div>
           </div>
         </div>
@@ -1605,7 +1609,7 @@
               The Law Office of Maroun Mansour delivers expert legal counsel with an unwavering commitment to excellence and client satisfaction. With deep expertise spanning commercial transactions, technology regulations, real estate, and corporate matters, the firm provides comprehensive legal solutions tailored to each client's unique circumstances.
             </p>
             <p class="about__body" data-i18n="about-body2">
-              Staying current with the latest legal and regulatory developments in Israel and internationally, the firm ensures clients receive informed, forward-thinking advice that protects their interests and enables their business goals — delivered with clarity, speed, and cost-effectiveness.
+              Staying current with the latest legal and regulatory developments in Israel and internationally, the firm ensures clients receive informed, forward-thinking advice that protects their interests and enables their business goals - delivered with clarity, speed, and cost-effectiveness.
             </p>
 
             <div class="about__creds">
@@ -1613,7 +1617,7 @@
                 <span class="about__cred-check" aria-hidden="true">
                   <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
-                <span data-i18n="cred-1">Licensed Attorney at Law — Israel Bar Association</span>
+                <span data-i18n="cred-1">Licensed Attorney at Law - Israel Bar Association</span>
               </div>
               <div class="about__cred">
                 <span class="about__cred-check" aria-hidden="true">
@@ -1649,7 +1653,7 @@
               <div class="profile-card__eyebrow" data-i18n="profile-eyebrow">Attorney at Law</div>
               <div class="profile-card__monogram" aria-hidden="true">MM</div>
               <div class="profile-card__name">Maroun Mansour</div>
-              <div class="profile-card__role" data-i18n="profile-role">עורך דין — Licensed Israeli Attorney</div>
+              <div class="profile-card__role" data-i18n="profile-role">עורך דין - Licensed Israeli Attorney</div>
 
               <div class="profile-card__details">
                 <div class="profile-detail">
@@ -1725,14 +1729,14 @@
             <div class="pillar__num" aria-hidden="true">02</div>
             <h3 class="pillar__title" data-i18n="pillar2-title">Deep Expertise</h3>
             <p class="pillar__body" data-i18n="pillar2-body">
-              Continuously updated knowledge of the latest legal and regulatory developments in Israel and internationally — across commercial, technology, corporate, real estate, and startup law.
+              Continuously updated knowledge of the latest legal and regulatory developments in Israel and internationally - across commercial, technology, corporate, real estate, and startup law.
             </p>
           </div>
           <div class="pillar rev d2">
             <div class="pillar__num" aria-hidden="true">03</div>
             <h3 class="pillar__title" data-i18n="pillar3-title">Client Satisfaction</h3>
             <p class="pillar__body" data-i18n="pillar3-body">
-              Your success is our success. We deliver personalized legal services that meet your specific goals — on time, within scope, and with transparent communication at every stage of the process.
+              Your success is our success. We deliver personalized legal services that meet your specific goals - on time, within scope, and with transparent communication at every stage of the process.
             </p>
           </div>
         </div>
@@ -1750,7 +1754,7 @@
               Start Your Legal<br>Journey Today
             </h2>
             <p class="contact__sub" data-i18n="contact-sub">
-              Whether you're a startup, established business, or individual — we're here to provide expert legal guidance tailored to your situation. Reach out for a consultation.
+              Whether you're a startup, established business, or individual - we're here to provide expert legal guidance tailored to your situation. Reach out for a consultation.
             </p>
 
             <div class="contact__details">
@@ -1860,7 +1864,7 @@
       <div class="footer__grid">
         <div>
           <span class="footer__brand-name">Maroun Mansour</span>
-          <span class="footer__brand-tag" data-i18n="footer-tag">Attorney at Law — עורך דין</span>
+          <span class="footer__brand-tag" data-i18n="footer-tag">Attorney at Law - עורך דין</span>
         </div>
         <nav class="footer__nav" aria-label="Footer navigation">
           <a href="#practice" data-i18n="nav-practice">Practice Areas</a>
@@ -2081,15 +2085,16 @@
         'nav-contact':    'Contact',
         'nav-cta':        'Schedule a Consultation',
 
-        'hero-badge':       'Boutique Law Office — Nof Hagalil, Israel',
-        'hero-h1':          'Sharp Legal Counsel.<br><em>Practical Results.</em>',
-        'hero-sub':         'From startup agreements to corporate acquisitions — precise, plain-language legal advice for businesses and individuals across Israel, in Hebrew, Arabic, and English.',
+        'hero-badge':       'Boutique Law Office - Nof Hagalil, Israel',
+        'hero-h1':          'Sharp Legal Counsel<br><em>Practical Results</em>',
+        'hero-sub':         'From startup agreements to corporate acquisitions - precise, plain-language legal advice for businesses and individuals across Israel, in Hebrew, Arabic, and English.',
         'hero-btn-explore': 'See Practice Areas',
-        'stat-areas-lbl':   'Practice Areas',
-        'stat-juris-lbl':   'IL &amp; Intl',
-        'stat-focus-lbl':   'Client-Focused',
+        'stat-years-lbl':    'Years Experience',
+        'stat-intl-lbl':     'Int\'l Cases',
+        'stat-focus-lbl':    'Client Satisfaction',
+        'stat-response-lbl': 'Response Time',
 
-        'trust-1': 'Licensed Member — Israel Bar Association',
+        'trust-1': 'Licensed Member - Israel Bar Association',
         'trust-2': 'Technology &amp; Commercial Law',
         'trust-3': 'Startup &amp; VC Investment Counsel',
         'trust-4': 'Serving Israel &amp; International Clients',
@@ -2097,7 +2102,7 @@
 
         'practice-eyebrow': 'Fields of Practice',
         'practice-h2':      'Expert Counsel at Every Stage',
-        'practice-sub':     'From protecting your intellectual property to closing your next acquisition — deep expertise across 8 practice areas.',
+        'practice-sub':     'From protecting your intellectual property to closing your next acquisition - deep expertise across 8 practice areas.',
         'pa-commercial':  'Commercial Law',
         'pa-tech':        'Technology Law',
         'pa-privacy':     'Privacy &amp; Data Protection',
@@ -2111,17 +2116,17 @@
 
         'about-eyebrow': 'About the Firm',
         'about-h2':      'Boutique Firm. Enterprise-Grade Counsel.',
-        'about-sub':     'Personal attention from senior counsel — not a junior associate — and solutions built around your situation, not a generic template.',
+        'about-sub':     'Personal attention from senior counsel - not a junior associate - and solutions built around your situation, not a generic template.',
         'about-body1':   'The Law Office of Maroun Mansour is a boutique practice with deep roots in commercial, technology, and real estate law. Every client works directly with the principal attorney, ensuring that the advice you receive reflects genuine expertise and a thorough understanding of your specific circumstances.',
-        'about-body2':   'Whether you are closing a commercial deal, structuring a startup, managing a real estate transaction, or navigating a data compliance project — the firm brings current, forward-thinking legal knowledge to every matter, delivered in plain language, on time, and within budget.',
-        'cred-1': 'Licensed Attorney — Israel Bar Association',
+        'about-body2':   'Whether you are closing a commercial deal, structuring a startup, managing a real estate transaction, or navigating a data compliance project - the firm brings current, forward-thinking legal knowledge to every matter, delivered in plain language, on time, and within budget.',
+        'cred-1': 'Licensed Attorney - Israel Bar Association',
         'cred-2': 'Israeli and International Law',
         'cred-3': 'Technology Law &amp; Data Privacy',
         'cred-4': 'Startup &amp; Venture Investment Advisory',
         'about-cta': 'Get in Touch',
 
         'profile-eyebrow': 'Attorney at Law',
-        'profile-role':    'עורך דין — Licensed Israeli Attorney',
+        'profile-role':    'עורך דין - Licensed Israeli Attorney',
         'pd-loc-lbl':   'Location',
         'pd-loc-val':   'Golan 2, Nof Hagalil, Israel',
         'pd-email-lbl': 'Email',
@@ -2133,17 +2138,17 @@
 
         'approach-eyebrow': 'How We Work',
         'approach-h2':      'Legal Advice That Actually Helps',
-        'approach-sub':     'Three principles that shape every client engagement — from first call to final signature.',
+        'approach-sub':     'Three principles that shape every client engagement - from first call to final signature.',
         'pillar1-title': 'Plain Language',
-        'pillar1-body':  'You should understand exactly what is happening with your legal matter. We translate complex statutes, contracts, and regulations into clear advice you can act on — no jargon, no ambiguity, no hiding behind legalese.',
+        'pillar1-body':  'You should understand exactly what is happening with your legal matter. We translate complex statutes, contracts, and regulations into clear advice you can act on - no jargon, no ambiguity, no hiding behind legalese.',
         'pillar2-title': 'Built for Your Situation',
-        'pillar2-body':  'Every client and every case is different. We take time to understand your goals, your industry, and your constraints — then craft solutions that fit your specific circumstances, not a one-size-fits-all template.',
+        'pillar2-body':  'Every client and every case is different. We take time to understand your goals, your industry, and your constraints - then craft solutions that fit your specific circumstances, not a one-size-fits-all template.',
         'pillar3-title': 'No Surprises',
-        'pillar3-body':  'Transparent fees, realistic timelines, and direct communication at every stage. You always know where things stand — and you can always reach us without chasing.',
+        'pillar3-body':  'Transparent fees, realistic timelines, and direct communication at every stage. You always know where things stand - and you can always reach us without chasing.',
 
         'contact-eyebrow': 'Get in Touch',
         'contact-h2':      'Let\'s Talk About<br>Your Legal Matter',
-        'contact-sub':     'Consultations are confidential. Tell us what\'s on your mind — we\'ll tell you exactly where you stand and how we can help.',
+        'contact-sub':     'Consultations are confidential. Tell us what\'s on your mind - we\'ll tell you exactly where you stand and how we can help.',
         'cd-phone-lbl':  'Phone',
         'cd-email-lbl':  'Email',
         'cd-office-lbl': 'Office',
@@ -2175,7 +2180,7 @@
         'form-submit':   'Send Message',
         'form-disc':     'This form is for general inquiries only. No attorney-client relationship is formed until a formal engagement agreement is executed. Content on this site does not constitute legal advice.',
 
-        'footer-tag':     'Boutique Law Practice — Nof Hagalil, Israel',
+        'footer-tag':     'Boutique Law Practice - Nof Hagalil, Israel',
         'footer-approach':'Approach',
         'footer-legal':   'The content on this website is provided for general information purposes only and does not constitute legal advice. No attorney-client relationship is formed by accessing or using this website. For specific legal advice, please contact the office directly to schedule a consultation.',
         'footer-copy':    '© 2025 Maroun Mansour Law Office',
@@ -2191,16 +2196,16 @@
         'err-email':    'Please enter a valid email address.',
 
         /* ── Practice area descriptions ── */
-        'desc-commercial':  'We provide comprehensive commercial legal services covering contracts, trade agreements, distribution, agency relationships, and commercial disputes. Our experience spans a wide range of commercial transactions — ensuring clients receive informed, practical advice that protects their business interests and facilitates smooth operations.',
+        'desc-commercial':  'We provide comprehensive commercial legal services covering contracts, trade agreements, distribution, agency relationships, and commercial disputes. Our experience spans a wide range of commercial transactions - ensuring clients receive informed, practical advice that protects their business interests and facilitates smooth operations.',
         'desc-tech':        'Our technology law practice addresses the unique legal challenges of the digital economy. From software licensing and SaaS agreements to tech regulatory compliance and data governance frameworks, we help technology companies and their clients navigate the evolving legal landscape of the tech sector with clarity and confidence.',
-        'desc-privacy':     'Our Privacy Law practice has successfully managed sophisticated projects dealing with data governance within individual corporations and across multi-entity organizations. We advise on GDPR compliance, the Israeli Privacy Protection Law, data processing agreements, and privacy policies — helping businesses meet regulatory obligations while building user trust.',
+        'desc-privacy':     'Our Privacy Law practice has successfully managed sophisticated projects dealing with data governance within individual corporations and across multi-entity organizations. We advise on GDPR compliance, the Israeli Privacy Protection Law, data processing agreements, and privacy policies - helping businesses meet regulatory obligations while building user trust.',
         'desc-realestate':  'We excel in handling a wide range of real estate projects. From serving as general counsel to navigating complex purchase contracts and land registration, we have the expertise to support your real estate endeavors. Whether you are navigating a commercial or residential transaction, we provide professional and reliable guidance every step of the way.',
-        'desc-ip':          'Our IP department offers a comprehensive intellectual property legal service designed to help businesses protect their valuable creations, inventions, and brand identity. We provide sound legal counsel and strategic enforcement of intellectual property rights — from trademark registration and copyright protection to patent prosecution and IP licensing agreements.',
-        'desc-startup':     'Our startup and investment practice focuses on the various stages of business development — from initial founder financing to securing venture capital or crowdfunding. Whether you are a founder seeking to structure your startup or an investor requiring sound legal protection for your investment, we provide the support and guidance you need.',
-        'desc-ma':          'Our M&A practice covers the full spectrum of mergers and acquisitions. We advise on transactions involving the transfer or consolidation of ownership of companies, business organizations, or their operating units — through direct absorption, mergers, tender offers, or restructuring. We guide clients through every stage of the transaction with precision and strategic clarity.',
+        'desc-ip':          'Our IP department offers a comprehensive intellectual property legal service designed to help businesses protect their valuable creations, inventions, and brand identity. We provide sound legal counsel and strategic enforcement of intellectual property rights - from trademark registration and copyright protection to patent prosecution and IP licensing agreements.',
+        'desc-startup':     'Our startup and investment practice focuses on the various stages of business development - from initial founder financing to securing venture capital or crowdfunding. Whether you are a founder seeking to structure your startup or an investor requiring sound legal protection for your investment, we provide the support and guidance you need.',
+        'desc-ma':          'Our M&A practice covers the full spectrum of mergers and acquisitions. We advise on transactions involving the transfer or consolidation of ownership of companies, business organizations, or their operating units - through direct absorption, mergers, tender offers, or restructuring. We guide clients through every stage of the transaction with precision and strategic clarity.',
         'desc-corporate':   'Our Corporate Law team is dedicated to providing a wide range of services related to corporate governance with the utmost professionalism. From drafting Articles of Association and bylaws to creating shareholders agreements and board resolutions, we deliver comprehensive and effective legal solutions for businesses of all sizes.',
-        'desc-insolvency':  'We have successfully managed complex matters in insolvency and bankruptcy across both private sector and corporate industries. We work diligently to navigate the intricate landscapes of financial distress, corporate restructuring, and insolvency proceedings — delivering successful outcomes for clients facing difficult financial circumstances.',
-        'desc-labour':      'We serve as General Counsel for large multinational corporations in the realm of labour law. We specialize in providing expert counsel and litigation services with the utmost professionalism — covering employment agreements, workplace disputes, termination proceedings, collective bargaining, non-compete arrangements, and full regulatory compliance.',
+        'desc-insolvency':  'We have successfully managed complex matters in insolvency and bankruptcy across both private sector and corporate industries. We work diligently to navigate the intricate landscapes of financial distress, corporate restructuring, and insolvency proceedings - delivering successful outcomes for clients facing difficult financial circumstances.',
+        'desc-labour':      'We serve as General Counsel for large multinational corporations in the realm of labour law. We specialize in providing expert counsel and litigation services with the utmost professionalism - covering employment agreements, workplace disputes, termination proceedings, collective bargaining, non-compete arrangements, and full regulatory compliance.',
       },
 
       he: {
@@ -2210,23 +2215,24 @@
         'nav-contact':    'צור קשר',
         'nav-cta':        'קבע ייעוץ',
 
-        'hero-badge':       'משרד עו"ד בוטיק — נוף הגליל, ישראל',
-        'hero-h1':          'ייעוץ משפטי מחודד.<br><em>תוצאות מעשיות.</em>',
-        'hero-sub':         'מהסכמי סטארטאפ ועד רכישות תאגידיות — ייעוץ משפטי ברור ומדויק לעסקים ופרטיים ברחבי ישראל. בעברית, ערבית ואנגלית.',
+        'hero-badge':       'משרד עו"ד בוטיק - נוף הגליל, ישראל',
+        'hero-h1':          'ייעוץ משפטי מחודד<br><em>תוצאות מעשיות</em>',
+        'hero-sub':         'מהקמת חברה או סטארטאפ ועד רכישות תאגידיות - יעוץ משפטי מהיר, ברור ומדויק לחברות, עסקים ואנשים פרטיים. בעברית, ערבית ואנגלית.',
         'hero-btn-explore': 'לתחומי העיסוק',
-        'stat-areas-lbl':   'תחומי עיסוק',
-        'stat-juris-lbl':   'ישראל ובינלאומי',
-        'stat-focus-lbl':   'ממוקד לקוח',
+        'stat-years-lbl':    'שנות ניסיון',
+        'stat-intl-lbl':     'תיקים בינלאומיים',
+        'stat-focus-lbl':    'שביעות רצון לקוח',
+        'stat-response-lbl': 'זמן תגובה',
 
-        'trust-1': 'חבר מורשה — לשכת עורכי הדין בישראל',
+        'trust-1': 'חבר מורשה - לשכת עורכי הדין בישראל',
         'trust-2': 'דיני טכנולוגיה ומסחר',
         'trust-3': 'ייעוץ לסטארטאפ ומשקיעי הון סיכון',
         'trust-4': 'שירות ללקוחות ישראלים ובינלאומיים',
         'trust-5': 'עברית · אנגלית · ערבית',
 
         'practice-eyebrow': 'תחומי עיסוק',
-        'practice-h2':      'ייעוץ מומחה בכל שלב',
-        'practice-sub':     'מהגנה על קניינכם הרוחני ועד סגירת הרכישה הבאה שלכם — מומחיות עמוקה ב-8 תחומי עיסוק.',
+        'practice-h2':      'ייעוץ מקצועי בכל שלב',
+        'practice-sub':     'מהגנה על קניינכם הרוחני ועד סגירת הרכישה הבאה שלכם - מומחיות עמוקה ב-8 תחומי עיסוק.',
         'pa-commercial':  'דיני מסחר',
         'pa-tech':        'דיני טכנולוגיה',
         'pa-privacy':     'פרטיות והגנת מידע',
@@ -2240,17 +2246,17 @@
 
         'about-eyebrow': 'אודות המשרד',
         'about-h2':      'משרד בוטיק. ייעוץ ברמה ארגונית.',
-        'about-sub':     'תשומת לב אישית מעורך הדין הבכיר עצמו — לא מעוזר זוטר — ופתרונות שנבנו סביב המצב הספציפי שלכם.',
+        'about-sub':     'תשומת לב אישית מעורך הדין הבכיר עצמו - לא מעוזר זוטר - ופתרונות שנבנו סביב המצב הספציפי שלכם.',
         'about-body1':   'משרד עו"ד מרון מנסור הוא משרד בוטיק עם שורשים עמוקים בדיני מסחר, טכנולוגיה ומקרקעין. כל לקוח עובד ישירות עם עורך הדין הראשי, כך שהייעוץ שתקבלו משקף מומחיות אמיתית והבנה יסודית של נסיבותיכם הספציפיות.',
-        'about-body2':   'בין אם אתם סוגרים עסקה מסחרית, מקימים סטארטאפ, מנהלים עסקת נדל"ן או מתמודדים עם פרויקט ציות לפרטיות נתונים — המשרד מביא ידע משפטי עדכני וצופה פני עתיד לכל עניין, בשפה ברורה, בזמן ובמסגרת התקציב.',
-        'cred-1': 'עורך דין מורשה — לשכת עורכי הדין בישראל',
+        'about-body2':   'בין אם אתם סוגרים עסקה מסחרית, מקימים סטארטאפ, מנהלים עסקת נדל"ן או מתמודדים עם פרויקט ציות לפרטיות נתונים - המשרד מביא ידע משפטי עדכני וצופה פני עתיד לכל עניין, בשפה ברורה, בזמן ובמסגרת התקציב.',
+        'cred-1': 'עורך דין מורשה - לשכת עורכי הדין בישראל',
         'cred-2': 'דין ישראלי ובינלאומי',
         'cred-3': 'דיני טכנולוגיה ופרטיות מידע',
         'cred-4': 'ייעוץ לסטארטאפ והשקעות הון סיכון',
         'about-cta': 'צרו קשר',
 
         'profile-eyebrow': 'עורך דין',
-        'profile-role':    'עורך דין — מורשה בישראל',
+        'profile-role':    'עורך דין - מורשה בישראל',
         'pd-loc-lbl':   'מיקום',
         'pd-loc-val':   'גולן 2, נוף הגליל, ישראל',
         'pd-email-lbl': 'דוא"ל',
@@ -2262,17 +2268,17 @@
 
         'approach-eyebrow': 'כיצד אנו עובדים',
         'approach-h2':      'ייעוץ משפטי שבאמת עוזר',
-        'approach-sub':     'שלושה עקרונות שמעצבים כל מעורבות עם לקוח — מהשיחה הראשונה ועד החתימה האחרונה.',
+        'approach-sub':     'שלושה עקרונות שמעצבים כל מעורבות עם לקוח - מהשיחה הראשונה ועד החתימה האחרונה.',
         'pillar1-title': 'שפה ברורה',
-        'pillar1-body':  'אתם צריכים להבין בדיוק מה קורה בעניין המשפטי שלכם. אנו מתרגמים חוקים מורכבים, חוזים ורגולציה לייעוץ ברור שניתן לפעול לפיו — ללא עמימות, ללא ז\'רגון.',
+        'pillar1-body':  'אתם צריכים להבין בדיוק מה קורה בעניין המשפטי שלכם. אנו מתרגמים חוקים מורכבים, חוזים ורגולציה לייעוץ ברור שניתן לפעול לפיו - ללא עמימות, ללא ז\'רגון.',
         'pillar2-title': 'בנוי למצבכם',
-        'pillar2-body':  'כל לקוח ומקרה שונים. אנו מקדישים זמן להבין את המטרות שלכם, את התעשייה ואת האילוצים שלכם — ואז יוצרים פתרונות משפטיים המתאימים לנסיבות הספציפיות שלכם.',
+        'pillar2-body':  'כל לקוח ומקרה שונים. אנו מקדישים זמן להבין את המטרות שלכם, את התעשייה ואת האילוצים שלכם - ואז יוצרים פתרונות משפטיים המתאימים לנסיבות הספציפיות שלכם.',
         'pillar3-title': 'ללא הפתעות',
-        'pillar3-body':  'שכר טרחה שקוף, לוחות זמנים ריאליסטיים ותקשורת ישירה בכל שלב. תמיד תדעו היכן עומדים הדברים — ותוכלו לפנות אלינו בלי לרדוף אחרינו.',
+        'pillar3-body':  'שכר טרחה שקוף, לוחות זמנים ריאליסטיים ותקשורת ישירה בכל שלב. תמיד תדעו היכן עומדים הדברים - ותוכלו לפנות אלינו בלי לרדוף אחרינו.',
 
         'contact-eyebrow': 'צרו קשר',
         'contact-h2':      'בואו נדבר על<br>הנושא המשפטי שלכם',
-        'contact-sub':     'הייעוצים סודיים. ספרו לנו מה מטריד אתכם — נגיד לכם בדיוק היכן עומדים הדברים וכיצד נוכל לעזור.',
+        'contact-sub':     'הייעוצים סודיים. ספרו לנו מה מטריד אתכם - נגיד לכם בדיוק היכן עומדים הדברים וכיצד נוכל לעזור.',
         'cd-phone-lbl':  'טלפון',
         'cd-email-lbl':  'דוא"ל',
         'cd-office-lbl': 'משרד',
@@ -2304,7 +2310,7 @@
         'form-submit':   'שלח הודעה',
         'form-disc':     'טופס זה מיועד לפניות כלליות בלבד. לא נוצרים יחסי עו"ד-לקוח עד לחתימת הסכם עיסוק פורמלי. תוכן אתר זה אינו מהווה ייעוץ משפטי.',
 
-        'footer-tag':     'משרד עו"ד בוטיק — נוף הגליל, ישראל',
+        'footer-tag':     'משרד עו"ד בוטיק - נוף הגליל, ישראל',
         'footer-approach':'גישה',
         'footer-legal':   'תוכן אתר זה מסופק למטרות מידע כללי בלבד ואינו מהווה ייעוץ משפטי. לא נוצרים יחסי עו"ד-לקוח על ידי גישה או שימוש באתר זה. לייעוץ משפטי ספציפי, אנא פנו למשרד ישירות לתיאום ייעוץ.',
         'footer-copy':    '© 2025 משרד עו"ד מרון מנסור',
@@ -2320,16 +2326,16 @@
         'err-email':    'אנא הזינו כתובת דוא"ל תקינה.',
 
         /* ── Practice area descriptions ── */
-        'desc-commercial':  'אנו מספקים שירותים משפטיים מסחריים מקיפים הכוללים חוזים, הסכמי סחר, הפצה, יחסי סוכנות ומחלוקות מסחריות. ניסיוננו משתרע על מגוון רחב של עסקאות מסחריות — ומבטיח ללקוחות ייעוץ מושכל ומעשי המגן על האינטרסים העסקיים שלהם ומאפשר פעילות תקינה.',
+        'desc-commercial':  'אנו מספקים שירותים משפטיים מסחריים מקיפים הכוללים חוזים, הסכמי סחר, הפצה, יחסי סוכנות ומחלוקות מסחריות. ניסיוננו משתרע על מגוון רחב של עסקאות מסחריות - ומבטיח ללקוחות ייעוץ מושכל ומעשי המגן על האינטרסים העסקיים שלהם ומאפשר פעילות תקינה.',
         'desc-tech':        'תחום דיני הטכנולוגיה שלנו מתמודד עם האתגרים המשפטיים הייחודיים של הכלכלה הדיגיטלית. מהסכמי רישוי תוכנה וחוזי SaaS ועד ציות רגולטורי וממשל נתונים, אנו מסייעים לחברות טכנולוגיה לנווט בנוף המשפטי המתפתח של מגזר ההייטק בבהירות ובביטחון.',
-        'desc-privacy':     'תחום דיני הפרטיות שלנו ניהל בהצלחה פרויקטים מורכבים בתחום ממשל מידע בתוך תאגיד בודד ובין גופים מרובים. אנו מייעצים בנושאי ציות ל-GDPR, חוק הגנת הפרטיות הישראלי, הסכמי עיבוד נתונים ומדיניות פרטיות — מסייעים לעסקים לעמוד בדרישות הרגולטוריות תוך בניית אמון עם המשתמשים.',
-        'desc-realestate':  'אנו מתמחים בטיפול במגוון רחב של עסקאות ופרויקטי נדל"ן. מייעוץ משפטי כללי ועד ניהול חוזי רכישה מורכבים ורישום מקרקעין, יש לנו את המומחיות לתמוך בעסקאות הנדל"ן שלכם. בין אם מסחרי ובין אם למגורים — אנו מספקים הכוונה מקצועית ואמינה בכל שלב של הדרך.',
-        'desc-ip':          'מחלקת הקניין הרוחני שלנו מציעה שירות משפטי מקיף לקניין רוחני. אנו מסייעים לעסקים להגן על יצירותיהם, המצאותיהם וזהות המותג שלהם באמצעות ייעוץ משפטי נכון ואכיפה אסטרטגית של זכויות קניין רוחני — מרישום סימני מסחר והגנת זכויות יוצרים ועד רישיונות קניין רוחני.',
-        'desc-startup':     'תחום הסטארטאפ וההשקעות שלנו מתמקד בשלבים השונים של פיתוח עסקי — ממימון ראשוני על ידי מייסדים ועד השגת השקעות מהון סיכון או גיוס המונים. בין אם אתם מייסדים המחפשים מבנה משפטי לסטארטאפ שלכם ובין אם משקיעים המחפשים הגנה משפטית נאותה להשקעתכם — אנחנו כאן לסייע.',
-        'desc-ma':          'תחום ה-M&A שלנו מכסה את כל היבטי המיזוגים והרכישות בעולם העסקים. אנו מייעצים בעסקאות הכוללות העברה או איחוד בעלות על חברות, ארגונים עסקיים או יחידות התפעוליות שלהם — ספיגה ישירה, מיזוג, הצעת רכש או שינוי מבנה. אנו מלווים לקוחות בכל שלב של העסקה בדיוק ובחדות אסטרטגית.',
-        'desc-corporate':   'צוות דיני התאגידים שלנו מוקדש למתן מגוון רחב של שירותים הקשורים לממשל תאגידי במקצועיות מרבית. מניסוח תקנונים ותקנות פנימיות ועד יצירת הסכמי בעלי מניות והחלטות דירקטוריון — אנו מספקים פתרונות משפטיים מקיפים ואפקטיביים לעסקים בכל הגדלים.',
-        'desc-insolvency':  'ניהלנו בהצלחה עניינים מורכבים בתחום חדלות הפירעון ופשיטת הרגל, הן במגזר הפרטי והן בתאגידים. אנו עובדים בנחישות לנווט בנוף המורכב של מצוקה פיננסית, הבראה תאגידית ופשיטת רגל — ומספקים תוצאות מוצלחות ללקוחות המתמודדים עם נסיבות פיננסיות מאתגרות.',
-        'desc-labour':      'אנו משמשים כיועץ כללי לתאגידים בינלאומיים גדולים בתחום דיני העבודה. אנו מתמחים במתן ייעוץ מקצועי ושירותי ליטיגציה במקצועיות מרבית — הכוללים הסכמי העסקה, מחלוקות בסביבת העבודה, הליכי פיטורין, משא ומתן קיבוצי, הסכמי אי-תחרות וציות מלא לרגולציית עבודה.',
+        'desc-privacy':     'תחום דיני הפרטיות שלנו ניהל בהצלחה פרויקטים מורכבים בתחום ממשל מידע בתוך תאגיד בודד ובין גופים מרובים. אנו מייעצים בנושאי ציות ל-GDPR, חוק הגנת הפרטיות הישראלי, הסכמי עיבוד נתונים ומדיניות פרטיות - מסייעים לעסקים לעמוד בדרישות הרגולטוריות תוך בניית אמון עם המשתמשים.',
+        'desc-realestate':  'אנו מתמחים בטיפול במגוון רחב של עסקאות ופרויקטי נדל"ן. מייעוץ משפטי כללי ועד ניהול חוזי רכישה מורכבים ורישום מקרקעין, יש לנו את המומחיות לתמוך בעסקאות הנדל"ן שלכם. בין אם מסחרי ובין אם למגורים - אנו מספקים הכוונה מקצועית ואמינה בכל שלב של הדרך.',
+        'desc-ip':          'מחלקת הקניין הרוחני שלנו מציעה שירות משפטי מקיף לקניין רוחני. אנו מסייעים לעסקים להגן על יצירותיהם, המצאותיהם וזהות המותג שלהם באמצעות ייעוץ משפטי נכון ואכיפה אסטרטגית של זכויות קניין רוחני - מרישום סימני מסחר והגנת זכויות יוצרים ועד רישיונות קניין רוחני.',
+        'desc-startup':     'תחום הסטארטאפ וההשקעות שלנו מתמקד בשלבים השונים של פיתוח עסקי - ממימון ראשוני על ידי מייסדים ועד השגת השקעות מהון סיכון או גיוס המונים. בין אם אתם מייסדים המחפשים מבנה משפטי לסטארטאפ שלכם ובין אם משקיעים המחפשים הגנה משפטית נאותה להשקעתכם - אנחנו כאן לסייע.',
+        'desc-ma':          'תחום ה-M&A שלנו מכסה את כל היבטי המיזוגים והרכישות בעולם העסקים. אנו מייעצים בעסקאות הכוללות העברה או איחוד בעלות על חברות, ארגונים עסקיים או יחידות התפעוליות שלהם - ספיגה ישירה, מיזוג, הצעת רכש או שינוי מבנה. אנו מלווים לקוחות בכל שלב של העסקה בדיוק ובחדות אסטרטגית.',
+        'desc-corporate':   'צוות דיני התאגידים שלנו מוקדש למתן מגוון רחב של שירותים הקשורים לממשל תאגידי במקצועיות מרבית. מניסוח תקנונים ותקנות פנימיות ועד יצירת הסכמי בעלי מניות והחלטות דירקטוריון - אנו מספקים פתרונות משפטיים מקיפים ואפקטיביים לעסקים בכל הגדלים.',
+        'desc-insolvency':  'ניהלנו בהצלחה עניינים מורכבים בתחום חדלות הפירעון ופשיטת הרגל, הן במגזר הפרטי והן בתאגידים. אנו עובדים בנחישות לנווט בנוף המורכב של מצוקה פיננסית, הבראה תאגידית ופשיטת רגל - ומספקים תוצאות מוצלחות ללקוחות המתמודדים עם נסיבות פיננסיות מאתגרות.',
+        'desc-labour':      'אנו משמשים כיועץ כללי לתאגידים בינלאומיים גדולים בתחום דיני העבודה. אנו מתמחים במתן ייעוץ מקצועי ושירותי ליטיגציה במקצועיות מרבית - הכוללים הסכמי העסקה, מחלוקות בסביבת העבודה, הליכי פיטורין, משא ומתן קיבוצי, הסכמי אי-תחרות וציות מלא לרגולציית עבודה.',
       },
 
       /* ─────────────── ARABIC ─────────────── */
@@ -2340,17 +2346,18 @@
         'nav-contact':    'تواصل معنا',
         'nav-cta':        'احجز استشارة',
 
-        'hero-badge':     'مكتب محاماة متخصص — نوف هجليل، إسرائيل',
-        'hero-h1':        'مشورة قانونية دقيقة.<br><em>نتائج عملية.</em>',
-        'hero-sub':       'من عقود الشركات الناشئة إلى صفقات الاستحواذ — مشورة قانونية واضحة ومحددة للأعمال والأفراد في إسرائيل. بالعربية والعبرية والإنجليزية.',
+        'hero-badge':     'مكتب محاماة متخصص - نوف هجليل، إسرائيل',
+        'hero-h1':        'مشورة قانونية دقيقة<br><em>نتائج عملية</em>',
+        'hero-sub':       'من عقود الشركات الناشئة إلى صفقات الاستحواذ - مشورة قانونية واضحة ومحددة للأعمال والأفراد في إسرائيل. بالعربية والعبرية والإنجليزية.',
         'hero-btn-consult':'احجز استشارة',
         'hero-btn-explore':'استكشف خدماتنا',
 
-        'stat-areas-lbl': 'مجالات الممارسة',
-        'stat-juris-lbl': 'الاختصاص القانوني',
-        'stat-focus-lbl': 'تركيز على العميل',
+        'stat-years-lbl':    'سنوات الخبرة',
+        'stat-intl-lbl':     'قضايا دولية',
+        'stat-focus-lbl':    'رضا العملاء',
+        'stat-response-lbl': 'وقت الاستجابة',
 
-        'trust-1': 'عضو مرخص — نقابة المحامين الإسرائيلية',
+        'trust-1': 'عضو مرخص - نقابة المحامين الإسرائيلية',
         'trust-2': 'قانون التكنولوجيا والتجارة',
         'trust-3': 'مستشار الشركات الناشئة ورأس المال الاستثماري',
         'trust-4': 'خدمة موكلين في إسرائيل وخارجها',
@@ -2358,7 +2365,7 @@
 
         'practice-eyebrow': 'مجالات الممارسة',
         'practice-h2':    'خبرة قانونية في كل مرحلة',
-        'practice-sub':   'من حماية ملكيتكم الفكرية إلى إتمام صفقتكم التالية — خبرة متعمقة في 8 مجالات ممارسة.',
+        'practice-sub':   'من حماية ملكيتكم الفكرية إلى إتمام صفقتكم التالية - خبرة متعمقة في 8 مجالات ممارسة.',
 
         'pa-commercial':  'القانون التجاري',
         'pa-tech':        'قانون التكنولوجيا',
@@ -2374,11 +2381,11 @@
 
         'about-eyebrow':  'عن المكتب',
         'about-h2':       'مكتب متخصص. مشورة على مستوى الشركات الكبرى.',
-        'about-sub':      'اهتمام شخصي من المحامي الأول مباشرةً — لا من مساعد — وحلول مبنية حول وضعك تحديداً، لا قوالب جاهزة.',
+        'about-sub':      'اهتمام شخصي من المحامي الأول مباشرةً - لا من مساعد - وحلول مبنية حول وضعك تحديداً، لا قوالب جاهزة.',
         'about-body1':    'مكتب المحامي مرون منصور مكتب متخصص بجذور عميقة في القانون التجاري وقانون التكنولوجيا والعقارات. يتعامل كل موكل مباشرةً مع المحامي الرئيسي، مما يضمن أن المشورة التي تتلقاها تعكس خبرة حقيقية وفهماً شاملاً لظروفك الخاصة.',
-        'about-body2':    'سواء كنت تُبرم صفقة تجارية، أو تُؤسس شركة ناشئة، أو تُدير معاملة عقارية، أو تتعامل مع مشروع امتثال لحماية البيانات — يُقدم المكتب معرفة قانونية حديثة ومتطلعة للمستقبل في كل مسألة، بلغة واضحة وفي الوقت المحدد وضمن الميزانية.',
+        'about-body2':    'سواء كنت تُبرم صفقة تجارية، أو تُؤسس شركة ناشئة، أو تُدير معاملة عقارية، أو تتعامل مع مشروع امتثال لحماية البيانات - يُقدم المكتب معرفة قانونية حديثة ومتطلعة للمستقبل في كل مسألة، بلغة واضحة وفي الوقت المحدد وضمن الميزانية.',
         'about-cta':      'تعرف أكثر',
-        'about-li1':      'محامٍ مرخص — نقابة المحامين الإسرائيلية',
+        'about-li1':      'محامٍ مرخص - نقابة المحامين الإسرائيلية',
         'about-li2':      'خبرة في القانون الإسرائيلي والدولي',
         'about-li3':      'متخصص في قانون التكنولوجيا والخصوصية',
         'about-li4':      'مستشار النظام البيئي للشركات الناشئة',
@@ -2389,13 +2396,13 @@
 
         'approach-eyebrow':'كيف نعمل',
         'approach-h2':    'مشورة قانونية تُحدث فرقاً فعلياً',
-        'approach-sub':   'ثلاثة مبادئ تشكّل كل تعامل مع موكل — من المكالمة الأولى إلى التوقيع الأخير.',
+        'approach-sub':   'ثلاثة مبادئ تشكّل كل تعامل مع موكل - من المكالمة الأولى إلى التوقيع الأخير.',
         'pillar1-title':  'لغة واضحة',
-        'pillar1-body':   'يجب أن تفهم بالضبط ما يجري في قضيتك القانونية. نترجم القوانين والعقود المعقدة إلى مشورة واضحة قابلة للتنفيذ — بلا مصطلحات معقدة، بلا غموض.',
+        'pillar1-body':   'يجب أن تفهم بالضبط ما يجري في قضيتك القانونية. نترجم القوانين والعقود المعقدة إلى مشورة واضحة قابلة للتنفيذ - بلا مصطلحات معقدة، بلا غموض.',
         'pillar2-title':  'مبني لوضعك',
-        'pillar2-body':   'كل موكل وكل قضية مختلفة. نأخذ الوقت الكافي لفهم أهدافك وصناعتك وقيودك — ثم نُصمم حلولاً قانونية تناسب ظروفك تحديداً.',
+        'pillar2-body':   'كل موكل وكل قضية مختلفة. نأخذ الوقت الكافي لفهم أهدافك وصناعتك وقيودك - ثم نُصمم حلولاً قانونية تناسب ظروفك تحديداً.',
         'pillar3-title':  'بلا مفاجآت',
-        'pillar3-body':   'أتعاب شفافة ومواعيد واضحة وتواصل مباشر في كل مرحلة. ستعرف دائماً أين تسير الأمور — ويمكنك الوصول إلينا بسهولة دون أي عناء.',
+        'pillar3-body':   'أتعاب شفافة ومواعيد واضحة وتواصل مباشر في كل مرحلة. ستعرف دائماً أين تسير الأمور - ويمكنك الوصول إلينا بسهولة دون أي عناء.',
         'pillar4-title':  'الكفاءة والسرعة',
         'pillar4-body':   'نحترم وقتكم وميزانيتكم. نحرص على التسليم بكفاءة، مع التركيز على ما يُحدث فعلاً فرقًا في مسيرتكم.',
 
@@ -2409,7 +2416,7 @@
 
         'contact-eyebrow':'تواصل معنا',
         'contact-h2':     'لنتحدث عن<br>مسألتك القانونية',
-        'contact-sub':    'استشاراتنا سرية تماماً. أخبرنا بما يقلقك — وسنخبرك بالضبط أين تقف الأمور وكيف يمكننا المساعدة.',
+        'contact-sub':    'استشاراتنا سرية تماماً. أخبرنا بما يقلقك - وسنخبرك بالضبط أين تقف الأمور وكيف يمكننا المساعدة.',
         'cd-office-lbl':  'المكتب',
         'cd-office-val':  'نوف هجليل، شمال إسرائيل',
         'cd-phone-lbl':   'الهاتف',
@@ -2441,7 +2448,7 @@
         'form-submit':    'إرسال الرسالة',
         'form-disc':      'هذا النموذج مخصص للاستفسارات العامة فقط. لا تنشأ علاقة موكل-محامٍ إلا بعد توقيع اتفاقية تكليف رسمية. محتوى هذا الموقع لا يشكّل استشارة قانونية.',
 
-        'footer-tag':     'مكتب محاماة متخصص — نوف هجليل، إسرائيل',
+        'footer-tag':     'مكتب محاماة متخصص - نوف هجليل، إسرائيل',
         'footer-approach':'المنهجية',
         'footer-legal':   'المحتوى الوارد في هذا الموقع مقدَّم لأغراض المعلومات العامة فقط، ولا يشكّل استشارة قانونية. لا تنشأ علاقة محامٍ-موكل من خلال الوصول إلى هذا الموقع أو استخدامه. للحصول على مشورة قانونية متخصصة، يُرجى التواصل مع المكتب مباشرةً لترتيب موعد استشارة.',
         'footer-copy':    '© 2025 مكتب المحامي مرون منصور',
@@ -2456,16 +2463,16 @@
         'err-required': 'يُرجى ملء جميع الحقول المطلوبة (الاسم الأول، اسم العائلة، البريد الإلكتروني، الرسالة).',
         'err-email':    'يُرجى إدخال عنوان بريد إلكتروني صحيح.',
 
-        'desc-commercial':  'نقدم خدمات قانونية تجارية شاملة تغطي العقود وعلاقات التجارة والتوزيع والوكالة والنزاعات التجارية. تمتد خبرتنا عبر مجموعة واسعة من المعاملات التجارية — لضمان حصول موكلينا على مشورة مستنيرة وعملية تحمي مصالحهم التجارية.',
+        'desc-commercial':  'نقدم خدمات قانونية تجارية شاملة تغطي العقود وعلاقات التجارة والتوزيع والوكالة والنزاعات التجارية. تمتد خبرتنا عبر مجموعة واسعة من المعاملات التجارية - لضمان حصول موكلينا على مشورة مستنيرة وعملية تحمي مصالحهم التجارية.',
         'desc-tech':        'تتعامل ممارستنا في مجال قانون التكنولوجيا مع التحديات القانونية الفريدة للاقتصاد الرقمي. من اتفاقيات ترخيص البرمجيات وعقود SaaS إلى الامتثال التنظيمي وحوكمة البيانات، نساعد شركات التكنولوجيا على التنقل في المشهد القانوني المتطور لقطاع التقنية.',
         'desc-privacy':     'تولت ممارستنا في مجال قانون الخصوصية إدارة مشاريع متطورة تتعلق بحوكمة البيانات داخل الشركات الفردية والمنظمات المتعددة الكيانات. نقدم المشورة بشأن الامتثال للائحة GDPR وقانون حماية الخصوصية الإسرائيلي، واتفاقيات معالجة البيانات وسياسات الخصوصية.',
         'desc-realestate':  'تغطي ممارستنا العقارية مجموعة واسعة من معاملات العقارات والمشاريع. من الاستشارات القانونية العامة إلى إدارة عقود الشراء المعقدة وتسجيل العقارات، لدينا الخبرة اللازمة لدعم صفقاتكم العقارية. سواء التجارية أو السكنية، نقدم توجيهاً مهنياً موثوقاً في كل مرحلة.',
-        'desc-ip':          'تتولى ممارستنا في مجال الملكية الفكرية تقديم خدمة قانونية شاملة. نساعد الشركات في حماية إبداعاتها واختراعاتها وهوية علامتها التجارية من خلال المشورة القانونية الصحيحة والإنفاذ الاستراتيجي لحقوق الملكية الفكرية — من تسجيل العلامات التجارية وحماية حقوق النشر إلى تراخيص الملكية الفكرية.',
-        'desc-startup':     'تركز ممارستنا في مجال الشركات الناشئة والاستثمار على المراحل المختلفة من تطوير الأعمال — من تمويل المؤسسين الأوليين إلى تأمين رأس المال الاستثماري أو التمويل الجماعي. سواء كنت مؤسساً يسعى إلى هيكلة شركتك الناشئة أو مستثمراً يحتاج إلى حماية قانونية سليمة، نحن هنا لدعمك.',
+        'desc-ip':          'تتولى ممارستنا في مجال الملكية الفكرية تقديم خدمة قانونية شاملة. نساعد الشركات في حماية إبداعاتها واختراعاتها وهوية علامتها التجارية من خلال المشورة القانونية الصحيحة والإنفاذ الاستراتيجي لحقوق الملكية الفكرية - من تسجيل العلامات التجارية وحماية حقوق النشر إلى تراخيص الملكية الفكرية.',
+        'desc-startup':     'تركز ممارستنا في مجال الشركات الناشئة والاستثمار على المراحل المختلفة من تطوير الأعمال - من تمويل المؤسسين الأوليين إلى تأمين رأس المال الاستثماري أو التمويل الجماعي. سواء كنت مؤسساً يسعى إلى هيكلة شركتك الناشئة أو مستثمراً يحتاج إلى حماية قانونية سليمة، نحن هنا لدعمك.',
         'desc-ma':          'تغطي ممارستنا في مجال الاندماج والاستحواذ الطيف الكامل لعمليات الدمج والاستحواذ. نقدم المشورة في المعاملات المتعلقة بنقل أو توحيد ملكية الشركات والتنظيمات التجارية، من خلال الاستيعاب المباشر والاندماجات وعروض الاستحواذ وإعادة الهيكلة.',
         'desc-corporate':   'يكرس فريق قانون الشركات لدينا جهوده لتقديم مجموعة واسعة من الخدمات المتعلقة بحوكمة الشركات بأعلى درجات الاحترافية. من صياغة عقود التأسيس والنظام الأساسي إلى إنشاء اتفاقيات المساهمين وقرارات مجلس الإدارة، نقدم حلولاً قانونية شاملة وفعّالة.',
         'desc-insolvency':  'تقدم ممارستنا في مجال الإعسار وإعادة الهيكلة إرشادات استراتيجية للشركات والأفراد الذين يواجهون ضائقة مالية. نساعد موكلينا في استكشاف خيارات إعادة الهيكلة والتفاوض مع الدائنين والتنقل في إجراءات الإفلاس بهدف تحقيق أفضل النتائج الممكنة.',
-        'desc-labour':      'نتولى تقديم المشورة القانونية لكبار الشركات متعددة الجنسيات في مجال قانون العمل. نتخصص في تقديم خدمات الاستشارة والتقاضي بأعلى مستوى من الاحترافية — تشمل عقود التوظيف ونزاعات بيئة العمل وإجراءات الإنهاء والمفاوضات الجماعية واتفاقيات عدم المنافسة والامتثال الكامل للوائح العمل.',
+        'desc-labour':      'نتولى تقديم المشورة القانونية لكبار الشركات متعددة الجنسيات في مجال قانون العمل. نتخصص في تقديم خدمات الاستشارة والتقاضي بأعلى مستوى من الاحترافية - تشمل عقود التوظيف ونزاعات بيئة العمل وإجراءات الإنهاء والمفاوضات الجماعية واتفاقيات عدم المنافسة والامتثال الكامل للوائح العمل.',
       }
     };
 
@@ -2492,14 +2499,14 @@
       });
 
       const titles = {
-        en: 'Maroun Mansour — Attorney at Law',
-        he: 'מרון מנסור — עורך דין',
-        ar: 'مرون منصور — محامٍ'
+        en: 'Maroun Mansour - Attorney at Law',
+        he: 'מרון מנסור - עורך דין',
+        ar: 'مرون منصور - محامٍ'
       };
       const descs = {
-        en: 'Maroun Mansour — Attorney at Law. Expert legal counsel in commercial, technology, corporate, real estate, and startup law across Israel.',
-        he: 'מרון מנסור — עורך דין. ייעוץ משפטי מקצועי בדיני מסחר, טכנולוגיה, חברות ומקרקעין בישראל.',
-        ar: 'مرون منصور — محامٍ. استشارات قانونية متخصصة في القانون التجاري والشركات والخصوصية والعقارات والشركات الناشئة في إسرائيل.'
+        en: 'Maroun Mansour - Attorney at Law. Expert legal counsel in commercial, technology, corporate, real estate, and startup law across Israel.',
+        he: 'מרון מנסור - עורך דין. ייעוץ משפטי מקצועי בדיני מסחר, טכנולוגיה, חברות ומקרקעין בישראל.',
+        ar: 'مرون منصور - محامٍ. استشارات قانونية متخصصة في القانون التجاري والشركات والخصوصية والعقارات والشركات الناشئة في إسرائيل.'
       };
       document.title = titles[lang] || titles.en;
       const meta = document.querySelector('meta[name="description"]');
@@ -2581,7 +2588,7 @@
         return;
       }
 
-      /* Honeypot check — if filled, silently ignore (bot) */
+      /* Honeypot check - if filled, silently ignore (bot) */
       const honeypot = this.querySelector('[name="honeypot"]').value;
       if (honeypot) return;
 
@@ -2589,7 +2596,7 @@
       const areaLabel = area
         ? area.charAt(0).toUpperCase() + area.slice(1).replace(/-/g,' ')
         : 'General';
-      const subject = `Legal Inquiry — ${areaLabel} | ${fn} ${ln}`;
+      const subject = `Legal Inquiry - ${areaLabel} | ${fn} ${ln}`;
 
       /* ── Google Apps Script endpoint ──────────────────────────────
          Replace the URL below with your own deployed Apps Script URL.
@@ -2613,7 +2620,7 @@
 
         /* Google Apps Script redirects the POST to a different domain,
            which blocks reading the response (CORS).  mode:'no-cors' lets
-           the request through — the script still runs and sends the email,
+           the request through - the script still runs and sends the email,
            we just can't read the reply, so we assume success on no-throw. */
         await fetch(APPS_SCRIPT_URL, {
           method: 'POST',
@@ -2664,7 +2671,7 @@
       const pmodalBd     = document.getElementById('pmodal-backdrop');
 
       /* Update the modal eyebrow when language changes (setLang already
-         handles [data-i18n] so this is automatic — no extra work needed) */
+         handles [data-i18n] so this is automatic - no extra work needed) */
 
       function openModal(card) {
         const lang    = document.documentElement.lang || 'en';
@@ -2758,18 +2765,18 @@
             <ul>
               <li>ARIA attributes providing meaningful data for screen readers</li>
               <li>Logical heading hierarchy (h1→h6) throughout the page</li>
-              <li>Full keyboard operability — all elements reachable via Tab</li>
+              <li>Full keyboard operability - all elements reachable via Tab</li>
               <li>Content-skip menu ("Skip to main content") at page top</li>
               <li>Visible focus indicators on all interactive elements</li>
               <li>Colour contrast ratio of 4.5:1 minimum (WCAG AA)</li>
             </ul>
             <h4>Accessibility Profiles</h4>
             <ul>
-              <li><strong>Vision Impaired</strong> — text magnifier, high contrast, greyscale, invert</li>
-              <li><strong>Cognitive &amp; ADHD</strong> — reading guide, reading mask, stop animations</li>
-              <li><strong>Dyslexia</strong> — dyslexia-friendly font, letter spacing, larger text</li>
-              <li><strong>Keyboard Navigation</strong> — enhanced focus mode, skip to content</li>
-              <li><strong>Sensory</strong> — mute sound, hide images, hide video</li>
+              <li><strong>Vision Impaired</strong> - text magnifier, high contrast, greyscale, invert</li>
+              <li><strong>Cognitive &amp; ADHD</strong> - reading guide, reading mask, stop animations</li>
+              <li><strong>Dyslexia</strong> - dyslexia-friendly font, letter spacing, larger text</li>
+              <li><strong>Keyboard Navigation</strong> - enhanced focus mode, skip to content</li>
+              <li><strong>Sensory</strong> - mute sound, hide images, hide video</li>
             </ul>
             <h4>UI Customisation Options</h4>
             <ul>
@@ -2796,8 +2803,8 @@
             <h4>What We Store</h4>
             <p>This website uses <strong>browser localStorage</strong> (not cookies) to remember one preference:</p>
             <ul>
-              <li><strong>Language preference</strong> — stores <code>"en"</code> or <code>"he"</code> so your chosen language is remembered on future visits. This data never leaves your device and is never transmitted to any server.</li>
-              <li><strong>Cookie consent</strong> — stores whether you accepted or declined this notice.</li>
+              <li><strong>Language preference</strong> - stores <code>"en"</code> or <code>"he"</code> so your chosen language is remembered on future visits. This data never leaves your device and is never transmitted to any server.</li>
+              <li><strong>Cookie consent</strong> - stores whether you accepted or declined this notice.</li>
             </ul>
             <h4>Google Fonts</h4>
             <p>Fonts are loaded from <strong>Google Fonts</strong> (fonts.googleapis.com / fonts.gstatic.com). When your browser fetches these fonts, Google may receive your IP address and browser information as part of the standard web request. Google's use of this data is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
@@ -2824,14 +2831,14 @@
             <p>משרד עו"ד מרון מנסור מחויב להנגשת אתר זה לכלל המשתמשים, לרבות אנשים עם מוגבלויות. אנו שואפים לעמוד בתקן <strong>WCAG 2.1 ברמה AA</strong>.</p>
             <h4>מאפייני נגישות</h4>
             <ul>
-              <li><strong>ניווט מקלדת</strong> — כל האלמנטים האינטראקטיביים נגישים באמצעות מקש Tab, עם אינדיקטורי פוקוס ברורים.</li>
-              <li><strong>קוראי מסך</strong> — שימוש ב-HTML5 סמנטי, תוויות ARIA והיררכיית כותרות הגיונית.</li>
-              <li><strong>ניגודיות צבעים</strong> — טקסט ואלמנטי ממשק עומדים ביחס ניגודיות מינימלי של 4.5:1 לפי WCAG 2.1 AA.</li>
-              <li><strong>עיצוב רספונסיבי</strong> — האתר מתאים לכל גדלי המסך, ממובייל ועד דסקטופ.</li>
-              <li><strong>תמיכה דו-לשונית</strong> — עברית מלאה (RTL) ואנגלית (LTR) עם כיווניות נכונה.</li>
-              <li><strong>דילוג לתוכן</strong> — קישור "דלג לתוכן הראשי" זמין בראש הדף למשתמשי מקלדת.</li>
-              <li><strong>הפחתת תנועה</strong> — האנימציות מכבדות את הגדרת <code>prefers-reduced-motion</code> של מערכת ההפעלה.</li>
-              <li><strong>שינוי גודל טקסט</strong> — כל גדלי הגופנים יחסיים ומתאימים לזום דפדפן עד 200%.</li>
+              <li><strong>ניווט מקלדת</strong> - כל האלמנטים האינטראקטיביים נגישים באמצעות מקש Tab, עם אינדיקטורי פוקוס ברורים.</li>
+              <li><strong>קוראי מסך</strong> - שימוש ב-HTML5 סמנטי, תוויות ARIA והיררכיית כותרות הגיונית.</li>
+              <li><strong>ניגודיות צבעים</strong> - טקסט ואלמנטי ממשק עומדים ביחס ניגודיות מינימלי של 4.5:1 לפי WCAG 2.1 AA.</li>
+              <li><strong>עיצוב רספונסיבי</strong> - האתר מתאים לכל גדלי המסך, ממובייל ועד דסקטופ.</li>
+              <li><strong>תמיכה דו-לשונית</strong> - עברית מלאה (RTL) ואנגלית (LTR) עם כיווניות נכונה.</li>
+              <li><strong>דילוג לתוכן</strong> - קישור "דלג לתוכן הראשי" זמין בראש הדף למשתמשי מקלדת.</li>
+              <li><strong>הפחתת תנועה</strong> - האנימציות מכבדות את הגדרת <code>prefers-reduced-motion</code> של מערכת ההפעלה.</li>
+              <li><strong>שינוי גודל טקסט</strong> - כל גדלי הגופנים יחסיים ומתאימים לזום דפדפן עד 200%.</li>
             </ul>
             <h4>מגבלות ידועות</h4>
             <p>אנו עובדים באופן מתמיד לשיפור הנגישות. אם נתקלתם במכשול או יש לכם הצעות, אנא פנו אלינו.</p>
@@ -2847,8 +2854,8 @@
             <h4>מה אנו שומרים</h4>
             <p>אתר זה משתמש ב-<strong>localStorage</strong> של הדפדפן (לא עוגיות) לשמירת העדפה אחת:</p>
             <ul>
-              <li><strong>העדפת שפה</strong> — שומר <code>"en"</code> או <code>"he"</code> כדי שהשפה הנבחרת תיזכר בביקורים עתידיים. נתון זה נשמר בדפדפן שלכם בלבד ואינו נשלח לאף שרת.</li>
-              <li><strong>הסכמת עוגיות</strong> — שומר האם אישרתם או דחיתם הודעה זו.</li>
+              <li><strong>העדפת שפה</strong> - שומר <code>"en"</code> או <code>"he"</code> כדי שהשפה הנבחרת תיזכר בביקורים עתידיים. נתון זה נשמר בדפדפן שלכם בלבד ואינו נשלח לאף שרת.</li>
+              <li><strong>הסכמת עוגיות</strong> - שומר האם אישרתם או דחיתם הודעה זו.</li>
             </ul>
             <h4>Google Fonts</h4>
             <p>גופנים נטענים מ-<strong>Google Fonts</strong> (fonts.googleapis.com / fonts.gstatic.com). בעת טעינת הגופנים, Google עשויה לקבל את כתובת ה-IP שלכם. השימוש של Google בנתונים אלה כפוף ל<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">מדיניות הפרטיות של Google</a>.</p>
@@ -2878,16 +2885,16 @@
             <ul>
               <li>سمات ARIA لتوفير بيانات ذات معنى لقارئات الشاشة</li>
               <li>تسلسل هرمي منطقي للعناوين في جميع أنحاء الصفحة</li>
-              <li>تشغيل كامل بلوحة المفاتيح — جميع العناصر قابلة للوصول عبر Tab</li>
+              <li>تشغيل كامل بلوحة المفاتيح - جميع العناصر قابلة للوصول عبر Tab</li>
               <li>رابط تخطي المحتوى في أعلى الصفحة لمستخدمي لوحة المفاتيح</li>
               <li>نسبة تباين ألوان لا تقل عن 4.5:1 وفق معيار WCAG AA</li>
             </ul>
             <h4>الميزات المتاحة</h4>
             <ul>
-              <li><strong>ضعف البصر</strong> — مكبّر النصوص، التباين العالي، التدرج الرمادي، عكس الألوان</li>
-              <li><strong>الإدراك والتركيز</strong> — دليل القراءة، قناع القراءة، إيقاف الرسوم المتحركة</li>
-              <li><strong>عسر القراءة</strong> — خط مناسب لعسر القراءة، تباعد الحروف، نص أكبر</li>
-              <li><strong>لوحة المفاتيح</strong> — وضع التركيز المحسّن، التخطي إلى المحتوى</li>
+              <li><strong>ضعف البصر</strong> - مكبّر النصوص، التباين العالي، التدرج الرمادي، عكس الألوان</li>
+              <li><strong>الإدراك والتركيز</strong> - دليل القراءة، قناع القراءة، إيقاف الرسوم المتحركة</li>
+              <li><strong>عسر القراءة</strong> - خط مناسب لعسر القراءة، تباعد الحروف، نص أكبر</li>
+              <li><strong>لوحة المفاتيح</strong> - وضع التركيز المحسّن، التخطي إلى المحتوى</li>
             </ul>
             <h4>المتصفحات وقارئات الشاشة المدعومة</h4>
             <p>المتصفحات: Chrome، Firefox، Safari، Edge، Opera.<br>
@@ -2902,10 +2909,10 @@
           title: 'سياسة ملفات تعريف الارتباط والتخزين',
           body: `
             <h4>ما الذي نخزّنه</h4>
-            <p>يستخدم هذا الموقع <strong>التخزين المحلي (localStorage)</strong> — وليس ملفات تعريف الارتباط — لتذكّر تفضيلاتكم:</p>
+            <p>يستخدم هذا الموقع <strong>التخزين المحلي (localStorage)</strong> - وليس ملفات تعريف الارتباط - لتذكّر تفضيلاتكم:</p>
             <ul>
-              <li><strong>تفضيل اللغة</strong> — يخزّن اللغة المختارة (EN/HE/AR). تبقى هذه البيانات في متصفحك فقط.</li>
-              <li><strong>موافقة ملفات تعريف الارتباط</strong> — يخزّن ما إذا قبلتم أو رفضتم هذا الإشعار.</li>
+              <li><strong>تفضيل اللغة</strong> - يخزّن اللغة المختارة (EN/HE/AR). تبقى هذه البيانات في متصفحك فقط.</li>
+              <li><strong>موافقة ملفات تعريف الارتباط</strong> - يخزّن ما إذا قبلتم أو رفضتم هذا الإشعار.</li>
             </ul>
             <h4>خطوط Google Fonts</h4>
             <p>يتم تحميل الخطوط من <strong>Google Fonts</strong>. عند تحميلها، قد تتلقى Google عنوان IP الخاص بك وفق <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">سياسة خصوصية Google</a>.</p>
