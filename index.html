@@ -117,11 +117,12 @@
 
     /* ─── SCROLL REVEAL ──────────────────────────────────────────── */
     .rev {
-      opacity: 0; transform: translateY(28px);
+      opacity: 0; transform: translateY(28px); filter: blur(8px);
       transition: opacity 650ms var(--ease-out),
-                  transform 650ms var(--ease-out);
+                  transform 650ms var(--ease-out),
+                  filter 650ms var(--ease-out);
     }
-    .rev.in { opacity: 1; transform: translateY(0); }
+    .rev.in { opacity: 1; transform: translateY(0); filter: blur(0px); }
     .rev.d1 { transition-delay: 80ms; }
     .rev.d2 { transition-delay: 160ms; }
     .rev.d3 { transition-delay: 240ms; }
