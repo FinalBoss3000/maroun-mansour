@@ -8,7 +8,7 @@ Single-page law firm website for Maroun Mansour Law Office. Entirely self-contai
 
 **Live site:** https://finalboss3000.github.io/maroun-mansour/  
 **Repo:** https://github.com/FinalBoss3000/maroun-mansour  
-Auto-deploys to GitHub Pages on every push to `main`.
+Deployed via **Cloudflare Pages** (connected to this repo, builds on push to `main`). Security headers are served from the `_headers` file at the repo root — Cloudflare Pages applies it automatically; it has no effect on local `npx serve` previews or plain GitHub Pages.
 
 ## Running locally
 
@@ -50,7 +50,7 @@ Single inline script, sections in order:
 3. **Scroll reveal** — IntersectionObserver adds `.in` to `.rev` elements
 4. **Nav scroll** — adds `.scrolled` to nav after 60 px
 5. **Mobile menu** — `openMenu()` / `closeMenu()`
-6. **Contact form** — validates then POSTs to Web3Forms API (`access_key: 2d8b45aa-...`)
+6. **Contact form** — validates then POSTs (`mode:'no-cors'`) to a Google Apps Script web app that emails the firm
 7. **Practice modal IIFE** — wires `.pcard` clicks → `#pmodal`, re-translates on language switch
 8. **Cookie consent IIFE** — shows `#cookie-bar` if `localStorage['cookie-consent']` unset
 9. **`LEGAL` object** — `{ en, he, ar }` × `{ accessibility, cookies }` with full HTML body strings
@@ -67,7 +67,7 @@ Single inline script, sections in order:
 
 **Accessibility overrides:** Each feature adds a class to `<html>` (e.g. `html.a11y-greyscale`). CSS rules targeting those classes live in the "Applied accessibility overrides" block inside `<style>`. The JS feature→class map is `FEATS` inside the widget IIFE.
 
-**Form submissions** go to `https://api.web3forms.com/submit` with the access key embedded as a hidden field. The confirmation email to activate the key was sent to `Office@MMans-Law.com`.
+**Form submissions** go to a Google Apps Script web app (`https://script.google.com/macros/s/.../exec`, `APPS_SCRIPT_URL` constant in the contact-form handler). The POST uses `mode:'no-cors'`, so the response can't be read — success is assumed if `fetch` doesn't throw. The Apps Script project (deployed under the firm's Google account) receives the form fields and emails them on. A `honeypot` hidden field silently drops bots.
 
 ## Assets
 
