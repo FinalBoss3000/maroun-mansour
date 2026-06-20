@@ -352,18 +352,30 @@
     /* ════════════════════════════════════════════════════════════════
        HERO
     ════════════════════════════════════════════════════════════════ */
+    @keyframes heroGrad {
+      0%   { background-position: 0% 50%; }
+      33%  { background-position: 100% 0%; }
+      66%  { background-position: 100% 100%; }
+      100% { background-position: 0% 50%; }
+    }
     .hero {
       position: relative;
       min-height: 100dvh;
       display: flex; align-items: center;
       padding-top: 100px;
-      background: var(--c-primary);
+      background: linear-gradient(-45deg,
+        #050a2e, #3d1aa8, #0d1a5c,
+        #5424b0, #0a1452, #2a14a0,
+        #050a2e, #3d1aa8
+      );
+      background-size: 400% 400%;
+      animation: heroGrad 7s ease infinite;
       overflow: hidden;
     }
 
     .hero::before {
       content: '';
-      position: absolute; inset: 0;
+      position: absolute; inset: 0; z-index: 0;
       background-image:
         linear-gradient(rgba(222,173,18,0.035) 1px, transparent 1px),
         linear-gradient(90deg, rgba(222,173,18,0.035) 1px, transparent 1px);
@@ -373,11 +385,22 @@
 
     .hero::after {
       content: '';
-      position: absolute; inset: 0;
+      position: absolute; inset: 0; z-index: 0;
       background:
         radial-gradient(ellipse 70% 55% at 80% 20%, rgba(222,173,18,0.07) 0%, transparent 55%),
         radial-gradient(ellipse 55% 70% at 5% 85%,  rgba(25,28,94,0.50)  0%, transparent 55%);
       pointer-events: none;
+    }
+
+    /* Grain overlay */
+    .hero__grain {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 2;
+      opacity: 0.10; mix-blend-mode: overlay;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero { animation: none; }
     }
 
     .hero__scales {
@@ -389,10 +412,11 @@
       pointer-events: none;
       color: white;
       transition: left 0ms, right 0ms;
+      z-index: 2;
     }
 
     .hero__inner {
-      position: relative; z-index: 1;
+      position: relative; z-index: 2;
       max-width: 720px;
     }
 
@@ -1397,6 +1421,14 @@
 
     <!-- ── HERO ──────────────────────────────────────────────────────── -->
     <section class="hero" aria-labelledby="hero-h1">
+
+      <svg class="hero__grain" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <filter id="hgrain">
+          <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch"/>
+          <feColorMatrix type="saturate" values="0"/>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#hgrain)" fill="white"/>
+      </svg>
 
       <svg class="hero__scales" viewBox="-15 0 360 400" fill="none" aria-hidden="true">
         <line x1="160" y1="20" x2="160" y2="340" stroke="currentColor" stroke-width="3"/>
