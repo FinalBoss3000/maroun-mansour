@@ -629,6 +629,9 @@
       color: var(--c-accent);
       margin-bottom: 20px;
     }
+    .profile-card__monogram-mark {
+      width: 34px; height: auto; display: block;
+    }
     .profile-card__name {
       font-family: var(--f-display);
       font-size: 30px; font-weight: 500;
@@ -1691,7 +1694,13 @@
           <div class="rev d2">
             <div class="profile-card" role="complementary" aria-label="Attorney profile card">
               <div class="profile-card__eyebrow" data-i18n="profile-eyebrow">Attorney at Law</div>
-              <div class="profile-card__monogram" aria-hidden="true">MM</div>
+              <div class="profile-card__monogram" aria-hidden="true">
+                <svg class="profile-card__monogram-mark" viewBox="57.9 38.5 726.1 518.2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="57.9,556.7 57.9,101.7 465.6,509.4 420.9,554 121,254.1 121,556.7"/>
+                  <polygon points="720.9,556.7 720.9,254.1 515.7,459.3 184.2,127.8 184.2,38.5 515.7,370 784,101.7 784,556.7"/>
+                  <polygon points="471,225.4 657.7,38.5 657.7,130.5 515.7,270.1"/>
+                </svg>
+              </div>
               <div class="profile-card__name" data-i18n="footer-name">Maroun Mansour</div>
               <div class="profile-card__role" data-i18n="profile-role">Law Office</div>
 
