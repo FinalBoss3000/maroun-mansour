@@ -3145,7 +3145,7 @@
         }
 
         toggle.addEventListener('pointerdown', e => {
-          if (e.button && e.button !== 0) return;
+          if (e.pointerType !== 'touch') return;   /* draggable on touch/mobile only */
           dragging = true; moved = false;
           const r = toggle.getBoundingClientRect();
           originLeft = r.left; originTop = r.top;
