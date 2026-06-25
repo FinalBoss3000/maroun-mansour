@@ -3169,9 +3169,6 @@
           if (!dragging) return;
           dragging = false;
           toggle.classList.remove('dragging');
-          if (moved) {
-            try { localStorage.setItem('a11y-pos', JSON.stringify({ left: toggle.style.left, top: toggle.style.top })); } catch (_) {}
-          }
         }
         document.addEventListener('pointerup', endDrag);
         document.addEventListener('pointercancel', endDrag);
@@ -3181,14 +3178,8 @@
           if (moved) { e.stopImmediatePropagation(); e.preventDefault(); moved = false; }
         }, true);
 
-        /* Restore a previously dragged position */
-        try {
-          const saved = JSON.parse(localStorage.getItem('a11y-pos') || 'null');
-          if (saved && saved.left && saved.top) {
-            toggle.style.transition = 'none';
-            place(parseFloat(saved.left), parseFloat(saved.top));
-          }
-        } catch (_) {}
+        /* Always start at the original (desktop) position; clear any saved spot */
+        try { localStorage.removeItem('a11y-pos'); } catch (_) {}
 
         /* Keep it on-screen if the viewport is resized/rotated */
         window.addEventListener('resize', () => {
