@@ -1182,7 +1182,10 @@
       display: flex; flex-direction: column; align-items: center; gap: 6px;
       cursor: pointer; background: none; border: none; padding: 0;
       transition: bottom 300ms;
+      touch-action: none;
+      -webkit-user-select: none; user-select: none;
     }
+    .a11y-toggle.dragging { cursor: grabbing; transition: none; }
     body:has(#cookie-bar.show) .a11y-toggle { bottom: 90px; }
 
     .a11y-toggle__circle {
@@ -3122,6 +3125,76 @@
       resetBtn.addEventListener('click', resetAll);
       document.addEventListener('keydown', e => { if (e.key==='Escape' && panel.classList.contains('open')) closePanel(); });
       document.querySelectorAll('[data-feat]').forEach(btn => btn.addEventListener('click', () => toggle_feat(btn.dataset.feat)));
+
+      /* ── Draggable toggle (so it can be moved out of the way, esp. on mobile) ── */
+      (function makeDraggable() {
+        const THRESH = 6;                       /* px before a press counts as a drag */
+        let dragging = false, moved = false;
+        let startX = 0, startY = 0, originLeft = 0, originTop = 0;
+
+        function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+
+        function place(left, top) {
+          const w = toggle.offsetWidth, h = toggle.offsetHeight, m = 8;
+          left = clamp(left, m, window.innerWidth  - w - m);
+          top  = clamp(top,  m, window.innerHeight - h - m);
+          toggle.style.left = left + 'px';
+          toggle.style.top  = top  + 'px';
+          toggle.style.right = 'auto';
+          toggle.style.bottom = 'auto';
+        }
+
+        toggle.addEventListener('pointerdown', e => {
+          if (e.button && e.button !== 0) return;
+          dragging = true; moved = false;
+          const r = toggle.getBoundingClientRect();
+          originLeft = r.left; originTop = r.top;
+          startX = e.clientX; startY = e.clientY;
+          if (toggle.setPointerCapture) toggle.setPointerCapture(e.pointerId);
+        });
+
+        document.addEventListener('pointermove', e => {
+          if (!dragging) return;
+          const dx = e.clientX - startX, dy = e.clientY - startY;
+          if (!moved && Math.hypot(dx, dy) > THRESH) {
+            moved = true;
+            toggle.classList.add('dragging');
+          }
+          if (!moved) return;
+          e.preventDefault();
+          place(originLeft + dx, originTop + dy);
+        }, { passive: false });
+
+        function endDrag() {
+          if (!dragging) return;
+          dragging = false;
+          toggle.classList.remove('dragging');
+          if (moved) {
+            try { localStorage.setItem('a11y-pos', JSON.stringify({ left: toggle.style.left, top: toggle.style.top })); } catch (_) {}
+          }
+        }
+        document.addEventListener('pointerup', endDrag);
+        document.addEventListener('pointercancel', endDrag);
+
+        /* Suppress the open/close click that fires right after a drag */
+        toggle.addEventListener('click', e => {
+          if (moved) { e.stopImmediatePropagation(); e.preventDefault(); moved = false; }
+        }, true);
+
+        /* Restore a previously dragged position */
+        try {
+          const saved = JSON.parse(localStorage.getItem('a11y-pos') || 'null');
+          if (saved && saved.left && saved.top) {
+            toggle.style.transition = 'none';
+            place(parseFloat(saved.left), parseFloat(saved.top));
+          }
+        } catch (_) {}
+
+        /* Keep it on-screen if the viewport is resized/rotated */
+        window.addEventListener('resize', () => {
+          if (toggle.style.left) place(parseFloat(toggle.style.left), parseFloat(toggle.style.top));
+        });
+      })();
 
       /* Mouse-follow for reading guide & mask */
       document.addEventListener('mousemove', e => {
